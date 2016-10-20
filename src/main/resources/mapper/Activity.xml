@@ -3,4 +3,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.itupo.iiv.dao.ActivityDao">
+	<resultMap id="ActivityResultMap" type="io.itupo.iiv.domain.ActivityBean">
+		<result property="id" column="id" />
+		<result property="sector" column="sector" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="fileId" column="file_id" />
+		<result property="userId" column="user_id" />
+		<result property="writeDate" column="write_date" />
+		<result property="views" column="views" />
+		<result property="likes" column="likes" />
+	</resultMap>
+	
+	<select id="readPostList" resultMap="ActivityResultMap">
+    	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
+    	FROM activity
+    	ORDER BY id DESC
+    </select>
+    
+    <select id="readPostById" resultType="io.itupo.iiv.domain.ActivityBean">
+    	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
+    	FROM activity
+    	WHERE id = #{id}
+    </select>
 </mapper>

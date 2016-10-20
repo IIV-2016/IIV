@@ -3,4 +3,44 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.itupo.iiv.dao.CommunityDao">
+	<resultMap id="CommunityResultMap" type="io.itupo.iiv.domain.CommunityBean">
+		<result property="id" column="id" />
+		<result property="sector" column="sector" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="fileId" column="file_id" />
+		<result property="userId" column="user_id" />
+		<result property="writeDate" column="write_date" />
+		<result property="views" column="views" />
+		<result property="likes" column="likes" />
+	</resultMap>
+	
+	<select id="readPostList" resultMap="CommunityResultMap">
+    	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
+    	FROM community
+    	ORDER BY id DESC
+    </select>
+    
+    <select id="readPostById" resultType="io.itupo.iiv.domain.CommunityBean">
+    	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
+    	FROM community 
+    	WHERE id = #{id}
+    </select>
+    
+	<insert id="writePost" parameterType="io.itupo.iiv.domain.CommunityBean">
+		INSERT INTO community (sector, title, content, file_id, user_id, write_date, views, likes) 
+		VALUE (#{sector}, #{title}, #{content}, 0, #{userId}, NOW(), 0, 0)
+	</insert>
+	
+	<update id="updatePost" parameterType="io.itupo.iiv.domain.CommunityBean">
+		UPDATE community
+		SET title = #{title}, content = #{content}
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="deletePostById" parameterType="int">
+		DELETE 
+		FROM community 
+		WHERE id = #{id}
+	</delete>
 </mapper>

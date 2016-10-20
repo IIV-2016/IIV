@@ -23,7 +23,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
-@MapperScan("io.itu.iiv.dao")
+@MapperScan("io.itupo.iiv.dao")
 @EnableTransactionManagement
 @EnableCaching
 public class IivConfiguration {
