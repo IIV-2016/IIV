@@ -36,6 +36,5 @@ local.properties
 *.war
 *.ear
 
-/**/jsp/*
 /**/static/*
 /**/application.properties
