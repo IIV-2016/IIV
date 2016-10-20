@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.itupo.iiv.dao.UserDao">
+     <select id="readUser" parameterType="String" resultType="io.itupo.iiv.domain.UserBean">
+          SELECT * FROM user WHERE username = #{username}
+     </select>
+     
+     <select id="readAuthority" parameterType="String" resultType="String">
+          SELECT authority_name FROM authority WHERE username = #{username}
+     </select>
+     
+     <insert id="registerUser" parameterType="io.itupo.iiv.domain.UserBean">
+		INSERT INTO user (username, password, firstname, lastname, email) 
+		VALUE (#{username}, #{password}, #{firstname}, #{lastname}, #{email})
+	</insert>
+	
+	<insert id="registerAuthority" parameterType="String">
+		INSERT INTO authority (username, authority_name) 
+		VALUE (#{username}, 'USER')
+	</insert>
+</mapper>
