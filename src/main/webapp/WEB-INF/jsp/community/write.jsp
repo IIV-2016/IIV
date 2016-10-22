@@ -90,6 +90,7 @@
 							<textarea class="form-control" rows="7" id="content" name="content"></textarea>
 						</div>
 						<button type="submit" class="btn-u">Submit</button>
+						<input type="hidden" name="_csrf" value="${_csrf.token}">
 					</form>
 				</div>
 			</div>

@@ -109,13 +109,15 @@
 		    <version>1.10.12</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework.social</groupId>
-		    <artifactId>spring-social-security</artifactId>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-social-facebook</artifactId>
-		</dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>				
 	</dependencies>
 	<build>
 		<plugins>

@@ -29,14 +29,4 @@ public class UserBean implements UserDetails {
 	private boolean isCredentialsNonExpired;
 	private boolean isEnabled;
 	private Collection<? extends GrantedAuthority> authorities;
-
-	public static UserBean fromVO(UserCreateRequestVO userCreateRequestVO) {
-		UserBean user = new UserBean();
-
-		user.setLastname(userCreateRequestVO.getLastName());
-		user.setFirstname(userCreateRequestVO.getFirstName());
-		user.setEmail(userCreateRequestVO.getEmail());
-
-		return user;
-	}
 }

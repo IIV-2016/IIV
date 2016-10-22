@@ -56,7 +56,7 @@
 		<div class="container content">
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-					<c:url value="/login/authenticate" var="loginUrl"/>
+					<c:url value="/user/login" var="loginUrl"/>
 					<form class="reg-page" action="${loginUrl}" method="post">
 						<div class="reg-header">
 							<h2>Login to your account</h2>
@@ -88,16 +88,6 @@
 					</form>
 				</div>
 			</div><!--/row-->
-			<form action="/auth/facebook" name="facebook" method="POST">
-				<input type="hidden" name="scope" value="email,user_friends"/>
-			    <input type="hidden" name="_csrf" value="${_csrf.token}">
-			    <div class="formInfo">
-			        <p>You aren't connected to Facebook yet. Click the button to connect this application with your Facebook account.</p>
-			    </div>
-			    <p>
-			        <button type="submit">Connect to Facebook</button>
-			    </p>
-			</form>
 		</div>
 		<%@include file="/WEB-INF/jsp/footer.jsp"%>
 		<!--=== End Header v6 ===-->

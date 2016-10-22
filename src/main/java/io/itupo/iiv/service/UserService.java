@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import io.itupo.iiv.dao.UserDao;
 import io.itupo.iiv.domain.UserBean;
-import io.itupo.iiv.domain.UserCreateRequestVO;
 
 @Service
 public class UserService implements UserDetailsService{
@@ -42,13 +41,5 @@ public class UserService implements UserDetailsService{
 	public void registerUser(UserBean bean){
 		userDao.registerUser(bean);
 		userDao.registerAuthority(bean.getUsername());
-	}
-	public UserBean create(UserCreateRequestVO userCreateRequestVO){
-		UserBean user = UserBean.fromVO(userCreateRequestVO);
-		user.setPassword(userCreateRequestVO.getPassword());
-		userDao.registerUser(user);
-		userDao.registerAuthority(user.getUsername());
-
-		return user;
 	}
 }
