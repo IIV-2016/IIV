@@ -72,7 +72,7 @@
 		</div><!--/breadcrumbs-->
 		<!--=== End Breadcrumbs ===-->
 		<div class="container content-sm">
-			<a herf="<%=request.getContextPath()%>/community/post/write" class="btn-u btn-u-sm" id="write">Write</a>
+			<a href="<%=request.getContextPath()%>/community/write" class="btn-u btn-u-sm" id="write">Write</a>
 			<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
 		        <thead>
 		            <tr>

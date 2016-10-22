@@ -33,15 +33,15 @@ public class CommunityController {
 		return "readContent";
 	}
 
-	@RequestMapping(value = "form", method = RequestMethod.GET)
+	@RequestMapping(value = "write", method = RequestMethod.GET)
 	public String write(Model model) {
-		return "form";
+		return "community/write";
 	}
     
-    @RequestMapping(value = "writePost", method = RequestMethod.POST)
+    @RequestMapping(value = "write/submit", method = RequestMethod.POST)
     public String writePost(CommunityBean bean) {
     	communityService.writePost(bean);
-        return "redirect:/board/index";
+        return "community/board";
     }
 
     @RequestMapping(value = "updateForm/{id}", method = RequestMethod.GET)

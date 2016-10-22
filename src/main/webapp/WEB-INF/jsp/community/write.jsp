@@ -27,13 +27,29 @@
 
 	<!-- CSS Implementing Plugins -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/pages/page_log_reg_v1.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/line-icons/line-icons.css">
+
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/sky-forms-pro/skyforms/css/sky-forms.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css">
+	
 	<!-- CSS Theme -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-colors/dark-blue.css" id="style_color">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-skins/dark.css">
+	<link rel="stylesheet" href="/webjars/datatables/1.10.12/css/dataTables.bootstrap.min.css">
 
 	<!-- CSS Customization -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css">
+	<style>
+	table.dataTable thead .sorting:after {
+	    content : none;
+	}
+	table.dataTable thead .sorting_asc:after {
+		content : none;
+	}
+	table.dataTable thead .sorting_desc:after {
+    content: none;
+	}
+	</style>
 </head>
 
 <body class="header-fixed header-fixed-space">
@@ -47,70 +63,39 @@
 		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs">
 			<div class="container">
-				<h1 class="pull-left">Registration</h1>
+				<h1 class="pull-left">Community</h1>
 				<ul class="pull-right breadcrumb">
 					<li><a href="index.html">Home</a></li>
-					<li><a href="">Pages</a></li>
-					<li class="active">Registration</li>
+					<li class="active">Write</li>
 				</ul>
-			</div><!--/container-->
+			</div>
 		</div><!--/breadcrumbs-->
 		<!--=== End Breadcrumbs ===-->
-
-		<!--=== Content Part ===-->
-		<div class="container content">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-					<form class="reg-page" action="<%=request.getContextPath()%>/signup" method="post">
-						<div class="reg-header">
-							<h2>Register a new account</h2>
-							<p>Already Signed Up? Click <a href="page_login.html" class="color-green">Sign In</a> to login your account.</p>
+		<div class="container content-sm">
+			<div class="panel margin-bottom-40">
+				<div class="panel-body">
+					<form action="<%=request.getContextPath()%>/community/write/submit" method="post" class="margin-bottom-40" role="form">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Title</label>
+							<input type="email" class="form-control" id="title" name="title" placeholder="title">
 						</div>
-						<label>ID</label>
-						<input type="text" name="username" class="form-control margin-bottom-20">
-						<div class="row">
-							<div class="col-sm-6">
-								<label>First Name</label>
-								<input type="text" name="firstname" class="form-control margin-bottom-20" value="${user.firstname}">
-							</div>
-							<div class="col-sm-6">
-								<label>Last Name</label>
-								<input type="text" name="lastname" class="form-control margin-bottom-20" value="${user.lastname}">
-							</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">Write</label>
+							<p id="userId" name="userId">test</p>
+							<label for="exampleInputPassword1">Date</label>
+							<p>date</p>
 						</div>
-						<label>Email Address</label>
-						<input type="text" name="email" class="form-control margin-bottom-20" value="${user.email}">
-
-						<div class="row">
-							<div class="col-sm-6">
-								<label>Password <span class="color-red">*</span></label>
-								<input type="password" name="password" class="form-control margin-bottom-20">
-							</div>
-							<div class="col-sm-6">
-								<label>Confirm Password <span class="color-red">*</span></label>
-								<input type="password" class="form-control margin-bottom-20">
-							</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">Content</label>
+							<textarea class="form-control" rows="7" id="content" name="content"></textarea>
 						</div>
-
-						<hr>
-
-						<div class="row">
-							<div class="col-lg-6 checkbox">
-								<label>
-									<input type="checkbox">
-									I read <a href="page_terms.html" class="color-green">Terms and Conditions</a>
-								</label>
-							</div>
-							<div class="col-lg-6 text-right">
-								<button class="btn-u" type="submit">Register</button>
-							</div>
-						</div>
-						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+						<button type="submit" class="btn-u">Submit</button>
 					</form>
 				</div>
 			</div>
-		</div><!--/container-->
-		<!--=== End Content Part ===-->
+			<!-- End Basic Form -->
+	    </div>
+		<!--=== End Footer Version 1 ===-->
 		<%@include file="/WEB-INF/jsp/footer.jsp"%>
 		<!--=== End Header v6 ===-->
 	</div><!--/wrapper-->
@@ -121,15 +106,24 @@
 	<!-- JS Implementing Plugins -->
 	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/back-to-top.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/smoothScroll.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/jquery.parallax.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+
 	<!-- JS Customization -->
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/custom.js"></script>
 	<!-- JS Page Level -->
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/app.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/style-switcher.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/forms/login.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/forms/contact.js"></script>
+	<script type="text/javascript" src="/webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/table.js"></script>
+	<script type="text/javascript" src="/webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();
+			LoginForm.initLoginForm();
+			ContactForm.initContactForm();
 			StyleSwitcher.initStyleSwitcher();
 		});
 	</script>

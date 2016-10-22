@@ -17,15 +17,26 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserBean implements UserDetails {
-     private String username;
-     private String password;
-     private String firstname;
-     private String lastname;
-     private String email;
-     private String level;
-     private boolean isAccountNonExpired;
-     private boolean isAccountNonLocked;
-     private boolean isCredentialsNonExpired;
-     private boolean isEnabled;
-     private Collection<? extends GrantedAuthority> authorities;
+	private int id;
+	private String username;
+	private String password;
+	private String firstname;
+	private String lastname;
+	private String email;
+	private String level;
+	private boolean isAccountNonExpired;
+	private boolean isAccountNonLocked;
+	private boolean isCredentialsNonExpired;
+	private boolean isEnabled;
+	private Collection<? extends GrantedAuthority> authorities;
+
+	public static UserBean fromVO(UserCreateRequestVO userCreateRequestVO) {
+		UserBean user = new UserBean();
+
+		user.setLastname(userCreateRequestVO.getLastName());
+		user.setFirstname(userCreateRequestVO.getFirstName());
+		user.setEmail(userCreateRequestVO.getEmail());
+
+		return user;
+	}
 }
