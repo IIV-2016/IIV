@@ -1,35 +1,94 @@
-<script type="text/javascript" src="plugins/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="plugins/jquery/jquery-migrate.min.js"></script>
-<script type="text/javascript" src="resource/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <!-- action : 에디터에 입력한 html 코드를 전달받을 Controller페이지 URL -->
-<form action="/submit" method="post" id="frm">
-    <textarea name="editor" id="editor" rows="10" cols="100" style="width:766px; height:412px;"></textarea>
-    <input type="button" id="savebutton" value="서버전송" />
-</form>
-<script>
-$(function(){
-    //전역변수
-    var obj = [];               
-    //스마트에디터 프레임생성
-    nhn.husky.EZCreator.createInIFrame({
-        oAppRef: obj,
-        elPlaceHolder: "editor",
-        sSkinURI: "/resource/editor/SmartEditor2Skin.html", 
-        htParams : {
-            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-            bUseToolbar : true,             
-            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-            bUseVerticalResizer : true,     
-            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-            bUseModeChanger : true, 
-        }
-    });
-    //전송버튼
-    $("#savebutton").click(function(){
-        //id가 smarteditor인 textarea에 에디터에서 대입
-        obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
-        //폼 submit
-        $("#frm").submit();
-    })
-})
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Summernote</title>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+</head>
+<body>
+  <div id="summernote"><p>Hello Summernote</p></div>
+  <span id="upload-file-message"></span>
+<!-- 
+  <script>
+
+  $(document).ready(function() {
+
+	  $('#summernote').summernote({
+	      height: 300,
+	      callbacks : {
+	          onImageUpload: function(image) {
+	              uploadImage(image[0]);
+	          }
+	      }
+	  });
+
+	  function uploadImage(image) {
+	      var data = new FormData();
+	      data.append("files",image);
+	      $.ajax ({
+	          data: data,
+	          type: "POST",
+	          url: "/uploadFile",
+	          cache: false,
+	          contentType: false,
+	          processData: false,
+	          enctype: 'multipart/form-data',
+	          success: function(url) {
+	              $("#upload-file-message").text("File succesfully uploaded");
+	  			 console.log(image);
+	              },
+	              error: function(data) {
+	                  console.log(data);
+	                  $("#upload-file-message").text("File nono uploaded");
+	                  }
+	          });
+	      }
+
+	  });
+-->
+	  <script type="text/javascript">
+      $(document).ready(function() {
+        $('#summernote').summernote({
+          height: 300,
+          minHeight: null,
+          maxHeight: null,
+          focus: true,
+          callbacks: {
+            onImageUpload: function(files, editor, welEditable) {
+              for (var i = files.length - 1; i >= 0; i--) {
+                sendFile(files[i], this);
+              }
+            }
+          }
+        });
+      });
+      
+      function sendFile(file, el) {
+    	  data = new FormData();
+    	  data.append("file", file);
+        $.ajax({
+          data: data,
+          type: "POST",
+          url: '/uploadFile',
+          cache: false,
+          contentType: false,
+          enctype: 'multipart/form-data',
+          processData: false,
+          success: function(url) {
+              $("#upload-file-message").text("File succesfully uploaded");
+  			 console.log(file);
+              },
+              error: function(data) {
+                  console.log(data);
+                  $("#upload-file-message").text("File nono uploaded");
+              }
+        });
+      }
+  </script>
+</body>
+</html>

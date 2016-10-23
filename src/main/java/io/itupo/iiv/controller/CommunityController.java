@@ -23,14 +23,14 @@ public class CommunityController {
 
 	@RequestMapping(value = "board", method = RequestMethod.GET)
 	public String readPostList(Model model) {
-		model.addAttribute("readPostList", communityService.readPostList());
+		model.addAttribute("postList", communityService.readPostList());
 		return "community/board";
 	}
 	
 	@RequestMapping(value = "post/{id}", method = RequestMethod.GET)
 	public String readPost(@PathVariable(value="id") int id, Model model) {
-		model.addAttribute("bean", communityService.readPostById(id));
-		return "readContent";
+		model.addAttribute("post", communityService.readPostById(id));
+		return "community/post";
 	}
 
 	@RequestMapping(value = "write", method = RequestMethod.GET)

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -85,22 +86,16 @@
 		            </tr>
 		        </thead>
 		        <tbody>
+		        	<c:forEach var="post" items="${postList}">
 		            <tr>
-		                <td>1</td>
-		                <td>System Architect</td>
-		                <td>Edinburgh</td>
-		                <td>2011/04/25</td>
-		                <td>12</td>
-		                <td>0</td>
+		                <td>${post.id}</td>
+		                <td><a href="<%=request.getContextPath()%>/community/post/${post.id}">${post.title}</a></td>
+		                <td>${post.userId}</td>
+		                <td>${post.writeDate}</td>
+		                <td>${post.views}</td>
+		                <td>${post.likes}</td>
 		            </tr>
-		           	<tr>
-		                <td>2</td>
-		                <td>aaa</td>
-		                <td>aa</td>
-		                <td>2011/04/25</td>
-		                <td>12</td>
-		                <td>0</td>
-		            </tr>
+		            </c:forEach>
 		        </tbody>
 		    </table>
 	    </div>

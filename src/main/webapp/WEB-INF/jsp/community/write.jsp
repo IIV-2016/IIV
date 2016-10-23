@@ -36,6 +36,7 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-colors/dark-blue.css" id="style_color">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-skins/dark.css">
 	<link rel="stylesheet" href="/webjars/datatables/1.10.12/css/dataTables.bootstrap.min.css">
+	<link href="<%=request.getContextPath()%>/dist/summernote.css" rel="stylesheet">
 
 	<!-- CSS Customization -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css">
@@ -80,17 +81,12 @@
 							<input type="email" class="form-control" id="title" name="title" placeholder="title">
 						</div>
 						<div class="form-group">
-							<label for="exampleInputPassword1">Write</label>
-							<p id="userId" name="userId">test</p>
-							<label for="exampleInputPassword1">Date</label>
-							<p>date</p>
-						</div>
-						<div class="form-group">
 							<label for="exampleInputPassword1">Content</label>
-							<textarea class="form-control" rows="7" id="content" name="content"></textarea>
+							<textarea class="form-control" rows="7" id="summernote" name="content"></textarea>
 						</div>
 						<button type="submit" class="btn-u">Submit</button>
 						<input type="hidden" name="_csrf" value="${_csrf.token}">
+						<input type="hidden" name="userId" value=<sec:authentication property="principal.username"/>>
 					</form>
 				</div>
 			</div>
@@ -120,12 +116,19 @@
 	<script type="text/javascript" src="/webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/table.js"></script>
 	<script type="text/javascript" src="/webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/dist/summernote.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();
 			LoginForm.initLoginForm();
 			ContactForm.initContactForm();
 			StyleSwitcher.initStyleSwitcher();
+			$('#summernote').summernote({
+			   height: 300,
+			   minHeight: null,
+			   maxHeight: null,
+			   focus: true,
+			 });
 		});
 	</script>
 	<!--[if lt IE 9]>

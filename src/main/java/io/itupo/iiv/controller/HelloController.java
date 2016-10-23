@@ -1,25 +1,37 @@
 package io.itupo.iiv.controller;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import io.itupo.iiv.dto.PhotoVo;
 
 @Controller
 public class HelloController {
+	
+	@Autowired
+	private Environment env;
 	
 	@RequestMapping(value = "/home")
 	public String hello(Model model) {
@@ -36,6 +48,31 @@ public class HelloController {
 		return "editor";
 	}
 
+	  @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+	  @ResponseBody
+	  public ResponseEntity<?> uploadFile(
+	      @RequestParam(value = "file") MultipartFile uploadfile) {
+	    /*
+	    try {
+	      // Get the filename and build the local file path
+	      String filename = uploadfile.getOriginalFilename();
+	      String directory = env.getProperty("/Users/jinhee");
+	      String filepath = Paths.get(directory, filename).toString();
+	      
+	      // Save the file locally
+	      BufferedOutputStream stream =
+	          new BufferedOutputStream(new FileOutputStream(new File(filepath)));
+	      stream.write(uploadfile.getBytes());
+	      stream.close();
+	    }
+	    catch (Exception e) {
+	      System.out.println(e.getMessage());
+	      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	    }
+	    */
+	    return new ResponseEntity<>(HttpStatus.OK);
+	  } // method uploadFile
+	
 	//단일파일업로드
 	@RequestMapping(value = "/photoUpload", method = RequestMethod.POST)
 	public String photoUpload(HttpServletRequest request, PhotoVo vo){

@@ -18,7 +18,7 @@
 	<select id="readPostList" resultMap="CommunityResultMap">
     	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
     	FROM community
-    	ORDER BY id DESC
+    	ORDER BY id ASC
     </select>
     
     <select id="readPostById" resultType="io.itupo.iiv.domain.CommunityBean">

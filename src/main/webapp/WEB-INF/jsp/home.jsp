@@ -82,11 +82,12 @@
 			<div class="container overflow-h">
 				<div class="row">
 					<div class="col-md-9 animated fadeInLeft">
-						<span>Unify is a clean and fully responsive incredible Template.</span>
-						<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi  vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat corrupti quos.</p>
+						<p>International ICT Volunteers (IIV) is an open international platform for mobilizing resource of volunteers who will help promote ICT development and for development in the Asia-Pacific region. 
+						Since 2012, ITU and NIA have jointly dispatched over 520 Korean volunteers over 10 countries in the Asia-Pacific Region.
+						</p>
 					</div>
 					<div class="col-md-3 btn-buy animated fadeInRight">
-						<a href="#" class="btn-u btn-u-lg"><i class="fa fa-cloud-download"></i> Download Now</a>
+						<a href="#" class="btn-u btn-u-lg">About IIV</a>
 					</div>
 				</div>
 			</div>
@@ -101,8 +102,8 @@
 					<div class="service">
 						<i class="fa fa-compress service-icon"></i>
 						<div class="desc">
-							<h4>Fully Responsive</h4>
-							<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...</p>
+							<h4>ICT Promotion</h4>
+							<p>IIVs help promote digital societies and ICT literacy at all levels. They harness digital technologies to accelerate social and economic development</p>
 						</div>
 					</div>
 				</div>
@@ -110,8 +111,8 @@
 					<div class="service">
 						<i class="fa fa-cogs service-icon"></i>
 						<div class="desc">
-							<h4>HTML5 + CSS3</h4>
-							<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...</p>
+							<h4>Platform of Innovations</h4>
+							<p>IIV is an internationally social network of volunteers from different backgrounds, different countries, different age groups but common desire for doing good deeds.</p>
 						</div>
 					</div>
 				</div>
@@ -120,7 +121,7 @@
 						<i class="fa fa-rocket service-icon"></i>
 						<div class="desc">
 							<h4>Launch Ready</h4>
-							<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...</p>
+							<p>Bringing together various skills, knowledge, experiences, and spirits. We create a platform – the one that makes innovations and inspire people.</p>
 						</div>
 					</div>
 				</div>
@@ -193,24 +194,18 @@
 			<div class="row margin-bottom-30">
 				<!-- Welcome Block -->
 				<div class="col-md-8 md-margin-bottom-40">
-					<div class="headline"><h2>Welcome To Unify</h2></div>
+					<div class="headline"><h2>What IIV is?</h2></div>
 					<div class="row">
 						<div class="col-sm-4">
 							<img class="img-responsive margin-bottom-20" src="img/main/img18.jpg" alt="">
 						</div>
 						<div class="col-sm-8">
-							<p>Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals. It works on all major web browsers, tablets and phone.</p>
-							<ul class="list-unstyled margin-bottom-20">
-								<li><i class="fa fa-check color-green"></i> Donec id elit non mi porta gravida</li>
-								<li><i class="fa fa-check color-green"></i> Corporate and Creative</li>
-								<li><i class="fa fa-check color-green"></i> Responsive Bootstrap Template</li>
-								<li><i class="fa fa-check color-green"></i> Corporate and Creative</li>
-							</ul>
+						<p>“Incredible Experience” I dispatched to SIPA Chiang Mai (Software Industry Promotion Agency Chiang Mai, Thailand) in Thailand 2016. At the first time, I thought it is a programme that I am delivering my knowledge to people. However, after the programme, I realized that I have received much more than I gave. It is a incredible experience that you can make huge local friends as well as exotic experience with them. </p>
 						</div>
 					</div>
 
 					<blockquote class="hero-unify">
-						<p>Award winning digital agency. We bring a personal and effective approach to every project we work on, which is why. Unify is an incredibly beautiful responsive Bootstrap Template for corporate professionals.</p>
+						<p>I am very proud myself that I have conducted my voluntary missions successfully and thank you to ITU and NIA that gave me incredible memory.</p>
 						<small>CEO, Jack Bour</small>
 					</blockquote>
 				</div><!--/col-md-8-->
