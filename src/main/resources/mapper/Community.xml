@@ -43,4 +43,10 @@
 		FROM community 
 		WHERE id = #{id}
 	</delete>
+	
+    <update id="addPostViews" parameterType="int">
+		UPDATE community
+		SET views = views + 1
+		WHERE id = #{id}
+	</update>
 </mapper>

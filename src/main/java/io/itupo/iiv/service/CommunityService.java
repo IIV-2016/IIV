@@ -26,6 +26,7 @@ public class CommunityService {
 	}
 
 	public CommunityBean readPostById(int id){
+		addPostViews(id);
 		CommunityBean communityBean = communityDao.readPostById(id);
 		return communityBean;
 	}
@@ -40,5 +41,8 @@ public class CommunityService {
 
 	public boolean deletePostById(int id){
 		return communityDao.deletePostById(id);
+	}
+	public boolean addPostViews(int id){
+		return communityDao.addPostViews(id);
 	}
 }

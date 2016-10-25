@@ -10,4 +10,5 @@ public interface CommunityDao {
 	boolean writePost(CommunityBean bean);
 	boolean updatePost(CommunityBean bean);
 	boolean deletePostById(int id);
+	boolean addPostViews(int id);
 }
