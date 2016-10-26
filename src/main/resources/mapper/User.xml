@@ -18,4 +18,8 @@
 		INSERT INTO authority (username, authority_name) 
 		VALUE (#{username}, 'USER')
 	</insert>
+	
+     <select id="readUsernameById" parameterType="int" resultType="String">
+          SELECT username FROM user WHERE id = #{id}
+     </select>
 </mapper>

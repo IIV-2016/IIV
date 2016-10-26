@@ -9,4 +9,5 @@ public interface UserDao {
     public List<String> readAuthority(String username);
     public void registerUser(UserBean bean);
     public void registerAuthority(String username);
+    public String readUsernameById(int id);
 }

@@ -1,5 +1,7 @@
 package io.itupo.iiv.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import io.itupo.iiv.domain.CommunityBean;
+import io.itupo.iiv.domain.LikeBean;
+import io.itupo.iiv.dto.LikeDto;
 import io.itupo.iiv.service.CommunityService;
 
 @Controller
@@ -28,8 +32,10 @@ public class CommunityController {
 	}
 	
 	@RequestMapping(value = "post/{id}", method = RequestMethod.GET)
-	public String readPost(@PathVariable(value="id") int id, Model model) {
+	public String readPost(@PathVariable(value="id") int id, Model model, Principal principal) {
 		model.addAttribute("post", communityService.readPostById(id));
+		model.addAttribute("test", principal.getName());
+		model.addAttribute("likeHistory", communityService.checkLikesHistoryById(new LikeBean(id, principal.getName())));
 		return "community/post";
 	}
 
@@ -44,21 +50,32 @@ public class CommunityController {
         return "community/board";
     }
 
-    @RequestMapping(value = "updateForm/{id}", method = RequestMethod.GET)
-    public String updateForm(@PathVariable(value="id") int id, Model model) {
-    	model.addAttribute("bean", communityService.readPostById(id));
-    	return "updateForm";
+    @RequestMapping(value = "update/{id}", method = RequestMethod.GET)
+    public String loadUpdateForm(@PathVariable(value="id") int id, Model model) {
+    	model.addAttribute("post", communityService.readPostById(id));
+    	return "community/update";
     }
     
-    @RequestMapping(value = "update", method = RequestMethod.POST)
+    @RequestMapping(value = "update/{id}", method = RequestMethod.POST)
     public String update(CommunityBean bean) {
     	communityService.updatePost(bean);
-    	return "redirect:/board/index";
+    	return "redirect:/community/post/" + bean.getId();
     }
 
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable(value="id") int id, Model model) {
     	communityService.deletePostById(id);
-    	return "redirect:/board/index";
+    	return "community/list";
+    }
+    
+    @RequestMapping(value = "likes/{id}/{userId}", method = RequestMethod.GET)
+    public String addPostLikes(@PathVariable(value="id") int id, @PathVariable(value="userId") int userId, Model model) {
+    	communityService.addPostLikes(new LikeDto(id, userId));
+    	return "redirect:/community/post/" + id;
+    }
+    @RequestMapping(value = "likesremove/{id}/{userId}", method = RequestMethod.GET)
+    public String removePostLikes(@PathVariable(value="id") int id, @PathVariable(value="userId") int userId, Model model) {
+    	communityService.removePostLikes(new LikeDto(id, userId));
+    	return "redirect:/community/post/" + id;
     }
 }

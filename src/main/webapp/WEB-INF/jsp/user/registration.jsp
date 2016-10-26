@@ -61,7 +61,7 @@
 		<div class="container content">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-					<form class="reg-page" action="<%=request.getContextPath()%>/signup" method="post">
+					<form class="reg-page" action="<%=request.getContextPath()%>/user/registerUser" method="post">
 						<div class="reg-header">
 							<h2>Register a new account</h2>
 							<p>Already Signed Up? Click <a href="page_login.html" class="color-green">Sign In</a> to login your account.</p>

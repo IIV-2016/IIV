@@ -14,7 +14,7 @@
 		<result property="views" column="views" />
 		<result property="likes" column="likes" />
 	</resultMap>
-	
+
 	<select id="readPostList" resultMap="CommunityResultMap">
     	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
     	FROM community
@@ -48,5 +48,17 @@
 		UPDATE community
 		SET views = views + 1
 		WHERE id = #{id}
+	</update>
+	
+	<update id="addPostLikes" parameterType="io.itupo.iiv.dto.LikeDto">
+		UPDATE community
+		SET likes = likes + 1
+		WHERE id = #{postId} AND user_id = #{userId}
+	</update>
+	
+	<update id="removePostLikes" parameterType="io.itupo.iiv.dto.LikeDto">
+		UPDATE community
+		SET likes = likes - 1
+		WHERE id = #{postId} AND user_id = #{userId}
 	</update>
 </mapper>

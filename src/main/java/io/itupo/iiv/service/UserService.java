@@ -42,4 +42,8 @@ public class UserService implements UserDetailsService{
 		userDao.registerUser(bean);
 		userDao.registerAuthority(bean.getUsername());
 	}
+	
+    public String readUsernameById(int id){
+    	return userDao.readUsernameById(id);
+    }
 }

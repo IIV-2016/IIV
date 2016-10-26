@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.itupo.iiv.dao.LikeDao">
+	<insert id="addLikesHistory">
+		INSERT INTO community_likes_history (post_id, username, state) 
+		VALUE (#{postId}, #{username}, TRUE)
+	</insert>
+	
+	<select id="checkLikesHistoryById" resultType="int">
+    	SELECT COUNT(state)
+    	FROM community_likes_history 
+    	WHERE post_id = #{postId} AND username = #{username}
+    </select>
+    
+	<delete id="removeLikesHistory">
+		DELETE 
+		FROM community_likes_history 
+		WHERE post_id = #{postId} AND username = #{username}
+	</delete>
+</mapper>

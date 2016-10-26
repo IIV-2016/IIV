@@ -75,16 +75,16 @@
 		<div class="container content-sm">
 			<div class="panel margin-bottom-40">
 				<div class="panel-body">
-					<form action="<%=request.getContextPath()%>/community/write/submit" method="post" class="margin-bottom-40" role="form">
+					<form action="<%=request.getContextPath()%>/community/update/${post.id}" method="post" class="margin-bottom-40" role="form">
 						<div class="form-group">
 							<label for="exampleInputEmail1">Title</label>
-							<input type="text" class="form-control" id="title" name="title" placeholder="title">
+							<input type="text" class="form-control" id="title" name="title" value="${post.title}">
 						</div>
 						<div class="form-group">
 							<label for="exampleInputPassword1">Content</label>
-							<textarea class="form-control" rows="7" id="summernote" name="content"></textarea>
+							<textarea class="form-control" rows="7" id="summernote" name="content">${post.content}</textarea>
 						</div>
-						<button type="submit" class="btn-u">Submit</button>
+						<button type="submit" class="btn-u">Update</button>
 						<input type="hidden" name="_csrf" value="${_csrf.token}">
 						<input type="hidden" name="userId" value=<sec:authentication property="principal.id"/>>
 					</form>

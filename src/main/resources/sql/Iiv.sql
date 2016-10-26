@@ -6,6 +6,7 @@ DROP TABLE community;
 DROP TABLE alumni;
 DROP TABLE comment;
 DROP TABLE authority;
+DROP TABLE community_likes_history;
 
 create table user (
 	 id INT(100) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -60,7 +61,7 @@ CREATE TABLE community (
 	id INT(100) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	sector VARCHAR(50) NULL,
 	title VARCHAR(100) NULL,
-	content VARCHAR(1000) NULL,
+	content VARCHAR(5000) NULL,
 	file_id VARCHAR(100) NULL,
 	user_id VARCHAR(50) NULL,
 	write_date DATE,
@@ -86,6 +87,13 @@ CREATE TABLE comment (
 	user_id VARCHAR(50) NULL,
 	write_date DATE,
 	board_id INT(100) UNSIGNED NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+CREATE TABLE community_likes_history (
+	id INT(100) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	post_id int(100) NULL,
+	username varchar(50) NULL,
+	state BOOLEAN DEFAULT FALSE
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 COMMIT;

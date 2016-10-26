@@ -3,15 +3,15 @@ package io.itupo.iiv.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.itupo.iiv.dao.CommunityDao;
+import io.itupo.iiv.dao.LikeDao;
+import io.itupo.iiv.dao.UserDao;
 import io.itupo.iiv.domain.CommunityBean;
-import io.itupo.iiv.dto.SearchDto;
+import io.itupo.iiv.domain.LikeBean;
+import io.itupo.iiv.dto.LikeDto;
 
 @Service
 @Transactional
@@ -19,6 +19,12 @@ public class CommunityService {
 
 	@Autowired
 	private CommunityDao communityDao;
+	
+	@Autowired
+	private UserDao userDao;
+	
+	@Autowired
+	private LikeDao likeDao;
 
 	public List<CommunityBean> readPostList(){
 		List<CommunityBean> postList = communityDao.readPostList();
@@ -44,5 +50,24 @@ public class CommunityService {
 	}
 	public boolean addPostViews(int id){
 		return communityDao.addPostViews(id);
+	}
+	public boolean addPostLikes(LikeDto dto){
+		String username = userDao.readUsernameById(dto.getUserId());
+		addLikesHistory(new LikeBean(dto.getPostId(), username));
+		return communityDao.addPostLikes(dto);
+	}
+	public boolean addLikesHistory(LikeBean bean){
+		return likeDao.addLikesHistory(bean);
+	}
+	public int checkLikesHistoryById(LikeBean bean){
+		return likeDao.checkLikesHistoryById(bean);
+	}
+	public boolean removePostLikes(LikeDto dto){
+		String username = userDao.readUsernameById(dto.getUserId());
+		removeLikesHistory(new LikeBean(dto.getPostId(), username));
+		return communityDao.removePostLikes(dto);
+	}
+	public boolean removeLikesHistory(LikeBean bean){
+		return likeDao.removeLikesHistory(bean);
 	}
 }

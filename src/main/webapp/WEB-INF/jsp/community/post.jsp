@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -72,7 +73,7 @@
 							<li>${post.writeDate}</li>
 						</ul>
 						<h2>${post.title}</h2>
-						<p>${post.title}</p>
+						<p>${post.content}</p>
 						<ul class="post-shares post-shares-lg">
 							<li>
 								<a href="#">
@@ -87,11 +88,35 @@
 								</a>
 							</li>
 							<li>
-								<a href="#">
-									<i class="rounded-x icon-heart"></i>
-									<span>${post.likes}</span>
-								</a>
+							${test}
+								<c:choose>
+							  		<c:when test="${likeHistory == 0}">
+										<a href="<%=request.getContextPath()%>/community/likes/${post.id}/${post.userId}">
+											<i class="rounded-x icon-heart"></i>
+											<span>${post.likes}</span>
+										</a>
+									</c:when>
+									<c:otherwise>
+										<a href="<%=request.getContextPath()%>/community/likesremove/${post.id}/${post.userId}">
+											<i class="rounded-x fa fa-heart"></i>
+											<span>${post.likes}</span>
+										</a>
+									</c:otherwise>
+								</c:choose>	
 							</li>
+							<sec:authentication property="principal.id" var="currentUserId"/>
+							<c:if test="${currentUserId eq post.userId}">
+								<li>
+									<a href="<%=request.getContextPath()%>/community/delete/${post.id}">
+										<i class="rounded-x icon-close"></i>
+									</a>
+								</li>
+								<li>
+									<a href="<%=request.getContextPath()%>/community/update/${post.id}">
+										<i class="rounded-x icon-settings"></i>
+									</a>
+								</li>
+							</c:if>
 						</ul>
 					</div>
 				</div>
