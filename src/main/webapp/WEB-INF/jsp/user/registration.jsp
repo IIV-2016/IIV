@@ -61,40 +61,41 @@
 		<div class="container content">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-					<form class="reg-page" action="<%=request.getContextPath()%>/user/registerUser" method="post">
+					<form name="register" class="reg-page" action="<%=request.getContextPath()%>/user/registerUser" method="post">
 						<div class="reg-header">
 							<h2>Register a new account</h2>
 							<p>Already Signed Up? Click <a href="page_login.html" class="color-green">Sign In</a> to login your account.</p>
 						</div>
-						<label>ID</label>
-						<input type="text" name="username" class="form-control margin-bottom-20">
+						<label>ID <span id="checkId" class="color-red"></span></label>
+						<input type="text" name="username" id="username" class="form-control margin-bottom-20">
 						<div class="row">
 							<div class="col-sm-6">
-								<label>First Name</label>
-								<input type="text" name="firstname" class="form-control margin-bottom-20" value="${user.firstname}">
+								<label>First Name <span id="checkFirstname" class="color-red"></span></label>
+								<input type="text" name="firstname" id="firstname" class="form-control margin-bottom-20" value="${user.firstname}">
 							</div>
 							<div class="col-sm-6">
-								<label>Last Name</label>
-								<input type="text" name="lastname" class="form-control margin-bottom-20" value="${user.lastname}">
+								<label>Last Name <span id="checkLastname" class="color-red"></span></label>
+								<input type="text" name="lastname" id="lastname" class="form-control margin-bottom-20" value="${user.lastname}">
 							</div>
 						</div>
-						<label>Email Address</label>
-						<input type="text" name="email" class="form-control margin-bottom-20" value="${user.email}">
+						<label>Email Address <span id="checkEmail" class="color-red"></span></label>
+						<input type="email" name="email" id="email" class="form-control margin-bottom-20" value="${user.email}">
 
 						<div class="row">
 							<div class="col-sm-6">
-								<label>Password <span class="color-red">*</span></label>
-								<input type="password" name="password" class="form-control margin-bottom-20">
+								<label>Password <span id="checkPassword" class="color-red">*</span></label>
+								<input type="password" name="password" id="password" class="form-control margin-bottom-20">
 							</div>
 							<div class="col-sm-6">
-								<label>Confirm Password <span class="color-red">*</span></label>
-								<input type="password" class="form-control margin-bottom-20">
+								<label>Confirm Password <span id="checkConfirmPassword" class="color-red">*</span></label>
+								<input type="password" name="confirmPassword" id="confirmPassword" class="form-control margin-bottom-20">
 							</div>
 						</div>
 
 						<hr>
 
 						<div class="row">
+							<span id="warning"></span>
 							<div class="col-lg-6 checkbox">
 								<label>
 									<input type="checkbox">
@@ -102,7 +103,7 @@
 								</label>
 							</div>
 							<div class="col-lg-6 text-right">
-								<button class="btn-u" type="submit">Register</button>
+								<button class="btn-u" type="button" onclick="checkSubmit()">Register</button>
 							</div>
 						</div>
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -128,11 +129,60 @@
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/app.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/style-switcher.js"></script>
 	<script type="text/javascript">
+		var state = true;
 		jQuery(document).ready(function() {
 			App.init();
 			StyleSwitcher.initStyleSwitcher();
 		});
-	</script>
+		
+		$(document).ready(function(){
+			var firstname = $('#firstname').val().length;
+			var lastname = $('#lastname').val().length;
+			var email = $('#email').val().length;
+			var password = $('#password').val().length;
+			var confirmPassword = $('#confirmPassword').val().length;
+			$('#firstname').blur(function(){
+				if(firstname == 0){
+            		$('#checkFirstname').html('check firstname');	
+            		state = false;
+				}
+			});
+			$('#lastname').blur(function(){
+				if(lastname == 0){
+            		$('#checkLastname').html('check lastname');	
+            		state = false;
+				}
+			});
+			$('#email').blur(function(){
+				if(email == 0){
+            		$('#checkEmail').html('check email');	
+            		state = false;
+				}
+			});
+			$('#password').blur(function(){
+				if(password == 0){
+            		$('#checkPassword').html('check password');	
+            		state = false;
+				}
+			});
+			$('#confirmPassword').blur(function(){
+				if(confirmPassword != password){
+            		$('#checkConfirmPassword').html('check password');	
+            		state = false;
+				}
+			});
+			if(firstname == 0 || lastname == 0 || email == 0 || password == 0 || confirmPassword == 0){
+				state = false;
+			}
+		});
+		function checkSubmit(){
+		    if(state){
+		        document.register.submit();
+		    }else{
+		    	$('#warning').html('<div class="alert alert-danger fade in"><strong>warning</strong> check your information.</div>');
+		    }
+		}
+	</script>	
 	<!--[if lt IE 9]>
     <script src="<%=request.getContextPath()%>/plugins/respond.js"></script>
     <script src="<%=request.getContextPath()%>/plugins/html5shiv.js"></script>
