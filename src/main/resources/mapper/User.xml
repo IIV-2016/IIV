@@ -22,4 +22,8 @@
      <select id="readUsernameById" parameterType="int" resultType="String">
           SELECT username FROM user WHERE id = #{id}
      </select>
+     
+     <select id="checkUsername" parameterType="String" resultType="int">
+          SELECT count(username) FROM user WHERE username = #{username}
+     </select>     
 </mapper>

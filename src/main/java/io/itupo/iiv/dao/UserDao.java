@@ -10,4 +10,5 @@ public interface UserDao {
     public void registerUser(UserBean bean);
     public void registerAuthority(String username);
     public String readUsernameById(int id);
+    public int checkUsername(String username);
 }

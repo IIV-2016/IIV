@@ -1,10 +1,15 @@
 package io.itupo.iiv.controller;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.itupo.iiv.domain.UserBean;
 import io.itupo.iiv.service.UserService;
@@ -40,5 +45,14 @@ public class UserController {
     public String registerUser(UserBean bean) {
     	userService.registerUser(bean);
         return "redirect:/home";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "check", method = RequestMethod.POST)
+    public HashMap<String, Integer> checkUsername(@RequestParam HashMap<String, String> param) {
+    	int checkResult = userService.checkUsername(param.get("username"));
+        HashMap<String, Integer> result = new HashMap<String, Integer>();
+        result.put("result", checkResult);
+        return result;
     }
 }

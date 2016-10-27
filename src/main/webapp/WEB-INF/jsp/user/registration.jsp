@@ -66,7 +66,7 @@
 							<h2>Register a new account</h2>
 							<p>Already Signed Up? Click <a href="page_login.html" class="color-green">Sign In</a> to login your account.</p>
 						</div>
-						<label>ID <span id="checkId" class="color-red"></span></label>
+						<label>ID <span id="checkUsername" class="color-red"></span></label>
 						<input type="text" name="username" id="username" class="form-control margin-bottom-20">
 						<div class="row">
 							<div class="col-sm-6">
@@ -141,6 +141,31 @@
 			var email = $('#email').val().length;
 			var password = $('#password').val().length;
 			var confirmPassword = $('#confirmPassword').val().length;
+			
+			$('#username').blur(function(){
+			    $.ajax({
+			        url:'<%=request.getContextPath()%>/user/check',
+			        type:"POST",
+			        dataType : "json",
+			        data: {
+			        	"username" : $('#username').val()
+			        },
+			        success:function(data){
+			        	var result = data.result;
+			            if(result == 0){
+			            	$('#checkUsername').html('ok');
+			            }else if(result == 1){
+			            	$('#checkUsername').html('<i class="fa fa-exclamation-circle"></i> already use id');
+			            }
+			        },
+			        error:function(jqXHR, textStatus, errorThrown){
+			        	$('#checkUsername').html("error");
+			            self.close();
+			        }
+			    });	
+			});
+			
+			
 			$('#firstname').blur(function(){
 				if(firstname == 0){
             		$('#checkFirstname').html('check firstname');	

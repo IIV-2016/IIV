@@ -46,4 +46,7 @@ public class UserService implements UserDetailsService{
     public String readUsernameById(int id){
     	return userDao.readUsernameById(id);
     }
+    public int checkUsername(String username){
+    	return userDao.checkUsername(username);
+    }
 }
