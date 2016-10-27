@@ -71,15 +71,15 @@
 						<div class="row">
 							<div class="col-sm-6">
 								<label>First Name <span id="checkFirstname" class="color-red"></span></label>
-								<input type="text" name="firstname" id="firstname" class="form-control margin-bottom-20" value="${user.firstname}">
+								<input type="text" name="firstname" id="firstname" class="form-control margin-bottom-20">
 							</div>
 							<div class="col-sm-6">
 								<label>Last Name <span id="checkLastname" class="color-red"></span></label>
-								<input type="text" name="lastname" id="lastname" class="form-control margin-bottom-20" value="${user.lastname}">
+								<input type="text" name="lastname" id="lastname" class="form-control margin-bottom-20">
 							</div>
 						</div>
 						<label>Email Address <span id="checkEmail" class="color-red"></span></label>
-						<input type="email" name="email" id="email" class="form-control margin-bottom-20" value="${user.email}">
+						<input type="email" name="email" id="email" class="form-control margin-bottom-20">
 
 						<div class="row">
 							<div class="col-sm-6">
@@ -103,7 +103,7 @@
 								</label>
 							</div>
 							<div class="col-lg-6 text-right">
-								<button class="btn-u" type="submit">Register</button>
+								<button class="btn-u" type="button" onclick="$.checkSubmit()">Register</button>
 							</div>
 						</div>
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -129,18 +129,18 @@
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/app.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/style-switcher.js"></script>
 	<script type="text/javascript">
-		var state = true;
 		jQuery(document).ready(function() {
 			App.init();
 			StyleSwitcher.initStyleSwitcher();
 		});
 		
 		$(document).ready(function(){
-			var firstname = $('#firstname').val().trim().length;
-			var lastname = $('#lastname').val().trim().length;
-			var email = $('#email').val().trim().length;
-			var password = $('#password').val().trim().length;
-			var confirmPassword = $('#confirmPassword').val().trim().length;
+			var stateUsername = false;
+			var stateFirstname = false;
+			var stateLastname = false;
+			var stateEmail = false;
+			var statePassword = false;
+			var stateConfirmPassword = false;
 			
 			$('#username').blur(function(){
 			    $.ajax({
@@ -154,9 +154,10 @@
 			        	var result = data.result;
 			            if(result == 0){
 			            	$('#checkUsername').html('ok');
+			            	stateUsername = true;
 			            }else if(result == 1){
 			            	$('#checkUsername').html('<i class="fa fa-exclamation-circle"></i> already use id');
-			            	state = false;
+			            	stateUsername = false;
 			            }
 			        },
 			        error:function(jqXHR, textStatus, errorThrown){
@@ -166,48 +167,65 @@
 			    });	
 			});
 			
-			
 			$('#firstname').blur(function(){
+				var firstname = $('#firstname').val().length;
 				if(firstname == 0){
-            		$('#checkFirstname').html('check firstname');	
-            		state = false;
+            		$('#checkFirstname').html('check firstname');
+            		stateFirstname = false;
+				}else{
+					stateFirstname = true;
+            		$('#checkFirstname').html('');	
 				}
 			});
 			$('#lastname').blur(function(){
+				var lastname = $('#lastname').val().length;
 				if(lastname == 0){
             		$('#checkLastname').html('check lastname');	
-            		state = false;
+            		stateLastname = false;
+				}else{
+            		$('#checkLastname').html('');	
+            		stateLastname = true;
 				}
 			});
 			$('#email').blur(function(){
+				var email = $('#email').val().length;
 				if(email == 0){
             		$('#checkEmail').html('check email');	
-            		state = false;
+            		stateEmail = false;
+				}else{
+            		$('#checkEmail').html('');	
+            		stateEmail = true;
 				}
 			});
 			$('#password').blur(function(){
+				var password = $('#password').val().length;
 				if(password == 0){
             		$('#checkPassword').html('check password');	
-            		state = false;
+            		statePassword = false;
+				}else{
+            		$('#checkPassword').html('');	
+            		statePassword = true;
 				}
 			});
 			$('#confirmPassword').blur(function(){
+				var password = $('#password').val().length;
+				var confirmPassword = $('#confirmPassword').val().length;
 				if(confirmPassword != password){
             		$('#checkConfirmPassword').html('check password');	
-            		state = false;
+            		stateConfirmPassword = false;
+				}else{
+            		$('#checkConfirmPassword').html('');	
+            		stateConfirmPassword = true;
 				}
 			});
-			if(firstname == 0 || lastname == 0 || email == 0 || password == 0 || confirmPassword == 0){
-				state = false;
+			$.checkSubmit = function(){
+			    if(stateUsername && stateFirstname && stateLastname && stateEmail && statePassword && stateConfirmPassword){
+			    	document.register.submit();
+			    }else{
+			    	$('#warning').html('<div class="alert alert-danger fade in"><strong>warning</strong> check your information.</div>');
+			    }
 			}
 		});
-		function checkSubmit(){
-		    if(state){
-		        document.register.submit();
-		    }else{
-		    	$('#warning').html('<div class="alert alert-danger fade in"><strong>warning</strong> check your information.</div>');
-		    }
-		}
 	</script>	
 	<!--[if lt IE 9]>
     <script src="<%=request.getContextPath()%>/plugins/respond.js"></script>
