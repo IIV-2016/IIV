@@ -10,6 +10,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import io.itupo.iiv.dao.UserDao;
@@ -20,6 +22,8 @@ public class UserService implements UserDetailsService{
 	
 	@Autowired
 	private UserDao userDao;
+	
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -39,6 +43,9 @@ public class UserService implements UserDetailsService{
 	}
 	
 	public void registerUser(UserBean bean){
+        String rawPassword = bean.getPassword();
+        String encodedPassword = new BCryptPasswordEncoder().encode(rawPassword);
+        bean.setPassword(encodedPassword);
 		userDao.registerUser(bean);
 		userDao.registerAuthority(bean.getUsername());
 	}
@@ -48,5 +55,9 @@ public class UserService implements UserDetailsService{
     }
     public int checkUsername(String username){
     	return userDao.checkUsername(username);
+    }
+    
+    public PasswordEncoder passwordEncoder() {
+         return this.passwordEncoder;
     }
 }

@@ -103,7 +103,7 @@
 								</label>
 							</div>
 							<div class="col-lg-6 text-right">
-								<button class="btn-u" type="button" onclick="checkSubmit()">Register</button>
+								<button class="btn-u" type="submit">Register</button>
 							</div>
 						</div>
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -136,11 +136,11 @@
 		});
 		
 		$(document).ready(function(){
-			var firstname = $('#firstname').val().length;
-			var lastname = $('#lastname').val().length;
-			var email = $('#email').val().length;
-			var password = $('#password').val().length;
-			var confirmPassword = $('#confirmPassword').val().length;
+			var firstname = $('#firstname').val().trim().length;
+			var lastname = $('#lastname').val().trim().length;
+			var email = $('#email').val().trim().length;
+			var password = $('#password').val().trim().length;
+			var confirmPassword = $('#confirmPassword').val().trim().length;
 			
 			$('#username').blur(function(){
 			    $.ajax({
@@ -156,6 +156,7 @@
 			            	$('#checkUsername').html('ok');
 			            }else if(result == 1){
 			            	$('#checkUsername').html('<i class="fa fa-exclamation-circle"></i> already use id');
+			            	state = false;
 			            }
 			        },
 			        error:function(jqXHR, textStatus, errorThrown){

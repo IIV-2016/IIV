@@ -11,7 +11,7 @@ DROP TABLE community_likes_history;
 create table user (
 	 id INT(100) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
      username varchar(50) NULL UNIQUE,
-     password varchar(50) NULL,
+     password varchar(500) NULL,
      firstname varchar(50) NULL,
      lastname varchar(50) NULL,
      email varchar(50) NULL,
