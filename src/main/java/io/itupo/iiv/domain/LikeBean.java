@@ -12,6 +12,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LikeBean {
+	private String table;
 	private int postId;
 	private String username;
 }

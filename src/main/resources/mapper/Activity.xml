@@ -43,4 +43,35 @@
 		FROM activity 
 		WHERE id = #{id}
 	</delete>
+	    <update id="addPostViews" parameterType="int">
+		UPDATE activity
+		SET views = views + 1
+		WHERE id = #{id}
+	</update>
+	
+	<update id="addPostLikes" parameterType="io.itupo.iiv.dto.LikeDto">
+		UPDATE activity
+		SET likes = likes + 1
+		WHERE id = #{postId} AND user_id = #{userId}
+	</update>
+	
+	<update id="removePostLikes" parameterType="io.itupo.iiv.dto.LikeDto">
+		UPDATE activity
+		SET likes = likes - 1
+		WHERE id = #{postId} AND user_id = #{userId}
+	</update>
+	
+	<select id="sortingByLikes" resultMap="ActivityResultMap">
+    	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
+    	FROM activity
+    	ORDER BY likes DESC
+    	LIMIT 0, 3
+    </select>
+    
+    <select id="sortingByViews" resultMap="ActivityResultMap">
+    	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
+    	FROM activity
+    	ORDER BY views DESC
+    	LIMIT 0, 3
+    </select>
 </mapper>

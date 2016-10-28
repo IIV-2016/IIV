@@ -36,8 +36,7 @@ public class CommunityController {
 	@RequestMapping(value = "post/{id}", method = RequestMethod.GET)
 	public String readPost(@PathVariable(value="id") int id, Model model, Principal principal) {
 		model.addAttribute("post", communityService.readPostById(id));
-		model.addAttribute("test", principal.getName());
-		model.addAttribute("likeHistory", communityService.checkLikesHistoryById(new LikeBean(id, principal.getName())));
+		model.addAttribute("likeHistory", communityService.checkLikesHistoryById(new LikeBean("community_likes_history", id, principal.getName())));
 		return "community/post";
 	}
 

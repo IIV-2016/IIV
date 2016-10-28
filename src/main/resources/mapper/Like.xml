@@ -4,19 +4,38 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.itupo.iiv.dao.LikeDao">
 	<insert id="addLikesHistory">
-		INSERT INTO community_likes_history (post_id, username, state) 
+		INSERT INTO 
+		<if test="table == 'community_likes_history'">
+    		community_likes_history 
+    	</if>
+    	<if test="table == 'activity_likes_history'">
+    		activity_likes_history 
+    	</if>
+    	(post_id, username, state) 
 		VALUE (#{postId}, #{username}, TRUE)
 	</insert>
-	
+
 	<select id="checkLikesHistoryById" resultType="int">
     	SELECT COUNT(state)
-    	FROM community_likes_history 
+    	FROM 
+    	<if test="table == 'community_likes_history'">
+    		community_likes_history 
+    	</if>
+    	<if test="table == 'activity_likes_history'">
+    		activity_likes_history 
+    	</if>
     	WHERE post_id = #{postId} AND username = #{username}
     </select>
     
 	<delete id="removeLikesHistory">
 		DELETE 
-		FROM community_likes_history 
+		FROM 
+		<if test="table == 'community_likes_history'">
+    		community_likes_history 
+    	</if>
+    	<if test="table == 'activity_likes_history'">
+    		activity_likes_history 
+    	</if>
 		WHERE post_id = #{postId} AND username = #{username}
 	</delete>
 </mapper>

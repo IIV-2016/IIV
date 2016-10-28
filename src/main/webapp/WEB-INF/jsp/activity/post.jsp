@@ -90,13 +90,13 @@
 							<li>
 								<c:choose>
 							  		<c:when test="${likeHistory == 0}">
-										<a href="<%=request.getContextPath()%>/community/likes/${post.id}/${post.userId}">
+										<a href="<%=request.getContextPath()%>/activity/likes/${post.id}/${post.userId}">
 											<i class="rounded-x icon-heart"></i>
 											<span>${post.likes}</span>
 										</a>
 									</c:when>
 									<c:otherwise>
-										<a href="<%=request.getContextPath()%>/community/likesremove/${post.id}/${post.userId}">
+										<a href="<%=request.getContextPath()%>/activity/likesremove/${post.id}/${post.userId}">
 											<i class="rounded-x fa fa-heart"></i>
 											<span>${post.likes}</span>
 										</a>

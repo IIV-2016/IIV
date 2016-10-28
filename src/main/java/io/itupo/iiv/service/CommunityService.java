@@ -53,7 +53,7 @@ public class CommunityService {
 	}
 	public boolean addPostLikes(LikeDto dto){
 		String username = userDao.readUsernameById(dto.getUserId());
-		addLikesHistory(new LikeBean(dto.getPostId(), username));
+		addLikesHistory(new LikeBean("community_likes_history", dto.getPostId(), username));
 		return communityDao.addPostLikes(dto);
 	}
 	public boolean addLikesHistory(LikeBean bean){
@@ -64,7 +64,7 @@ public class CommunityService {
 	}
 	public boolean removePostLikes(LikeDto dto){
 		String username = userDao.readUsernameById(dto.getUserId());
-		removeLikesHistory(new LikeBean(dto.getPostId(), username));
+		removeLikesHistory(new LikeBean("community_likes_history", dto.getPostId(), username));
 		return communityDao.removePostLikes(dto);
 	}
 	public boolean removeLikesHistory(LikeBean bean){
