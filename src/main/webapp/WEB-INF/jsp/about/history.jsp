@@ -11,7 +11,7 @@
 					<h2></h2>
 					<div class="row">
 						<div class="col-md-4">
-							<img class="img-responsive" src="assets/img/main/img1.jpg" alt="">
+							<img class="img-responsive" src="https://c2.staticflickr.com/8/7444/28071869616_8fa8795c2e_b.jpg" alt="">
 							<div class="md-margin-bottom-20"></div>
 						</div>
 						<div class="col-md-8">
@@ -31,7 +31,7 @@
 					<h2></h2>
 					<div class="row">
 						<div class="col-md-4">
-							<img class="img-responsive" src="assets/img/main/img1.jpg" alt="">
+							<img class="img-responsive" src="https://c1.staticflickr.com/9/8523/28768856931_f1a9cc84d8_b.jpg" alt="">
 							<div class="md-margin-bottom-20"></div>
 						</div>
 						<div class="col-md-8">
@@ -51,7 +51,7 @@
 					<h2></h2>
 					<div class="row">
 						<div class="col-md-4">
-							<img class="img-responsive" src="assets/img/main/img1.jpg" alt="">
+							<img class="img-responsive" src="https://c1.staticflickr.com/9/8825/28560419970_5b89ee2cec_b.jpg" alt="">
 							<div class="md-margin-bottom-20"></div>
 						</div>
 						<div class="col-md-8">
@@ -72,7 +72,7 @@
 					<h2></h2>
 					<div class="row">
 						<div class="col-md-4">
-							<img class="img-responsive" src="assets/img/main/img1.jpg" alt="">
+							<img class="img-responsive" src="https://c1.staticflickr.com/9/8696/28768858711_ec55685852_b.jpg" alt="">
 							<div class="md-margin-bottom-20"></div>
 						</div>
 						<div class="col-md-8">
@@ -91,7 +91,7 @@
 					<h2></h2>
 					<div class="row">
 						<div class="col-md-4">
-							<img class="img-responsive" src="assets/img/main/img1.jpg" alt="">
+							<img class="img-responsive" src="https://c1.staticflickr.com/9/8478/29125014315_1ea7ca8f9e_b.jpg" alt="">
 							<div class="md-margin-bottom-20"></div>
 						</div>
 						<div class="col-md-8">

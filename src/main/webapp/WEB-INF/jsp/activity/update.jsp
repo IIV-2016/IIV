@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -37,6 +36,7 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-colors/dark-blue.css" id="style_color">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-skins/dark.css">
 	<link rel="stylesheet" href="/webjars/datatables/1.10.12/css/dataTables.bootstrap.min.css">
+	<link href="<%=request.getContextPath()%>/dist/summernote.css" rel="stylesheet">
 
 	<!-- CSS Customization -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css">
@@ -67,73 +67,31 @@
 				<h1 class="pull-left">Community</h1>
 				<ul class="pull-right breadcrumb">
 					<li><a href="index.html">Home</a></li>
-					<li class="active">Board</li>
+					<li class="active">Write</li>
 				</ul>
 			</div>
 		</div><!--/breadcrumbs-->
-		<!--=== Blog Posts ===-->
-		<div class="container content-md">
-			<div class="row">
-				<!-- Blog All Posts -->
-				<div class="col-md-9">
-					<a href="<%=request.getContextPath()%>/community/write" class="btn-u btn-u-sm" id="write">Write</a>
-					<table id="example" class="table" cellspacing="0" width="100%">
-				        <thead>
-				            <tr>
-				                <th>No</th>
-				                <th>Title</th>
-				                <th>Name</th>
-				                <th>Date</th>
-				                <th>Views</th>
-				                <th>Likes</th>
-				            </tr>
-				        </thead>
-				        <tbody>
-				        	<c:forEach var="post" items="${postList}">
-				            <tr>
-				                <td>${post.id}</td>
-				                <td><a href="<%=request.getContextPath()%>/community/post/${post.id}">${post.title}</a></td>
-				                <td>${post.userId}</td>
-				                <td>${post.writeDate}</td>
-				                <td>${post.views}</td>
-				                <td>${post.likes}</td>
-				            </tr>
-				            </c:forEach>
-				        </tbody>
-				    </table>
-				</div>
-				<!-- End Blog All Posts -->
-
-				<!-- Blog Sidebar -->
-				<div class="col-md-3">
-					<div class="headline-v2 bg-color-light"><h2>Likes</h2></div>
-					<!-- Trending -->
-					<ul class="list-unstyled blog-latest-posts margin-bottom-50">
-						<c:forEach var="post" items="${likesList}">
-							<li>
-								<h3><a href="<%=request.getContextPath()%>/community/post/${post.id}">${post.title}</a></h3>
-								<small>${post.userId} / ${post.writeDate} / ${post.likes}</small>
-							</li>
-			            </c:forEach>
-					</ul>
-					<!-- End Trending -->
-
-					<div class="headline-v2 bg-color-light"><h2>Views</h2></div>
-					<!-- Latest Links -->
-					<ul class="list-unstyled blog-latest-posts margin-bottom-50">
-						<c:forEach var="post" items="${viewsList}">
-							<li>
-								<h3><a href="<%=request.getContextPath()%>/community/post/${post.id}">${post.title}</a></h3>
-								<small>${post.userId} / ${post.writeDate} / ${post.views}</small>
-							</li>
-			            </c:forEach>
-					</ul>
-					<!-- End Latest Links -->
-				</div>
-				<!-- End Blog Sidebar -->
-			</div>
-		</div>		
 		<!--=== End Breadcrumbs ===-->
+		<div class="container content-sm">
+			<div class="panel margin-bottom-40">
+				<div class="panel-body">
+					<form action="<%=request.getContextPath()%>/activity/update/${post.id}" method="post" class="margin-bottom-40" role="form">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Title</label>
+							<input type="text" class="form-control" id="title" name="title" value="${post.title}">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">Content</label>
+							<textarea class="form-control" rows="7" id="summernote" name="content">${post.content}</textarea>
+						</div>
+						<button type="submit" class="btn-u">Update</button>
+						<input type="hidden" name="_csrf" value="${_csrf.token}">
+						<input type="hidden" name="userId" value=<sec:authentication property="principal.id"/>>
+					</form>
+				</div>
+			</div>
+			<!-- End Basic Form -->
+	    </div>
 		<!--=== End Footer Version 1 ===-->
 		<%@include file="/WEB-INF/jsp/footer.jsp"%>
 		<!--=== End Header v6 ===-->
@@ -158,12 +116,19 @@
 	<script type="text/javascript" src="/webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/table.js"></script>
 	<script type="text/javascript" src="/webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/dist/summernote.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();
 			LoginForm.initLoginForm();
 			ContactForm.initContactForm();
 			StyleSwitcher.initStyleSwitcher();
+			$('#summernote').summernote({
+			   height: 300,
+			   minHeight: null,
+			   maxHeight: null,
+			   focus: true,
+			 });
 		});
 	</script>
 	<!--[if lt IE 9]>

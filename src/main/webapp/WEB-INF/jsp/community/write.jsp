@@ -76,13 +76,23 @@
 			<div class="panel margin-bottom-40">
 				<div class="panel-body">
 					<form action="<%=request.getContextPath()%>/community/write/submit" method="post" class="margin-bottom-40" role="form">
-						<div class="form-group">
-							<label for="exampleInputEmail1">Title</label>
-							<input type="text" class="form-control" id="title" name="title" placeholder="title">
+						<div class="col-md-2">
+							<select name="sector" class="form-control input-lg">
+								<option value="weekly">Weekly</option>
+								<option value="experience">Experience</option>
+								<option value="skill">Skill</option>
+								<option value="knowledge">Knowledge</option>
+							</select>
 						</div>
+						<div class="col-md-10">
 						<div class="form-group">
-							<label for="exampleInputPassword1">Content</label>
-							<textarea class="form-control" rows="7" id="summernote" name="content"></textarea>
+							<input type="text" class="form-control input-lg"" id="title" name="title" placeholder="title">
+						</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<textarea class="form-control" rows="7" id="summernote" name="content"></textarea>
+							</div>
 						</div>
 						<button type="submit" class="btn-u">Submit</button>
 						<input type="hidden" name="_csrf" value="${_csrf.token}">

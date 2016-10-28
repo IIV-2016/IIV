@@ -61,4 +61,18 @@
 		SET likes = likes - 1
 		WHERE id = #{postId} AND user_id = #{userId}
 	</update>
+	
+	<select id="sortingByLikes" resultMap="CommunityResultMap">
+    	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
+    	FROM community
+    	ORDER BY likes DESC
+    	LIMIT 0, 3
+    </select>
+    
+    <select id="sortingByViews" resultMap="CommunityResultMap">
+    	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
+    	FROM community
+    	ORDER BY views DESC
+    	LIMIT 0, 3
+    </select>
 </mapper>

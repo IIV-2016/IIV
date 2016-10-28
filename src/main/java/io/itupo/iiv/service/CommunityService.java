@@ -70,4 +70,12 @@ public class CommunityService {
 	public boolean removeLikesHistory(LikeBean bean){
 		return likeDao.removeLikesHistory(bean);
 	}
+	public List<CommunityBean> sortingByLikes(){
+		List<CommunityBean> postList = communityDao.sortingByLikes();
+		return postList;
+	}
+	public List<CommunityBean> sortingByViews(){
+		List<CommunityBean> postList = communityDao.sortingByViews();
+		return postList;
+	}
 }

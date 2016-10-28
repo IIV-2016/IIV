@@ -14,5 +14,7 @@ public interface CommunityDao {
 	boolean addPostViews(int id);
 	boolean addPostLikes(LikeDto dto);
 	boolean removePostLikes(LikeDto dto);
+	List<CommunityBean> sortingByLikes();
+	List<CommunityBean> sortingByViews();
 }
 

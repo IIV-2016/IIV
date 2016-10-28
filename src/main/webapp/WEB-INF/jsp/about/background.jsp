@@ -7,7 +7,7 @@
 
 	<div class="row">
 		<div class="col-md-6 md-margin-bottom-50">
-			<img class="img-responsive" src="<%=request.getContextPath()%>/img/mockup/4.png" alt="">
+			<img class="img-responsive" src="https://c2.staticflickr.com/8/7425/27472151374_dc19315c44_b.jpg" alt="">
 		</div>
 		<div class="col-md-6">
 			<p>
@@ -37,8 +37,8 @@
 				<span>ICT Promotion</span>
 				<p>
 				To promote the use of ICTs for sustainable development and in a secure and safe manner.
-				To develop ICT applications, services, and contents which will be specifically designed and created to suit individual communities and user groups.
-				To help build human and institutional capacity in research and development in areas of information and communication technologies.
+				<br>To develop ICT applications, services, and contents which will be specifically designed and created to suit individual communities and user groups.
+				<br>To help build human and institutional capacity in research and development in areas of information and communication technologies.
 				</p>
 			</div>
 			<div class="col-md-4 service-inner equal-height-column service-border">
@@ -53,8 +53,8 @@
 				<span>Networking</span>
 				<p>
 				To help countries set up a network of local ICT volunteers.
-				To connect and strengthen various networks and communities of volunteers around the Asia-Pacific region.
-				To set up an ASEAN ICT Volutneers network in partnership with ASEAN Member Countries and national and international organisations.
+				<br>To connect and strengthen various networks and communities of volunteers around the Asia-Pacific region.
+				<br>To set up an ASEAN ICT Volutneers network in partnership with ASEAN Member Countries and national and international organisations.
 				</p>
 			</div>
 		</div><!--/end row-->
@@ -69,14 +69,14 @@
 
 	<div class="owl-video">
 		<div class="item">
-			<a class="fbox-modal fancybox.iframe" href="//player.vimeo.com/video/72343553">
-				<img class="img-responsive" width="800" src="<%=request.getContextPath()%>/img/main/img12.jpg" alt="">
+			<a class="fbox-modal fancybox.iframe" href="https://www.youtube.com/embed/8kJQ1fd3z5M">
+				<img class="img-responsive" width="800" src="https://i.ytimg.com/vi/8kJQ1fd3z5M/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=m0ycjmWn-0V6Dg19Qm9-CtVjxyE" alt="">
 				<img class="video-play" src="<%=request.getContextPath()%>/img/icons/video-play.png" alt="">
 			</a>
 		</div>
 		<div class="item">
-			<a class="fbox-modal fancybox.iframe" href="https://www.youtube.com/embed/C9thrGPyN-k?rel=0&amp;showinfo=0">
-				<img class="img-responsive" width="800" src="<%=request.getContextPath()%>/img/main/img20.jpg" alt="">
+			<a class="fbox-modal fancybox.iframe" href="https://www.youtube.com/embed/-C3VxsHHFP8">
+				<img class="img-responsive" width="800" src="https://i.ytimg.com/vi/-C3VxsHHFP8/hqdefault.jpg?custom=true&w=196&h=110&stc=true&jpg444=true&jpgq=90&sp=68&sigh=QuFpmHbw11c7lrxJiBZ4aYIQ2Sw" alt="">
 				<img class="video-play" src="<%=request.getContextPath()%>/img/icons/video-play.png" alt="">
 			</a>
 		</div>

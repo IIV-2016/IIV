@@ -53,21 +53,11 @@
 		<div class="slider-inner">
 			<div id="da-slider" class="da-slider">
 				<div class="da-slide">
-					<h2><i>CLEAN &amp; FRESH</i> <br /> <i>FULLY RESPONSIVE</i> <br /> <i>DESIGN</i></h2>
-					<p><i>Lorem ipsum dolor amet</i> <br /> <i>tempor incididunt ut</i> <br /> <i>veniam omnis </i></p>
-					<div class="da-img"><img class="img-responsive" src="plugins/parallax-slider/img/1.png" alt=""></div>
-				</div>
-				<div class="da-slide">
-					<h2><i>RESPONSIVE VIDEO</i> <br /> <i>SUPPORT AND</i> <br /> <i>MANY MORE</i></h2>
-					<p><i>Lorem ipsum dolor amet</i> <br /> <i>tempor incididunt ut</i></p>
+					<h2><i>ICT Promotion</i><br> <i>People Network</i><br><i>Platform of Innovations</i></h2>
+					<p><i>International ICT Volunteers (IIV)</i>
 					<div class="da-img">
-						<iframe src="http://player.vimeo.com/video/47911018" width="530" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+						<iframe src="https://www.youtube.com/embed/nERufye6ZhU" width="530" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 					</div>
-				</div>
-				<div class="da-slide">
-					<h2><i>USING BEST WEB</i> <br /> <i>SOLUTIONS WITH</i> <br /> <i>HTML5/CSS3</i></h2>
-					<p><i>Lorem ipsum dolor amet</i> <br /> <i>tempor incididunt ut</i> <br /> <i>veniam omnis </i></p>
-					<div class="da-img"><img src="plugins/parallax-slider/img/html5andcss3.png" alt="image01" /></div>
 				</div>
 				<div class="da-arrows">
 					<span class="da-arrows-prev"></span>
@@ -82,6 +72,7 @@
 			<div class="container overflow-h">
 				<div class="row">
 					<div class="col-md-9 animated fadeInLeft">
+						<h2>About IIV</h2>
 						<p>International ICT Volunteers (IIV) is an open international platform for mobilizing resource of volunteers who will help promote ICT development and for development in the Asia-Pacific region. 
 						Since 2012, ITU and NIA have jointly dispatched over 520 Korean volunteers over 10 countries in the Asia-Pacific Region.
 						</p>
@@ -111,7 +102,7 @@
 					<div class="service">
 						<i class="fa fa-cogs service-icon"></i>
 						<div class="desc">
-							<h4>Platform of Innovations</h4>
+							<h4>People Network</h4>
 							<p>IIV is an internationally social network of volunteers from different backgrounds, different countries, different age groups but common desire for doing good deeds.</p>
 						</div>
 					</div>
@@ -120,7 +111,7 @@
 					<div class="service">
 						<i class="fa fa-rocket service-icon"></i>
 						<div class="desc">
-							<h4>Launch Ready</h4>
+							<h4>Platform of Innovations</h4>
 							<p>Bringing together various skills, knowledge, experiences, and spirits. We create a platform – the one that makes innovations and inspire people.</p>
 						</div>
 					</div>
@@ -197,7 +188,7 @@
 					<div class="headline"><h2>What IIV is?</h2></div>
 					<div class="row">
 						<div class="col-sm-4">
-							<img class="img-responsive margin-bottom-20" src="img/main/img18.jpg" alt="">
+							<img class="img-responsive margin-bottom-20" src="https://c2.staticflickr.com/8/7306/27805491870_00434832d0_b.jpg" alt="">
 						</div>
 						<div class="col-sm-8">
 						<p>“Incredible Experience” I dispatched to SIPA Chiang Mai (Software Industry Promotion Agency Chiang Mai, Thailand) in Thailand 2016. At the first time, I thought it is a programme that I am delivering my knowledge to people. However, after the programme, I realized that I have received much more than I gave. It is a incredible experience that you can make huge local friends as well as exotic experience with them. </p>
@@ -206,7 +197,7 @@
 
 					<blockquote class="hero-unify">
 						<p>I am very proud myself that I have conducted my voluntary missions successfully and thank you to ITU and NIA that gave me incredible memory.</p>
-						<small>CEO, Jack Bour</small>
+						<small>IIV Volunteer</small>
 					</blockquote>
 				</div><!--/col-md-8-->
 
@@ -216,21 +207,15 @@
 					<div id="myCarousel" class="carousel slide carousel-v1">
 						<div class="carousel-inner">
 							<div class="item active">
-								<img src="img/main/img4.jpg" alt="">
+								<img src="https://c2.staticflickr.com/8/7420/27491078923_c0ed0c60f4_b.jpg" alt="">
 								<div class="carousel-caption">
-									<p>Facilisis odio, dapibus ac justo acilisis gestinas.</p>
+									<p>International ICT Volunteers 2016 Boot Camp</p>
 								</div>
 							</div>
 							<div class="item">
-								<img src="img/main/img2.jpg" alt="">
+								<img src="https://c1.staticflickr.com/9/8216/29159896496_660ca0bf43_b.jpg" alt="">
 								<div class="carousel-caption">
-									<p>Cras justo odio, dapibus ac facilisis into egestas.</p>
-								</div>
-							</div>
-							<div class="item">
-								<img src="img/main/img24.jpg" alt="">
-								<div class="carousel-caption">
-									<p>Justo cras odio apibus ac afilisis lingestas de.</p>
+									<p>The 2nd IIV2016 Evaluation - Certification Ceremony</p>
 								</div>
 							</div>
 						</div>

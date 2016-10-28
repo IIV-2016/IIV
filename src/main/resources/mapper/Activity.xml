@@ -26,4 +26,21 @@
     	FROM activity
     	WHERE id = #{id}
     </select>
+        
+	<insert id="writePost" parameterType="io.itupo.iiv.domain.ActivityBean">
+		INSERT INTO activity (sector, title, content, file_id, user_id, write_date, views, likes) 
+		VALUE (#{sector}, #{title}, #{content}, 0, #{userId}, NOW(), 0, 0)
+	</insert>
+	
+	<update id="updatePost" parameterType="io.itupo.iiv.domain.ActivityBean">
+		UPDATE activity
+		SET title = #{title}, content = #{content}
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="deletePostById" parameterType="int">
+		DELETE 
+		FROM activity 
+		WHERE id = #{id}
+	</delete>
 </mapper>

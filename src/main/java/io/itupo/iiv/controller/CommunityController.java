@@ -28,6 +28,8 @@ public class CommunityController {
 	@RequestMapping(value = "board", method = RequestMethod.GET)
 	public String readPostList(Model model) {
 		model.addAttribute("postList", communityService.readPostList());
+		model.addAttribute("likesList", communityService.sortingByLikes());
+		model.addAttribute("viewsList", communityService.sortingByViews());
 		return "community/board";
 	}
 	

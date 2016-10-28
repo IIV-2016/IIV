@@ -83,12 +83,11 @@
 							</li>
 							<li>
 								<a href="#">
-									<i class="rounded-x icon-share"></i>
+									<i class="rounded-x fa fa-eye"></i>
 									<span>${post.views}</span>
 								</a>
 							</li>
 							<li>
-							${test}
 								<c:choose>
 							  		<c:when test="${likeHistory == 0}">
 										<a href="<%=request.getContextPath()%>/community/likes/${post.id}/${post.userId}">

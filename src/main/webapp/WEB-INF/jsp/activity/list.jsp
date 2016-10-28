@@ -76,6 +76,7 @@
 			<div class="row">
 				<!-- Blog All Posts -->
 				<div class="col-md-9">
+					<a href="<%=request.getContextPath()%>/activity/write" class="btn-u btn-u-sm" id="write">Write</a>
 					<table id="example" cellspacing="0" width="100%">
 					<thead>
 					<th></th>

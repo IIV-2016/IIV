@@ -8,7 +8,7 @@
 		</p>
 	</div>
 	<!--=== Service Block ===-->
-	<div class="container content-sm">
+	<div class="content-sm">
 		<div class="row">
 			<div class="col-md-3 content-boxes-v6 md">
 				<i class="rounded-x fa fa-comments"></i>
