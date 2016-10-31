@@ -14,6 +14,7 @@ import io.itupo.iiv.domain.LikeBean;
 import io.itupo.iiv.dto.LikeDto;
 import io.itupo.iiv.service.CommentService;
 import io.itupo.iiv.service.CommunityService;
+import io.itupo.iiv.service.UserService;
 
 @Controller
 @RequestMapping("community")
@@ -23,6 +24,9 @@ public class CommunityController {
 	
 	@Autowired
 	private CommentService commentService;
+	
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping(value = "notice", method = RequestMethod.GET)
 	public String item(Model model) {
@@ -39,10 +43,11 @@ public class CommunityController {
 	
 	@RequestMapping(value = "post/{id}", method = RequestMethod.GET)
 	public String readPost(@PathVariable(value="id") int id, Model model, Principal principal) {
-		model.addAttribute("post", communityService.readPostById(id));
+		CommunityBean bean = communityService.readPostById(id);
+		model.addAttribute("post", bean);
 		model.addAttribute("likeHistory", communityService.checkLikesHistoryById(new LikeBean("community_likes_history", id, principal.getName())));
 		model.addAttribute("commentList", commentService.readPostList(id));
-		model.addAttribute("user", commentService.readPostList(id));
+		model.addAttribute("user", userService.readUserById(bean.getUserId()));
 		return "community/post";
 	}
 
@@ -54,7 +59,7 @@ public class CommunityController {
     @RequestMapping(value = "write/submit", method = RequestMethod.POST)
     public String writePost(CommunityBean bean) {
     	communityService.writePost(bean);
-        return "community/board";
+        return "redirect:/community/board";
     }
 
     @RequestMapping(value = "update/{id}", method = RequestMethod.GET)

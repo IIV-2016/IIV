@@ -16,7 +16,7 @@
 	</insert>
 
 	<select id="checkLikesHistoryById" resultType="int">
-    	SELECT COUNT(state)
+    	SELECT COUNT(*)
     	FROM 
     	<if test="table == 'community_likes_history'">
     		community_likes_history 
