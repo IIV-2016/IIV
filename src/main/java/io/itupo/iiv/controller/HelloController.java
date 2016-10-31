@@ -1,12 +1,10 @@
 package io.itupo.iiv.controller;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.UUID;
 
@@ -29,9 +27,10 @@ import io.itupo.iiv.dto.PhotoVo;
 
 @Controller
 public class HelloController {
-	
-	@Autowired
-	private Environment env;
+	@RequestMapping(value = "/")
+	public String index(Model model) {
+		return "home";
+	}
 	
 	@RequestMapping(value = "/home")
 	public String hello(Model model) {

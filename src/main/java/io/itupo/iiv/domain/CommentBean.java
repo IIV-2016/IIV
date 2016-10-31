@@ -9,12 +9,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CommentBean {
-	private int commentId;
+	private int id;
 	private String content;
-	private String name;
+	private String username;
 	private Date writeDate;
-	private int parent;
-	private int indent;
-	private int step;
-	private int boardId;
+	private int postId;
 }

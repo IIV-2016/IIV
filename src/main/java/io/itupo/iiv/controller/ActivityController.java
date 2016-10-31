@@ -13,6 +13,7 @@ import io.itupo.iiv.domain.ActivityBean;
 import io.itupo.iiv.domain.LikeBean;
 import io.itupo.iiv.dto.LikeDto;
 import io.itupo.iiv.service.ActivityService;
+import io.itupo.iiv.service.UserService;
 
 @Controller
 @RequestMapping("activity")
@@ -20,8 +21,12 @@ public class ActivityController {
 	@Autowired
 	private ActivityService activityService;
 	
+	@Autowired
+	private UserService userService;
+	
 	@RequestMapping(value = "home", method = RequestMethod.GET)
 	public String home(Model model) {
+		model.addAttribute("likesList", activityService.sortingByLikes());
 		return "activity/home";
 	}
 
@@ -41,6 +46,7 @@ public class ActivityController {
 	@RequestMapping(value = "post/{id}", method = RequestMethod.GET)
 	public String readPost(@PathVariable(value="id") int id, Model model, Principal principal) {
 		model.addAttribute("post", activityService.readPostById(id));
+		model.addAttribute("user", userService.readUserById(activityService.readPostById(id).getUserId()));
 		model.addAttribute("likeHistory", activityService.checkLikesHistoryById(new LikeBean("activity_likes_history", id, principal.getName())));
 		return "activity/post";
 	}

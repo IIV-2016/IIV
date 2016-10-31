@@ -25,5 +25,9 @@
      
      <select id="checkUsername" parameterType="String" resultType="int">
           SELECT count(username) FROM user WHERE username = #{username}
-     </select>     
+     </select>
+     
+     <select id="readUserById" parameterType="int" resultType="io.itupo.iiv.domain.UserBean">
+          SELECT * FROM user WHERE id = #{id}
+     </select> 
 </mapper>

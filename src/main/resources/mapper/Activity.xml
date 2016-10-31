@@ -16,7 +16,7 @@
 	</resultMap>
 	
 	<select id="readPostList" resultMap="ActivityResultMap">
-    	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
+    	SELECT id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
     	FROM activity
     	ORDER BY id DESC
     </select>
@@ -62,14 +62,14 @@
 	</update>
 	
 	<select id="sortingByLikes" resultMap="ActivityResultMap">
-    	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
+    	SELECT id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
     	FROM activity
     	ORDER BY likes DESC
     	LIMIT 0, 3
     </select>
     
     <select id="sortingByViews" resultMap="ActivityResultMap">
-    	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
+    	SELECT id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
     	FROM activity
     	ORDER BY views DESC
     	LIMIT 0, 3

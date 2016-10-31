@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import io.itupo.iiv.domain.CommunityBean;
 import io.itupo.iiv.domain.LikeBean;
 import io.itupo.iiv.dto.LikeDto;
+import io.itupo.iiv.service.CommentService;
 import io.itupo.iiv.service.CommunityService;
 
 @Controller
@@ -19,6 +20,9 @@ import io.itupo.iiv.service.CommunityService;
 public class CommunityController {
 	@Autowired
 	private CommunityService communityService;
+	
+	@Autowired
+	private CommentService commentService;
 
 	@RequestMapping(value = "notice", method = RequestMethod.GET)
 	public String item(Model model) {
@@ -37,6 +41,8 @@ public class CommunityController {
 	public String readPost(@PathVariable(value="id") int id, Model model, Principal principal) {
 		model.addAttribute("post", communityService.readPostById(id));
 		model.addAttribute("likeHistory", communityService.checkLikesHistoryById(new LikeBean("community_likes_history", id, principal.getName())));
+		model.addAttribute("commentList", commentService.readPostList(id));
+		model.addAttribute("user", commentService.readPostList(id));
 		return "community/post";
 	}
 

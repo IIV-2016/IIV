@@ -90,13 +90,13 @@
 							<li>
 								<c:choose>
 							  		<c:when test="${likeHistory == 0}">
-										<a href="<%=request.getContextPath()%>/community/likes/${post.id}/${post.userId}">
+										<a href="<%=request.getContextPath()%>/activity/likes/${post.id}/${post.userId}">
 											<i class="rounded-x icon-heart"></i>
 											<span>${post.likes}</span>
 										</a>
 									</c:when>
 									<c:otherwise>
-										<a href="<%=request.getContextPath()%>/community/likesremove/${post.id}/${post.userId}">
+										<a href="<%=request.getContextPath()%>/activity/likesremove/${post.id}/${post.userId}">
 											<i class="rounded-x fa fa-heart"></i>
 											<span>${post.likes}</span>
 										</a>
@@ -106,12 +106,12 @@
 							<sec:authentication property="principal.id" var="currentUserId"/>
 							<c:if test="${currentUserId eq post.userId}">
 								<li>
-									<a href="<%=request.getContextPath()%>/community/delete/${post.id}">
+									<a href="<%=request.getContextPath()%>/activity/delete/${post.id}">
 										<i class="rounded-x icon-close"></i>
 									</a>
 								</li>
 								<li>
-									<a href="<%=request.getContextPath()%>/community/update/${post.id}">
+									<a href="<%=request.getContextPath()%>/activity/update/${post.id}">
 										<i class="rounded-x icon-settings"></i>
 									</a>
 								</li>
@@ -126,14 +126,14 @@
 					<img src="<%=request.getContextPath()%>/img/team/img1-md.jpg" alt="">
 					<div class="blog-author-desc">
 						<div class="overflow-h">
-							<h4>Alexander Jenni</h4>
+							<h4>${user.username}</h4>
 							<ul class="list-inline">
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
 							</ul>
 						</div>
-						<p>In auctor fringilla turpis eu rhoncus. Vivamus quis nisi vel dui ultrices lacinia ac eu massa. Quis que vitae consequat sapien. Vivamus sit amet tincidunt ipsum, nec blandit ipsum. Lorem ipsu m dolor sit amet, consectetur adipiscing elit...</p>
+						<p>${user.email}</p>
 					</div>
 				</div>
 				<!-- End Blog Post Author -->
@@ -149,44 +149,10 @@
 					<div class="col-sm-10">
 						<div class="comments-itself">
 							<h4>
-								Jalen Davenport
+								${user.username}
 								<span>5 hours ago / <a href="#">Reply</a></span>
 							</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod..</p>
-						</div>
-					</div>
-				</div>
-				<!-- End Blog Comments -->
-
-				<!-- Blog Comments -->
-				<div class="row blog-comments blog-comments-reply margin-bottom-30">
-					<div class="col-sm-2 sm-margin-bottom-40">
-						<img src="<%=request.getContextPath()%>/img/team/img3-sm.jpg" alt="">
-					</div>
-					<div class="col-sm-10">
-						<div class="comments-itself">
-							<h4>
-								Jorny Alnordussen
-								<span>6 hours ago / <a href="#">Reply</a></span>
-							</h4>
-							<p>Gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod..</p>
-						</div>
-					</div>
-				</div>
-				<!-- End Blog Comments -->
-
-				<!-- Blog Comments -->
-				<div class="row blog-comments margin-bottom-50">
-					<div class="col-sm-2 sm-margin-bottom-40">
-						<img src="<%=request.getContextPath()%>/img/team/img5-sm.jpg" alt="">
-					</div>
-					<div class="col-sm-10">
-						<div class="comments-itself">
-							<h4>
-								Marcus Farrell
-								<span>7 hours ago / <a href="#">Reply</a></span>
-							</h4>
-							<p>Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod..</p>
+							<p>${user.email}</p>
 						</div>
 					</div>
 				</div>

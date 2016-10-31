@@ -60,4 +60,7 @@ public class UserService implements UserDetailsService{
     public PasswordEncoder passwordEncoder() {
          return this.passwordEncoder;
     }
+    public UserBean readUserById(int id){
+    	return userDao.readUserById(id);
+    }
 }

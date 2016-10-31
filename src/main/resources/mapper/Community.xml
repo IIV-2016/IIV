@@ -16,9 +16,9 @@
 	</resultMap>
 
 	<select id="readPostList" resultMap="CommunityResultMap">
-    	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
+    	SELECT id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
     	FROM community
-    	ORDER BY id ASC
+    	ORDER BY id DESC
     </select>
     
     <select id="readPostById" resultType="io.itupo.iiv.domain.CommunityBean">
@@ -63,14 +63,14 @@
 	</update>
 	
 	<select id="sortingByLikes" resultMap="CommunityResultMap">
-    	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
+    	SELECT id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
     	FROM community
     	ORDER BY likes DESC
     	LIMIT 0, 3
     </select>
     
     <select id="sortingByViews" resultMap="CommunityResultMap">
-    	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
+    	SELECT id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
     	FROM community
     	ORDER BY views DESC
     	LIMIT 0, 3

@@ -3,4 +3,35 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.itupo.iiv.dao.CommentDao">
+	<resultMap id="CommentResultMap" type="io.itupo.iiv.domain.CommentBean">
+		<result property="id" column="id" />
+		<result property="content" column="content" />
+		<result property="username" column="username" />
+		<result property="writeDate" column="write_date" />
+		<result property="postId" column="post_id" />
+	</resultMap>
+
+	<select id="readPostList" parameterType="int" resultMap="CommentResultMap">
+    	SELECT id, content, username, write_date AS writeDate, post_id AS postId
+    	FROM community_comment
+    	WHERE post_id = #{postId}
+    	ORDER BY id DESC
+    </select>
+    
+	<insert id="writePost" parameterType="io.itupo.iiv.domain.CommentBean">
+		INSERT INTO community_comment (content, username, write_date, post_id) 
+		VALUE (#{content}, #{username}, NOW(), #{postId})
+	</insert>
+	
+	<update id="updatePost" parameterType="io.itupo.iiv.domain.CommentBean">
+		UPDATE comment
+		SET content = #{content}
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="deletePostById" parameterType="int">
+		DELETE 
+		FROM comment 
+		WHERE id = #{id}
+	</delete>
 </mapper>

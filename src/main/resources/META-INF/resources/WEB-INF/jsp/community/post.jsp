@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -36,21 +37,9 @@
 	<!-- CSS Theme -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-colors/dark-blue.css" id="style_color">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-skins/dark.css">
-	<link rel="stylesheet" href="/webjars/datatables/1.10.12/css/dataTables.bootstrap.min.css">
 
 	<!-- CSS Customization -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css">
-	<style>
-	table.dataTable thead .sorting:after {
-	    content : none;
-	}
-	table.dataTable thead .sorting_asc:after {
-		content : none;
-	}
-	table.dataTable thead .sorting_desc:after {
-    content: none;
-	}
-	</style>
 </head>
 
 <body class="header-fixed header-fixed-space">
@@ -64,76 +53,140 @@
 		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs">
 			<div class="container">
-				<h1 class="pull-left">Activity</h1>
+				<h1 class="pull-left">Community</h1>
 				<ul class="pull-right breadcrumb">
-					<li><a href="index.html">Home</a></li>
-					<li class="active">Board</li>
+					<li><a href="index.html">List</a></li>
+					<li class="active">Post</li>
 				</ul>
 			</div>
 		</div><!--/breadcrumbs-->
-		<!--=== Blog Posts ===-->
-		<div class="container content-md">
-			<div class="row">
-				<!-- Blog All Posts -->
-				<div class="col-md-9">
-					<a href="<%=request.getContextPath()%>/community/write" class="btn-u btn-u-sm" id="write">Write</a>
-					<table id="example" class="table" cellspacing="0" width="100%">
-				        <thead>
-				            <tr>
-				                <th>No</th>
-				                <th>Title</th>
-				                <th>Name</th>
-				                <th>Date</th>
-				                <th>Views</th>
-				                <th>Likes</th>
-				            </tr>
-				        </thead>
-				        <tbody>
-				        	<c:forEach var="post" items="${postList}">
-				            <tr>
-				                <td>${post.id}</td>
-				                <td><a href="<%=request.getContextPath()%>/community/post/${post.id}">${post.title}</a></td>
-				                <td>${post.userId}</td>
-				                <td>${post.writeDate}</td>
-				                <td>${post.views}</td>
-				                <td>${post.likes}</td>
-				            </tr>
-				            </c:forEach>
-				        </tbody>
-				    </table>
-				</div>
-				<!-- End Blog All Posts -->
-
-				<!-- Blog Sidebar -->
-				<div class="col-md-3">
-					<div class="headline-v2 bg-color-light"><h2>Likes</h2></div>
-					<!-- Trending -->
-					<ul class="list-unstyled blog-latest-posts margin-bottom-50">
-						<c:forEach var="post" items="${likesList}">
-							<li>
-								<h3><a href="<%=request.getContextPath()%>/community/post/${post.id}">${post.title}</a></h3>
-								<small>${post.userId} / ${post.writeDate} / ${post.likes}</small>
-							</li>
-			            </c:forEach>
-					</ul>
-					<!-- End Trending -->
-
-					<div class="headline-v2 bg-color-light"><h2>Views</h2></div>
-					<!-- Latest Links -->
-					<ul class="list-unstyled blog-latest-posts margin-bottom-50">
-						<c:forEach var="post" items="${viewsList}">
-							<li>
-								<h3><a href="<%=request.getContextPath()%>/community/post/${post.id}">${post.title}</a></h3>
-								<small>${post.userId} / ${post.writeDate} / ${post.views}</small>
-							</li>
-			            </c:forEach>
-					</ul>
-					<!-- End Latest Links -->
-				</div>
-				<!-- End Blog Sidebar -->
-			</div>
-		</div>		
 		<!--=== End Breadcrumbs ===-->
+
+		<!--=== Blog Posts ===-->
+		<div class="bg-color-light">
+			<div class="container content-sm">
+				<!-- News v3 -->
+				<div class="news-v3 bg-color-white margin-bottom-30">
+					<div class="news-v3-in">
+						<ul class="list-inline posted-info">
+							<li>By <a href="#">${post.userId}</a></li>
+							<li>${post.sector}</li>
+							<li>${post.writeDate}</li>
+						</ul>
+						<h2>${post.title}</h2>
+						<p>${post.content}</p>
+						<ul class="post-shares post-shares-lg">
+							<li>
+								<a href="#">
+									<i class="rounded-x icon-speech"></i>
+									<span>${fn:length(commentList)}</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<i class="rounded-x fa fa-eye"></i>
+									<span>${post.views}</span>
+								</a>
+							</li>
+							<li>
+								<c:choose>
+							  		<c:when test="${likeHistory == 0}">
+										<a href="<%=request.getContextPath()%>/community/likes/${post.id}/${post.userId}">
+											<i class="rounded-x icon-heart"></i>
+											<span>${post.likes}</span>
+										</a>
+									</c:when>
+									<c:otherwise>
+										<a href="<%=request.getContextPath()%>/community/likesremove/${post.id}/${post.userId}">
+											<i class="rounded-x fa fa-heart"></i>
+											<span>${post.likes}</span>
+										</a>
+									</c:otherwise>
+								</c:choose>	
+							</li>
+							<sec:authentication property="principal.id" var="currentUserId"/>
+							<c:if test="${currentUserId eq post.userId}">
+								<li>
+									<a href="<%=request.getContextPath()%>/community/delete/${post.id}">
+										<i class="rounded-x icon-close"></i>
+									</a>
+								</li>
+								<li>
+									<a href="<%=request.getContextPath()%>/community/update/${post.id}">
+										<i class="rounded-x icon-settings"></i>
+									</a>
+								</li>
+							</c:if>
+						</ul>
+					</div>
+				</div>
+				<!-- End News v3 -->
+
+				<!-- Blog Post Author -->
+				<div class="blog-author margin-bottom-30">
+					<img src="<%=request.getContextPath()%>/img/team/img1-md.jpg" alt="">
+					<div class="blog-author-desc">
+						<div class="overflow-h">
+							<h4>${user.username}</h4>
+							<ul class="list-inline">
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							</ul>
+						</div>
+						<p>${user.email}</p>
+					</div>
+				</div>
+				<!-- End Blog Post Author -->
+
+				<hr>
+
+				<h2 class="margin-bottom-20">Comments</h2>
+				<!-- Blog Comments -->
+				<c:forEach var="comment" items="${commentList}">
+				<div class="row blog-comments margin-bottom-30">
+					<div class="col-sm-2 sm-margin-bottom-40">
+						<img src="<%=request.getContextPath()%>/img/team/img1-sm.jpg" alt="">
+					</div>
+					<div class="col-sm-10">
+						<div class="comments-itself">
+							<h4>
+								${comment.username}
+								<span>${comment.writeDate}</span>
+							</h4>
+							<p>${comment.content}</p>
+						</div>
+					</div>
+				</div>
+	            </c:forEach>
+				<!-- End Blog Comments -->
+
+				<hr>
+
+				<h2 class="margin-bottom-20">Post a Comment</h2>
+				<!-- Form -->
+				<form action="<%=request.getContextPath()%>/comment/write/submit" method="post" id="sky-form3" class="sky-form comment-style">
+					<input type="hidden" name="username" id="username" value="<sec:authentication property='principal.username'/>" placeholder="name" class="form-control">
+					<input type="hidden" name="postId" id="postId" value="${post.id}" class="form-control">
+					<fieldset>
+						<div class="sky-space-30">
+							<div>
+								<textarea rows="8" name="content" id="content" placeholder="Write comment here ..." class="form-control"></textarea>
+							</div>
+						</div>
+
+						<p><button type="submit" class="btn-u">Submit</button></p>
+					</fieldset>
+
+					<div class="message">
+						<i class="rounded-x fa fa-check"></i>
+						<p>Your comment was successfully posted!</p>
+					</div>
+				</form>
+				<!-- End Form -->
+			</div><!--/end container-->
+		</div>
+		<!--=== End Blog Posts ===-->
 		<!--=== End Footer Version 1 ===-->
 		<%@include file="/WEB-INF/jsp/footer.jsp"%>
 		<!--=== End Header v6 ===-->
@@ -155,9 +208,6 @@
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/style-switcher.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/forms/login.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/forms/contact.js"></script>
-	<script type="text/javascript" src="/webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/js/table.js"></script>
-	<script type="text/javascript" src="/webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();

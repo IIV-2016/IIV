@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -59,20 +60,24 @@
 		<!--=== End Breadcrumbs ===-->
 		<div class="blog_masonry_3col">
 			<div class="container content grid-boxes">
+				<c:forEach var="post" items="${likesList}">
 				<div class="grid-boxes-in">
 					<img class="img-responsive" src="<%=request.getContextPath()%>/img/main/img3.jpg" alt="">
 					<div class="grid-boxes-caption">
-						<h3><a href="#">Unify Clean and Fresh Fully Responsive Template</a></h3>
+						<h3><a href="<%=request.getContextPath()%>/activity/post/${post.id}">${post.title}</a></h3>
 						<ul class="list-inline grid-boxes-news">
-							<li><span>By</span> <a href="#">Kathy Reyes</a></li>
+							<li><span>By</span> ${post.userId}</li>
 							<li>|</li>
-							<li><i class="fa fa-clock-o"></i> July 06, 2014</li>
+							<li><i class="fa fa-clock-o"></i> ${post.writeDate}</li>
 							<li>|</li>
-							<li><a href="#"><i class="fa fa-comments-o"></i> 06</a></li>
+							<li><i class="fa fa-comments-o"></i> ${post.likes}</li>
 						</ul>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+						<ul class="list-inline tags-v2">
+							<li><a href="#">${post.sector}</a></li>
+						</ul>
 					</div>
 				</div>
+				</c:forEach>
 			</div><!--/container-->
 		</div>
 		<!--=== End Content Part ===-->

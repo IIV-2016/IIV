@@ -29,7 +29,9 @@
 	<!-- CSS Implementing Plugins -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/line-icons/line-icons.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/fancybox/source/jquery.fancybox.css">
+
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/sky-forms-pro/skyforms/css/sky-forms.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css">
 	
 	<!-- CSS Theme -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-colors/dark-blue.css" id="style_color">
@@ -62,102 +64,54 @@
 		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs">
 			<div class="container">
-				<h1 class="pull-left">Community</h1>
+				<h1 class="pull-left">Communitys</h1>
 				<ul class="pull-right breadcrumb">
 					<li><a href="index.html">Home</a></li>
-					<li class="active">Community</li>
+					<li class="active">Board</li>
 				</ul>
 			</div>
 		</div><!--/breadcrumbs-->
-		<!--=== End Breadcrumbs ===-->
-
 		<!--=== Blog Posts ===-->
 		<div class="container content-md">
 			<div class="row">
 				<!-- Blog All Posts -->
 				<div class="col-md-9">
-					<a href="<%=request.getContextPath()%>/activity/write" class="btn-u btn-u-sm" id="write">Write</a>
-					<table id="example" cellspacing="0" width="100%">
-					<thead>
-					<th></th>
-		        	</thead>
-					<tbody>
-					<!-- News v3 -->
-					<c:forEach var="post" items="${postList}">
-					<tr>
-					<td>
-					<div class="row margin-bottom-20">
-						<div class="col-sm-4 sm-margin-bottom-20">
-							<img class="img-responsive" src="<%=request.getContextPath()%>/img/main/img12.jpg" alt="">
-						</div>
-						<div class="col-sm-7 news-v3">
-							<div class="news-v3-in-sm no-padding">
-								<ul class="list-inline posted-info">
-									<li>${post.sector}</li>
-									<li>By ${post.userId}</li>
-									<li>${post.writeDate}</li>
-								</ul>
-								<h2><a href="<%=request.getContextPath()%>/activity/post/${post.id}">${post.title}</a></h2>
-								<p>${post.content}</p>
-								<ul class="post-shares">
-									<li>
-										<a href="#">
-											<i class="rounded-x icon-speech"></i>
-											<span></span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="rounded-x icon-share"></i>
-											<span>${post.views}</span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="rounded-x icon-heart"></i>
-											<span>${post.likes}</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div><!--/end row-->
-					<!-- End News v3 -->
-					<div class="clearfix margin-bottom-20"><hr></div>
-					</td>
-					</tr>
-					</c:forEach>
-					</tbody>
-					</table>
-
-					<!-- Pager v3 -->
-					<!--
-					<div class="text-center">
-						<ul class="pagination">
-							<li><a href="#">«</a></li>
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li class="active"><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">6</a></li>
-							<li><a href="#">7</a></li>
-							<li><a href="#">8</a></li>
-							<li><a href="#">»</a></li>
-						</ul>
-					</div>	
-					-->				
-					<!-- End Pager v3 -->
+					<a href="<%=request.getContextPath()%>/community/write" class="btn-u btn-u-sm" id="write">Write</a>
+					<table id="example" class="table" cellspacing="0" width="100%">
+				        <thead>
+				            <tr>
+				                <th>No</th>
+				                <th>Title</th>
+				                <th>Name</th>
+				                <th>Date</th>
+				                <th>Views</th>
+				                <th>Likes</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				        	<c:forEach var="post" items="${postList}">
+				            <tr>
+				                <td>${post.id}</td>
+				                <td><a href="<%=request.getContextPath()%>/community/post/${post.id}">${post.title}</a></td>
+				                <td>${post.userId}</td>
+				                <td>${post.writeDate}</td>
+				                <td>${post.views}</td>
+				                <td>${post.likes}</td>
+				            </tr>
+				            </c:forEach>
+				        </tbody>
+				    </table>
 				</div>
 				<!-- End Blog All Posts -->
 
 				<!-- Blog Sidebar -->
 				<div class="col-md-3">
-					<div class="headline-v2 bg-color-light"><h2>likes</h2></div>
+					<div class="headline-v2 bg-color-light"><h2>Likes</h2></div>
+					<!-- Trending -->
 					<ul class="list-unstyled blog-latest-posts margin-bottom-50">
 						<c:forEach var="post" items="${likesList}">
 							<li>
-								<h3><a href="<%=request.getContextPath()%>/activity/post/${post.id}">${post.title}</a></h3>
+								<h3><a href="<%=request.getContextPath()%>/community/post/${post.id}">${post.title}</a></h3>
 								<small>${post.userId} / ${post.writeDate} / ${post.likes}</small>
 							</li>
 			            </c:forEach>
@@ -169,15 +123,17 @@
 					<ul class="list-unstyled blog-latest-posts margin-bottom-50">
 						<c:forEach var="post" items="${viewsList}">
 							<li>
-								<h3><a href="<%=request.getContextPath()%>/activity/post/${post.id}">${post.title}</a></h3>
+								<h3><a href="<%=request.getContextPath()%>/community/post/${post.id}">${post.title}</a></h3>
 								<small>${post.userId} / ${post.writeDate} / ${post.views}</small>
 							</li>
 			            </c:forEach>
 					</ul>
+					<!-- End Latest Links -->
 				</div>
 				<!-- End Blog Sidebar -->
 			</div>
-		</div>
+		</div>		
+		<!--=== End Breadcrumbs ===-->
 		<!--=== End Footer Version 1 ===-->
 		<%@include file="/WEB-INF/jsp/footer.jsp"%>
 		<!--=== End Header v6 ===-->
@@ -189,20 +145,24 @@
 	<!-- JS Implementing Plugins -->
 	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/back-to-top.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/smoothScroll.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/jquery.parallax.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/fancy-box.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+
 	<!-- JS Customization -->
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/custom.js"></script>
 	<!-- JS Page Level -->
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/app.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/style-switcher.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/forms/login.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/forms/contact.js"></script>
 	<script type="text/javascript" src="/webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/js/table1.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/table.js"></script>
 	<script type="text/javascript" src="/webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();
-			FancyBox.initFancybox();
+			LoginForm.initLoginForm();
+			ContactForm.initContactForm();
 			StyleSwitcher.initStyleSwitcher();
 		});
 	</script>
