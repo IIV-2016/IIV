@@ -14,4 +14,5 @@ public class CommentBean {
 	private String username;
 	private Date writeDate;
 	private int postId;
+	private String table;
 }

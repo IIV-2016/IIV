@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import io.itupo.iiv.dao.CommentDao;
 import io.itupo.iiv.domain.CommentBean;
+import io.itupo.iiv.dto.CommentDto;
 
 @Service
 @Transactional
@@ -16,8 +17,8 @@ public class CommentService {
 	@Autowired
 	private CommentDao commentDao;
 	
-	public List<CommentBean> readPostList(int id){
-		return commentDao.readPostList(id);
+	public List<CommentBean> readPostList(CommentDto dto){
+		return commentDao.readPostList(dto);
 	}
 	public boolean writePost(CommentBean bean){
 		return commentDao.writePost(bean);

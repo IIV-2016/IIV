@@ -16,12 +16,6 @@ public class CommentController {
 	@Autowired
 	private CommentService commentService;
 	
-	@RequestMapping(value = "list/{id}", method = RequestMethod.GET)
-	public String readPostList(@PathVariable(value="id") int id, Model model) {
-		model.addAttribute("postList", commentService.readPostList(id));
-		return "activity/list";
-	}
-
     @RequestMapping(value = "write/submit", method = RequestMethod.POST)
     public String writePost(CommentBean bean) {
     	commentService.writePost(bean);

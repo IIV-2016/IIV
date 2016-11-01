@@ -89,7 +89,7 @@
 					<td>
 					<div class="row margin-bottom-20">
 						<div class="col-sm-4 sm-margin-bottom-20">
-							<img class="img-responsive" src="<%=request.getContextPath()%>/img/main/img12.jpg" alt="">
+							<img class="img-responsive" src="<%=request.getContextPath()%>/img/iivlogo.png" alt="">
 						</div>
 						<div class="col-sm-7 news-v3">
 							<div class="news-v3-in-sm no-padding">
@@ -105,13 +105,7 @@
 								<ul class="post-shares">
 									<li>
 										<a href="#">
-											<i class="rounded-x icon-speech"></i>
-											<span></span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="rounded-x icon-share"></i>
+											<i class="rounded-x fa fa-eye"></i>
 											<span>${post.views}</span>
 										</a>
 									</li>

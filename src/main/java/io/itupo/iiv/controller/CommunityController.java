@@ -3,6 +3,8 @@ package io.itupo.iiv.controller;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import io.itupo.iiv.domain.CommunityBean;
 import io.itupo.iiv.domain.LikeBean;
+import io.itupo.iiv.dto.CommentDto;
 import io.itupo.iiv.dto.LikeDto;
 import io.itupo.iiv.service.CommentService;
 import io.itupo.iiv.service.CommunityService;
@@ -45,14 +48,23 @@ public class CommunityController {
 	public String readPost(@PathVariable(value="id") int id, Model model, Principal principal) {
 		CommunityBean bean = communityService.readPostById(id);
 		model.addAttribute("post", bean);
-		model.addAttribute("likeHistory", communityService.checkLikesHistoryById(new LikeBean("community_likes_history", id, principal.getName())));
-		model.addAttribute("commentList", commentService.readPostList(id));
+		if(principal != null){
+			model.addAttribute("likeHistory", communityService.checkLikesHistoryById(new LikeBean("community_likes_history", id, principal.getName())));
+		}else{
+			model.addAttribute("likeHistory", 0);
+		}
+		model.addAttribute("commentList", commentService.readPostList(new CommentDto("community_comment", id)));
 		model.addAttribute("user", userService.readUserById(bean.getUserId()));
 		return "community/post";
 	}
 
 	@RequestMapping(value = "write", method = RequestMethod.GET)
-	public String write(Model model) {
+	public String write(@AuthenticationPrincipal UserDetails userDetail) {
+		/*
+		if(userDetail == null){
+			throw new CustomAuthException("login");
+		}
+		*/
 		return "community/write";
 	}
     
@@ -77,7 +89,7 @@ public class CommunityController {
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable(value="id") int id, Model model) {
     	communityService.deletePostById(id);
-    	return "community/list";
+    	return "redirect:/community/list";
     }
     
     @RequestMapping(value = "likes/{id}/{userId}", method = RequestMethod.GET)

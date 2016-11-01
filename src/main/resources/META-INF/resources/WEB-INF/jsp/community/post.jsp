@@ -89,36 +89,41 @@
 								</a>
 							</li>
 							<li>
+								<sec:authorize access="isAnonymous()">
+									<i class="rounded-x icon-heart"></i>
+								</sec:authorize>
+								<sec:authorize access="isAuthenticated()">
 								<c:choose>
 							  		<c:when test="${likeHistory == 0}">
-							  		0
 										<a href="<%=request.getContextPath()%>/community/likes/${post.id}/${post.userId}">
 											<i class="rounded-x icon-heart"></i>
 											<span>${post.likes}</span>
 										</a>
 									</c:when>
 									<c:otherwise>
-									1
 										<a href="<%=request.getContextPath()%>/community/likesremove/${post.id}/${post.userId}">
 											<i class="rounded-x fa fa-heart"></i>
 											<span>${post.likes}</span>
 										</a>
 									</c:otherwise>
 								</c:choose>	
+								</sec:authorize>
 							</li>
-							<sec:authentication property="principal.id" var="currentUserId"/>
-							<c:if test="${currentUserId eq post.userId}">
-								<li>
-									<a href="<%=request.getContextPath()%>/community/delete/${post.id}">
-										<i class="rounded-x icon-close"></i>
-									</a>
-								</li>
-								<li>
-									<a href="<%=request.getContextPath()%>/community/update/${post.id}">
-										<i class="rounded-x icon-settings"></i>
-									</a>
-								</li>
-							</c:if>
+							<sec:authorize access="isAuthenticated()">
+								<sec:authentication property="principal.id" var="currentUserId"/>
+								<c:if test="${currentUserId eq post.userId}">
+									<li>
+										<a href="<%=request.getContextPath()%>/community/delete/${post.id}">
+											<i class="rounded-x icon-close"></i>
+										</a>
+									</li>
+									<li>
+										<a href="<%=request.getContextPath()%>/community/update/${post.id}">
+											<i class="rounded-x icon-settings"></i>
+										</a>
+									</li>
+								</c:if>
+							</sec:authorize>
 						</ul>
 					</div>
 				</div>
@@ -167,9 +172,11 @@
 
 				<h2 class="margin-bottom-20">Post a Comment</h2>
 				<!-- Form -->
+				<sec:authorize access="isAuthenticated()">
 				<form action="<%=request.getContextPath()%>/comment/write/submit" method="post" id="sky-form3" class="sky-form comment-style">
 					<input type="hidden" name="username" id="username" value="<sec:authentication property='principal.username'/>" placeholder="name" class="form-control">
 					<input type="hidden" name="postId" id="postId" value="${post.id}" class="form-control">
+					<input type="hidden" name="table" id="table" value="community_comment" class="form-control">
 					<fieldset>
 						<div class="sky-space-30">
 							<div>
@@ -185,6 +192,10 @@
 						<p>Your comment was successfully posted!</p>
 					</div>
 				</form>
+				</sec:authorize>
+				<sec:authorize access="isAnonymous()">
+					<p>login -> you can write comment</p>
+				</sec:authorize>
 				<!-- End Form -->
 			</div><!--/end container-->
 		</div>

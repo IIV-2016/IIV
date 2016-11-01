@@ -11,15 +11,28 @@
 		<result property="postId" column="post_id" />
 	</resultMap>
 
-	<select id="readPostList" parameterType="int" resultMap="CommentResultMap">
+	<select id="readPostList" resultMap="CommentResultMap">
     	SELECT id, content, username, write_date AS writeDate, post_id AS postId
-    	FROM community_comment
+    	FROM 
+    	<if test="table == 'community_comment'">
+    		community_comment 
+    	</if>
+    	<if test="table == 'activity_comment'">
+    		activity_comment 
+    	</if>
     	WHERE post_id = #{postId}
     	ORDER BY id DESC
     </select>
     
 	<insert id="writePost" parameterType="io.itupo.iiv.domain.CommentBean">
-		INSERT INTO community_comment (content, username, write_date, post_id) 
+		INSERT INTO 
+    	<if test="table == 'community_comment'">
+    		community_comment 
+    	</if>
+    	<if test="table == 'activity_comment'">
+    		activity_comment 
+    	</if>
+		 (content, username, write_date, post_id) 
 		VALUE (#{content}, #{username}, NOW(), #{postId})
 	</insert>
 	

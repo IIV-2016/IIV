@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -52,7 +53,7 @@
 		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs">
 			<div class="container">
-				<h1 class="pull-left">Activity</h1>
+				<h1 class="pull-left">Community</h1>
 				<ul class="pull-right breadcrumb">
 					<li><a href="index.html">List</a></li>
 					<li class="active">Post</li>
@@ -78,7 +79,7 @@
 							<li>
 								<a href="#">
 									<i class="rounded-x icon-speech"></i>
-									<span></span>
+									<span>${fn:length(commentList)}</span>
 								</a>
 							</li>
 							<li>
@@ -88,6 +89,10 @@
 								</a>
 							</li>
 							<li>
+								<sec:authorize access="isAnonymous()">
+									<i class="rounded-x icon-heart"></i>
+								</sec:authorize>
+								<sec:authorize access="isAuthenticated()">
 								<c:choose>
 							  		<c:when test="${likeHistory == 0}">
 										<a href="<%=request.getContextPath()%>/activity/likes/${post.id}/${post.userId}">
@@ -102,20 +107,23 @@
 										</a>
 									</c:otherwise>
 								</c:choose>	
+								</sec:authorize>
 							</li>
-							<sec:authentication property="principal.id" var="currentUserId"/>
-							<c:if test="${currentUserId eq post.userId}">
-								<li>
-									<a href="<%=request.getContextPath()%>/activity/delete/${post.id}">
-										<i class="rounded-x icon-close"></i>
-									</a>
-								</li>
-								<li>
-									<a href="<%=request.getContextPath()%>/activity/update/${post.id}">
-										<i class="rounded-x icon-settings"></i>
-									</a>
-								</li>
-							</c:if>
+							<sec:authorize access="isAuthenticated()">
+								<sec:authentication property="principal.id" var="currentUserId"/>
+								<c:if test="${currentUserId eq post.userId}">
+									<li>
+										<a href="<%=request.getContextPath()%>/activity/delete/${post.id}">
+											<i class="rounded-x icon-close"></i>
+										</a>
+									</li>
+									<li>
+										<a href="<%=request.getContextPath()%>/activity/update/${post.id}">
+											<i class="rounded-x icon-settings"></i>
+										</a>
+									</li>
+								</c:if>
+							</sec:authorize>
 						</ul>
 					</div>
 				</div>
@@ -142,6 +150,7 @@
 
 				<h2 class="margin-bottom-20">Comments</h2>
 				<!-- Blog Comments -->
+				<c:forEach var="comment" items="${commentList}">
 				<div class="row blog-comments margin-bottom-30">
 					<div class="col-sm-2 sm-margin-bottom-40">
 						<img src="<%=request.getContextPath()%>/img/team/img1-sm.jpg" alt="">
@@ -149,37 +158,29 @@
 					<div class="col-sm-10">
 						<div class="comments-itself">
 							<h4>
-								${user.username}
-								<span>5 hours ago / <a href="#">Reply</a></span>
+								${comment.username}
+								<span>${comment.writeDate}</span>
 							</h4>
-							<p>${user.email}</p>
+							<p>${comment.content}</p>
 						</div>
 					</div>
 				</div>
+	            </c:forEach>
 				<!-- End Blog Comments -->
 
 				<hr>
 
 				<h2 class="margin-bottom-20">Post a Comment</h2>
 				<!-- Form -->
-				<form action="<%=request.getContextPath()%>/php/sky-forms-pro/demo-comment-process.php" method="post" id="sky-form3" class="sky-form comment-style">
+				<sec:authorize access="isAuthenticated()">
+				<form action="<%=request.getContextPath()%>/comment/write/submit" method="post" id="sky-form3" class="sky-form comment-style">
+					<input type="hidden" name="username" id="username" value="<sec:authentication property='principal.username'/>" placeholder="name" class="form-control">
+					<input type="hidden" name="postId" id="postId" value="${post.id}" class="form-control">
+					<input type="hidden" name="table" id="table" value="activity_comment" class="form-control">
 					<fieldset>
-						<div class="row sky-space-30">
-							<div class="col-md-6">
-								<div>
-									<input type="text" name="name" id="name" placeholder="Name" class="form-control">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div>
-									<input type="text" name="email" id="email" placeholder="Email" class="form-control">
-								</div>
-							</div>
-						</div>
-
 						<div class="sky-space-30">
 							<div>
-								<textarea rows="8" name="message" id="message" placeholder="Write comment here ..." class="form-control"></textarea>
+								<textarea rows="8" name="content" id="content" placeholder="Write comment here ..." class="form-control"></textarea>
 							</div>
 						</div>
 
@@ -191,6 +192,10 @@
 						<p>Your comment was successfully posted!</p>
 					</div>
 				</form>
+				</sec:authorize>
+				<sec:authorize access="isAnonymous()">
+					<p>login -> you can write comment</p>
+				</sec:authorize>
 				<!-- End Form -->
 			</div><!--/end container-->
 		</div>
