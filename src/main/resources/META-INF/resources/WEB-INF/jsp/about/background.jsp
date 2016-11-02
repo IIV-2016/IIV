@@ -88,45 +88,36 @@
 <div>
 	<div class="content-sm">
 		<div class="headline-center margin-bottom-60">
-			<h2>WHY WE ARE GOOD</h2>
-			<p>Phasellus vitae ipsum ex. Etiam eu vestibulum ante. <br>
-				Lorem ipsum <strong>dolor</strong> sit amet, consectetur adipiscing elit. Morbi libero libero, imperdiet fringilla </p>
+			<h2>How does IIVs work last 6 years? </h2>
+			<p>During last 6 years, IIVs did various works including ICT Training and Cultural exchanges. <br>
 		</div>
 
 		<div class="row">
 			<div class="col-md-6 md-margin-bottom-50">
-				<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-				<p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p><br>
-				<a href="#" class="btn-u btn-brd btn-brd-hover btn-u-dark">Read More</a>
-				<a href="#" class="btn-u">Purchase Now</a>
+				<p>Over 500+ IIVs were dispatched during last 6 years and decreased the digital divide all over the world 
+				through their qualified ICT training and projects. They also attributed a promotion of Korean culture 
+				with their talents. </p><br>
 			</div>
 
 			<!-- Smallest Progress Bar -->
 			<div class="col-md-6 progress-box">
-				<h3 class="heading-xs">Web Design <span class="pull-right">88%</span></h3>
+				<h3 class="heading-xs">IIVs <span class="pull-right">520</span></h3>
 				<div class="progress progress-u progress-xxs">
-					<div class="progress-bar progress-bar-u" role="progressbar" data-width="88">
+					<div class="progress-bar progress-bar-u" role="progressbar" data-width="100">
 					</div>
 				</div>
 
-				<h3 class="heading-xs">PHP/WordPress <span class="pull-right">76%</span></h3>
+				<h3 class="heading-xs">Dispatched Countries <span class="pull-right">10</span></h3>
 				<div class="progress progress-u progress-xxs">
-					<div class="progress-bar progress-bar-u" role="progressbar" data-width="76">
+					<div class="progress-bar progress-bar-u" role="progressbar" data-width="100">
 					</div>
 				</div>
 
-				<h3 class="heading-xs">HTML/CSS <span class="pull-right">97%</span></h3>
+				<h3 class="heading-xs">Host Organizations <span class="pull-right">18</span></h3>
 				<div class="progress progress-u progress-xxs">
-					<div class="progress-bar progress-bar-u" role="progressbar" data-width="97">
+					<div class="progress-bar progress-bar-u" role="progressbar" data-width="100">
 					</div>
-				</div>
-
-				<h3 class="heading-xs">Illustration <span class="pull-right">69%</span></h3>
-				<div class="progress progress-u progress-xxs">
-					<div class="progress-bar progress-bar-u" role="progressbar" data-width="69">
-					</div>
-				</div>
-			</div>
+				</div>			</div>
 			<!-- End Smallest Progress Bar -->
 		</div><!--/end row-->
 	</div><!--/end container-->

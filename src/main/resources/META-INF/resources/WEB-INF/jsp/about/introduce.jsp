@@ -36,6 +36,7 @@
 
 	<!-- CSS Customization -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/pages/page_pricing.css">
 </head>
 
 <body class="header-fixed header-fixed-space">
@@ -48,7 +49,7 @@
 		</sec:authorize>
 		<div class="breadcrumbs">
 			<div class="container">
-				<h1 class="pull-left">Introduce</h1>
+				<h1 class="pull-left">Introduction</h1>
 				<ul class="pull-right breadcrumb">
 					<li><a href="index.html">Home</a></li>
 					<li class="active">introduce</li>
@@ -62,8 +63,8 @@
 					<li class="active"><a href="#background-1" data-toggle="tab">Background</a></li>
 					<li><a href="#history-1" data-toggle="tab">History</a></li>
 					<li><a href="#organization-1" data-toggle="tab">What IIVs Do?</a></li>
-					<li><a href="#sponsors-1" data-toggle="tab">Process</a></li>
-					<li><a href="#process-1" data-toggle="tab">Partners</a></li>
+					<li><a href="#process" data-toggle="tab">Process</a></li>
+					<li><a href="#partners" data-toggle="tab">Partners</a></li>
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane fade in active" id="background-1">
@@ -75,11 +76,10 @@
 					<div class="tab-pane fade in" id="organization-1">
 						<%@include file="./what.jsp"%>
 					</div>
-					<div class="tab-pane fade in" id="sponsors-1">
-						<h4>Heading Sample 4</h4>
-						<p><img alt="" class="pull-right rgt-img-margin img-width-200" src="assets/img/main/img23.jpg"> Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac adipiscing nunc. Pellentesque fermentum, ante ac interdum ullamcorper. Donec eget orci metus, ac adipiscing nunc. Pellentesque fermentum, consectetur id. Donec eget orci metus, ac adipiscing nunc. <strong>Pellentesque fermentum</strong>, ante ac interdum ullamcorper. Donec eget orci metus, ac adipiscing nunc. Pellentesque fermentum, ante ac interdum ullamcorper.</p>
+					<div class="tab-pane fade in" id="process">
+						<%@include file="./process.jsp"%>
 					</div>
-					<div class="tab-pane fade in" id="process-1">
+					<div class="tab-pane fade in" id="partners">
 						<%@include file="./partners.jsp"%>
 					</div>					
 				</div>
@@ -110,6 +110,7 @@
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/fancy-box.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/progress-bar.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/owl-carousel.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/owl-recent-works.js"></script>
 	
 	<script type="text/javascript">
 	jQuery(document).ready(function() {
@@ -118,6 +119,7 @@
 		OwlCarousel.initOwlCarousel();
 		StyleSwitcher.initStyleSwitcher();
 		ProgressBar.initProgressBarHorizontal();
+		OwlRecentWorks.initOwlRecentWorksV2();
 	});
 	</script>
 	<!--[if lt IE 9]>

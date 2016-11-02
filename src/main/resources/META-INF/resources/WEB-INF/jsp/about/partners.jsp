@@ -5,13 +5,13 @@
 </div>
 <div class="row clients-page">
 	<div class="col-md-2">
-		<img src="assets/img/clients2/baderbrau.png" class="img-responsive hover-effect" alt="" />
+		<img src="/img/nia_logo.jpg" class="img-responsive hover-effect" alt="" />
 	</div>
 	<div class="col-md-10">
 		<h3>NIA</h3>
 		<ul class="list-inline">
-			<li><i class="fa fa-map-marker color-green"></i> USA</li>
-			<li><i class="fa fa-globe color-green"></i> <a class="linked" href="#">http://www.example.com</a></li>
+			<li><i class="fa fa-map-marker color-green"></i> Korea</li>
+			<li><i class="fa fa-globe color-green"></i> <a class="linked" href="http://www.nia.or.kr">http://www.nia.or.kr</a></li>
 			<li><i class="fa fa-briefcase color-green"></i> Web Design &amp; Development</li>
 		</ul>
 		<p>
@@ -22,13 +22,13 @@
 </div>
 <div class="row clients-page">
 	<div class="col-md-2">
-		<img src="assets/img/clients2/baderbrau.png" class="img-responsive hover-effect" alt="" />
+		<img src="/img/itu_logo.jpg" class="img-responsive hover-effect" alt="" />
 	</div>
 	<div class="col-md-10">
 		<h3>ITU</h3>
 		<ul class="list-inline">
-			<li><i class="fa fa-map-marker color-green"></i> USA</li>
-			<li><i class="fa fa-globe color-green"></i> <a class="linked" href="#">http://www.example.com</a></li>
+			<li><i class="fa fa-map-marker color-green"></i> Swiss</li>
+			<li><i class="fa fa-globe color-green"></i> <a class="linked" href="http://www.itu.int">http://www.itu.int</a></li>
 			<li><i class="fa fa-briefcase color-green"></i> Web Design &amp; Development</li>
 		</ul>
 		<p>
@@ -41,30 +41,29 @@
 </div>
 <div class="row clients-page">
 	<div class="col-md-2">
-		<img src="assets/img/clients2/baderbrau.png" class="img-responsive hover-effect" alt="" />
+		<img src="/img/mcmc_logo.jpg" class="img-responsive hover-effect" alt="" />
 	</div>
 	<div class="col-md-10">
 		<h3>MCMC</h3>
 		<ul class="list-inline">
-			<li><i class="fa fa-map-marker color-green"></i> USA</li>
-			<li><i class="fa fa-globe color-green"></i> <a class="linked" href="#">http://www.example.com</a></li>
+			<li><i class="fa fa-map-marker color-green"></i> Malaysia</li>
+			<li><i class="fa fa-globe color-green"></i> <a class="linked" href="http://www.mcmc.gov.my">http://www.mcmc.gov.my</a></li>
 			<li><i class="fa fa-briefcase color-green"></i> Web Design &amp; Development</li>
 		</ul>
 		<p>
-		National Information Society (NIA, Korea) is a government-affiliated organisation founded by Article 10 of the Framework Act on Informatisation Promotion to promote national information and to support development of related policies for national agencies and local autonomies. In particular, it represents the Korean government in the field of international IT cooperation and provides a variety for global digital inclusion. It includes Korea IT Volunteers, Korea IT Learning Program, Information Access Center, IT & Policy Assistance Program and IT Cooperation Center implemented around 110 countries. 
-		The Korean Government unified the separate volunteer programs of the Korean government into a single brand, “WFK (World Friends Korea)”. KIV program is one of WFK.
+		MCMC is the regulator for the converging communications and multimedia industry in Malaysia.
 		</p>
 		</div>
 </div>
 <div class="row clients-page">
 	<div class="col-md-2">
-		<img src="assets/img/clients2/baderbrau.png" class="img-responsive hover-effect" alt="" />
+		<img src="/img/itu_logo.jpg" class="img-responsive hover-effect" alt="" />
 	</div>
 	<div class="col-md-10">
 		<h3>ITU</h3>
 		<ul class="list-inline">
-			<li><i class="fa fa-map-marker color-green"></i> USA</li>
-			<li><i class="fa fa-globe color-green"></i> <a class="linked" href="#">http://www.example.com</a></li>
+			<li><i class="fa fa-map-marker color-green"></i> Swiss</li>
+			<li><i class="fa fa-globe color-green"></i> <a class="linked" href="http://www.itu.int">http://www.itu.int</a></li>
 			<li><i class="fa fa-briefcase color-green"></i> Web Design &amp; Development</li>
 		</ul>
 		<p>
@@ -77,14 +76,12 @@
 </div>
 <div class="row clients-page">
 	<div class="col-md-2">
-		<img src="assets/img/clients2/baderbrau.png" class="img-responsive hover-effect" alt="" />
+		<img src="/img/wisit.jpg" class="img-responsive hover-effect" alt="" />
 	</div>
 	<div class="col-md-10">
 		<h3>Wisit Atipayakoon</h3>
 		<ul class="list-inline">
-			<li><i class="fa fa-map-marker color-green"></i> USA</li>
-			<li><i class="fa fa-globe color-green"></i> <a class="linked" href="#">http://www.example.com</a></li>
-			<li><i class="fa fa-briefcase color-green"></i> Web Design &amp; Development</li>
+			<li><i class="fa fa-map-marker color-green"></i> Thailand</li> 
 		</ul>
 		<p>
 		IIV Programme Officer, ITU Regional Office for Asia and the Pacafic

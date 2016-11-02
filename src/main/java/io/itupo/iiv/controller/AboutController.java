@@ -13,6 +13,12 @@ public class AboutController {
 		return "about/gallery";
 	}
 	
+	@RequestMapping(value = "dispatch")
+	public String dispatch(Model model) {
+		return "about/dispatch";
+	}
+	
+	
 	@RequestMapping(value = "introduce")
 	public String introduce(Model model) {
 		return "about/introduce";
