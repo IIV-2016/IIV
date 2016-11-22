@@ -91,6 +91,25 @@
 								<input type="password" name="confirmPassword" id="confirmPassword" class="form-control margin-bottom-20">
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<label>Did you IIV?</label> 
+							</div>
+							<div class="col-sm-6">
+								<input type="radio" name="level" value="ALUMNI"> Yes 
+								<input type="radio" name="level" value="USER" checked> No
+							</div>
+						</div>
+						<div id="selectYear" style="display:none">
+							<label>IIV Activity Year</label>
+							<select class="form-control" name="year">
+								<option value="0" checked>none</option>
+								<option value="2016">2016</option>
+								<option value="2015">2015</option>
+								<option value="2014">2014</option>
+								<option value="2013">2013</option>
+							</select>
+						</div>
 
 						<hr>
 
@@ -225,6 +244,14 @@
 			    	$('#warning').html('<div class="alert alert-danger fade in"><strong>warning</strong> check your information.</div>');
 			    }
 			}
+
+		    $('input[name="level"]').change(function(){
+		     	if($(':radio[name="level"]:checked').val() == "ALUMNI"){
+		        	$('#selectYear').show();
+		        }else if($(':radio[name="level"]:checked').val() == "USER"){
+		        	$('#selectYear').hide();
+		        }
+		    });
 		});
 	</script>	
 	<!--[if lt IE 9]>

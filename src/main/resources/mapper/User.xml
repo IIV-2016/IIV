@@ -10,13 +10,13 @@
      </select>
      
      <insert id="registerUser" parameterType="io.itupo.iiv.domain.UserBean">
-		INSERT INTO user (username, password, firstname, lastname, email) 
-		VALUE (#{username}, #{password}, #{firstname}, #{lastname}, #{email})
+		INSERT INTO user (username, password, firstname, lastname, email, year) 
+		VALUE (#{username}, #{password}, #{firstname}, #{lastname}, #{email}, #{year})
 	</insert>
 	
-	<insert id="registerAuthority" parameterType="String">
+	<insert id="registerAuthority" parameterType="io.itupo.iiv.domain.UserBean">
 		INSERT INTO authority (username, authority_name) 
-		VALUE (#{username}, 'USER')
+		VALUE (#{username}, #{level})
 	</insert>
 	
      <select id="readUsernameById" parameterType="int" resultType="String">

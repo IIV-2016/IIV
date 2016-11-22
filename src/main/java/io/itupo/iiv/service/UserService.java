@@ -47,7 +47,7 @@ public class UserService implements UserDetailsService{
         String encodedPassword = new BCryptPasswordEncoder().encode(rawPassword);
         bean.setPassword(encodedPassword);
 		userDao.registerUser(bean);
-		userDao.registerAuthority(bean.getUsername());
+		userDao.registerAuthority(bean);
 	}
 	
     public String readUsernameById(int id){
