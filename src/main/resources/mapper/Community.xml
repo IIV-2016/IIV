@@ -16,15 +16,17 @@
 	</resultMap>
 
 	<select id="readPostList" resultMap="CommunityResultMap">
-    	SELECT id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
-    	FROM community
+    	SELECT community.id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes, username
+    	FROM community, user
+    	WHERE community.user_id = user.id
     	ORDER BY id DESC
     </select>
     
     <select id="readPostById" resultType="io.itupo.iiv.domain.CommunityBean">
-    	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
-    	FROM community 
-    	WHERE id = #{id}
+    	SELECT community.id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes, username
+    	FROM community, user
+    	WHERE community.user_id = user.id
+    	AND community.id = #{id}
     </select>
     
 	<insert id="writePost" parameterType="io.itupo.iiv.domain.CommunityBean">
@@ -34,7 +36,7 @@
 	
 	<update id="updatePost" parameterType="io.itupo.iiv.domain.CommunityBean">
 		UPDATE community
-		SET title = #{title}, content = #{content}
+		SET title = #{title}, content = #{content}, file_id = #{fileId}
 		WHERE id = #{id}
 	</update>
 	
@@ -63,16 +65,16 @@
 	</update>
 	
 	<select id="sortingByLikes" resultMap="CommunityResultMap">
-    	SELECT id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
-    	FROM community
+    	SELECT community.id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes, username
+    	FROM community, user
+    	WHERE community.user_id = user.id
     	ORDER BY likes DESC
-    	LIMIT 0, 3
     </select>
     
     <select id="sortingByViews" resultMap="CommunityResultMap">
-    	SELECT id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
-    	FROM community
+    	SELECT community.id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes, username
+    	FROM community, user
+    	WHERE community.user_id = user.id
     	ORDER BY views DESC
-    	LIMIT 0, 3
     </select>
 </mapper>

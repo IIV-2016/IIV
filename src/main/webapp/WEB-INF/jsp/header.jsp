@@ -1,6 +1,3 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
 <div class="header-v6 header-classic-white header-sticky header-fixed-shrink">
 	<!-- Navbar -->
 	<div class="navbar mega-menu" role="navigation">
@@ -27,14 +24,10 @@
 					<ul class="menu-icons-list">
 						<li class="menu-icons shopping-cart">
 							<i class="menu-icons-style radius-x fa fa-user"></i>
-							<span class="badge">!</span>
 							<div class="shopping-cart-open">
-								<span class="shc-title"><sec:authentication property="principal.username"/></span>
-								<a href="<%=request.getContextPath()%>/mypage"><span class="shc-total">My page</span></a>
-								<form action="/user/logout" method="post">
-									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-									<input type="submit" value="Logout" class="btn-u">
-								</form>
+								<span class="shc-title">Login to your account</span>
+								<a href="<%=request.getContextPath()%>/user/login" class="btn-u">Login</a>
+								<a href="<%=request.getContextPath()%>/user/registration"><span class="shc-total">Sign up</span></a>
 							</div>
 						</li>
 						<li class="menu-icons">
@@ -54,7 +47,7 @@
 					<ul class="nav navbar-nav">
 						<!-- Home -->
 						<li class="dropdown">
-							<a href="<%=request.getContextPath()%>/home">Home</a>
+							<a href="<%=request.getContextPath()%>/home"> Home </a>
 						</li>
 						<li class="dropdown">
 							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
@@ -71,8 +64,8 @@
 								Activity
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=request.getContextPath()%>/activity/home">Home</a></li>
-								<li><a href="<%=request.getContextPath()%>/activity/list">List</a></li>
+								<li><a href="<%=request.getContextPath()%>/activity/home">News & Notices</a></li>
+								<li><a href="<%=request.getContextPath()%>/activity/list">Activities</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">

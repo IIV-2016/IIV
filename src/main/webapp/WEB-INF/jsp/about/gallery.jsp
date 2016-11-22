@@ -75,12 +75,12 @@
 						<li class="filter" data-filter="category_2">2015</li>
 						<li class="filter" data-filter="category_3">2014</li>
 						<li class="filter" data-filter="category_4">2013</li>
-						<li class="filter" data-filter="category_4">Projects</li>
+						<li class="filter" data-filter="category_5">Projects</li>
 					</ul>
 				</div>
 
 				<ul class="row sorting-grid">
-					<li class="col-md-3 col-sm-6 col-xs-12 mix category_1 category_3" data-cat="1">
+					<li class="col-md-3 col-sm-6 col-xs-12 mix category_1" data-cat="1">
 						<a href="https://www.flickr.com/photos/131710251@N06/albums/72157669609061054">
 							<img class="img-responsive img-size" src="https://c1.staticflickr.com/9/8465/29122363575_5bf3d4b77d_b.jpg" alt="">
 							<span class="sorting-cover">
@@ -89,7 +89,7 @@
 							</span>
 						</a>
 					</li>
-					<li class="col-md-3 col-sm-6 col-xs-12 mix category_3 category_1" data-cat="3">
+					<li class="col-md-3 col-sm-6 col-xs-12 mix category_1" data-cat="3">
 						<a href="https://www.flickr.com/photos/131710251@N06/albums/72157672063131956">
 							<img class="img-responsive img-size" src="https://c1.staticflickr.com/9/8237/28560433700_155afed7a8_b.jpg" alt="">
 							<span class="sorting-cover">
@@ -98,7 +98,7 @@
 							</span>
 						</a>
 					</li>
-					<li class="col-md-3 col-sm-6 col-xs-12 mix category_2 category_1" data-cat="2">
+					<li class="col-md-3 col-sm-6 col-xs-12 mix ategory_1" data-cat="2">
 						<a href="https://www.flickr.com/photos/131710251@N06/albums/72157669668783980">
 							<img class="img-responsive img-size" src="https://c2.staticflickr.com/8/7396/28030138242_19c2e5c715_b.jpg" alt="">
 							<span class="sorting-cover">
@@ -107,7 +107,7 @@
 							</span>
 						</a>
 					</li>
-					<li class="col-md-3 col-sm-6 col-xs-12 mix category_3 category_4" data-cat="3">
+					<li class="col-md-3 col-sm-6 col-xs-12 mix category_1" data-cat="3">
 						<a href="https://www.flickr.com/photos/131710251@N06/albums/72157669994593732s">
 							<img class="img-responsive img-size" src="https://c2.staticflickr.com/8/7656/28028473771_ebd5a8f796_b.jpg" alt="">
 							<span class="sorting-cover">
@@ -116,7 +116,7 @@
 							</span>
 						</a>
 					</li>
-					<li class="col-md-3 col-sm-6 col-xs-12 mix category_2 category_1 category_4" data-cat="2">
+					<li class="col-md-3 col-sm-6 col-xs-12 mix category_1" data-cat="2">
 						<a href="#">
 							<img class="img-responsive img-size" src="https://c2.staticflickr.com/8/7369/27806106790_17fe57a10c_b.jpg" alt="">
 							<span class="sorting-cover">
@@ -125,7 +125,7 @@
 							</span>
 						</a>
 					</li>
-					<li class="col-md-3 col-sm-6 col-xs-12 mix category_4" data-cat="1">
+					<li class="col-md-3 col-sm-6 col-xs-12 mix category_1" data-cat="1">
 						<a href="#">
 							<img class="img-responsive img-size" src="https://c2.staticflickr.com/8/7252/26306798533_c569004ba0_b.jpg" alt="">
 							<span class="sorting-cover">
@@ -134,7 +134,7 @@
 							</span>
 						</a>
 					</li>
-					<li class="col-md-3 col-sm-6 col-xs-12 mix category_2 category_3  category_4" data-cat="2">
+					<li class="col-md-3 col-sm-6 col-xs-12 mix category_1" data-cat="2">
 						<a href="#">
 							<img class="img-responsive img-size" src="https://c2.staticflickr.com/2/1534/25755895584_0802be7774_b.jpg" alt="">
 							<span class="sorting-cover">
@@ -143,7 +143,7 @@
 							</span>
 						</a>
 					</li>
-					<li class="col-md-3 col-sm-6 col-xs-12 mix category_4 category_2" data-cat="1">
+					<li class="col-md-3 col-sm-6 col-xs-12 mix category_2" data-cat="1">
 						<a href="#">
 							<img class="img-responsive img-size" src="https://c2.staticflickr.com/6/5664/20891981599_3375b52064_b.jpg" alt="">
 							<span class="sorting-cover">

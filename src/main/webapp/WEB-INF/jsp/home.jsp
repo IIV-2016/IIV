@@ -39,6 +39,13 @@
 	<link rel="stylesheet" href="css/theme-colors/dark-blue.css" id="style_color">
 	<link rel="stylesheet" href="css/theme-skins/dark.css">
 	<link rel="stylesheet" href="css/custom.css">
+	<style>
+	.img-size{
+		height : 200px;
+		width: 300px;
+		border: 1px solid rgba(128, 128, 128, 0.1);
+	}
+	</style>
 </head>
 
 <body class="header-fixed header-fixed-space">
@@ -78,7 +85,7 @@
 						</p>
 					</div>
 					<div class="col-md-3 btn-buy animated fadeInRight">
-						<a href="#" class="btn-u btn-u-lg">About IIV</a>
+						<a href="<%=request.getContextPath()%>/about/introduce" class="btn-u btn-u-lg">About IIV</a>
 					</div>
 				</div>
 			</div>
@@ -120,64 +127,24 @@
 			<!-- End Service Blokcs -->
 
 			<!-- Recent Works -->
-			<div class="headline"><h2>Recent Works</h2></div>
+			<div class="headline"><h2>IIV News & Activities</h2></div>
 			<div class="row margin-bottom-20">
+				<c:forEach var="post" begin="0" end="3" items="${postList}" varStatus="status">
 				<div class="col-md-3 col-sm-6">
 					<div class="thumbnails thumbnail-style thumbnail-kenburn">
 						<div class="thumbnail-img">
 							<div class="overflow-hidden">
-								<img class="img-responsive" src="img/main/img1.jpg" alt="">
+								<img class="img-responsive img-size" src="${post.fileId}" alt="">
 							</div>
-							<a class="btn-more hover-effect" href="#">read more +</a>
+							<a class="btn-more hover-effect" href="<%=request.getContextPath()%>/activity/post/${post.id}">read more +</a>
 						</div>
 						<div class="caption">
-							<h3><a class="hover-effect" href="#">Project One</a></h3>
-							<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
+							<h3>Weekly</h3>
+							<span>${post.title}</span>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="thumbnails thumbnail-style thumbnail-kenburn">
-						<div class="thumbnail-img">
-							<div class="overflow-hidden">
-								<img class="img-responsive" src="img/main/img12.jpg" alt="">
-							</div>
-							<a class="btn-more hover-effect" href="#">read more +</a>
-						</div>
-						<div class="caption">
-							<h3><a class="hover-effect" href="#">Project Two</a></h3>
-							<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="thumbnails thumbnail-style thumbnail-kenburn">
-						<div class="thumbnail-img">
-							<div class="overflow-hidden">
-								<img class="img-responsive" src="img/main/img3.jpg" alt="">
-							</div>
-							<a class="btn-more hover-effect" href="#">read more +</a>
-						</div>
-						<div class="caption">
-							<h3><a class="hover-effect" href="#">Project Three</a></h3>
-							<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="thumbnails thumbnail-style thumbnail-kenburn">
-						<div class="thumbnail-img">
-							<div class="overflow-hidden">
-								<img class="img-responsive" src="img/main/img17.jpg" alt="">
-							</div>
-							<a class="btn-more hover-effect" href="#">read more +</a>
-						</div>
-						<div class="caption">
-							<h3><a class="hover-effect" href="#">Project Four</a></h3>
-							<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 			<!-- End Recent Works -->
 
@@ -188,16 +155,18 @@
 					<div class="headline"><h2>What IIV is?</h2></div>
 					<div class="row">
 						<div class="col-sm-4">
-							<img class="img-responsive margin-bottom-20" src="https://c2.staticflickr.com/8/7306/27805491870_00434832d0_b.jpg" alt="">
+							<img class="img-responsive margin-bottom-20" src="http://mm.sookmyung.ac.kr/~m1314694/iiv/photo/2016/Thailand/Khumsilkhumsil/Junsoo%20BAE.JPG" alt="">
 						</div>
 						<div class="col-sm-8">
-						<p>“Incredible Experience” I dispatched to SIPA Chiang Mai (Software Industry Promotion Agency Chiang Mai, Thailand) in Thailand 2016. At the first time, I thought it is a programme that I am delivering my knowledge to people. However, after the programme, I realized that I have received much more than I gave. It is a incredible experience that you can make huge local friends as well as exotic experience with them. </p>
+					<p style="font-size: 10px;">The objective of the IIV program is to have you to participate in reducing the digital divide with your wonderful ability. You will probably leave your home town with passion and desire to "give" what you have. You may be excited, you may be worried until you arrive at the local. But don't worry. Wherever you are dispatched to, you will be the most welcomed person in the world! Fulfill your dreams, and also share your experiences to let others fulfill their dreams as well! As the time with the local people goes on, I assure that you will be feeling that you are being given more than you have been helpful to them. And at the end, you will recognize that, it was not about "giving", but all about "sharing".
+					Through the program, the values and the view of life can be totally changed. What you will experience is what you cannot in Korea. So join in, and feel it by yourself!
+					</p>
 						</div>
 					</div>
 
 					<blockquote class="hero-unify">
-						<p>I am very proud myself that I have conducted my voluntary missions successfully and thank you to ITU and NIA that gave me incredible memory.</p>
-						<small>IIV Volunteer</small>
+					<h2>"International ICT Volunteers (IIV), the change of my values"</h2>
+					<small>Junsu Bae, Kkumsil Kkumsil, Thailand 2016</small>
 					</blockquote>
 				</div><!--/col-md-8-->
 
@@ -234,34 +203,41 @@
 			<!-- End Info Blokcs -->
 
 			<!-- Owl Clients v1 -->
-			<div class="headline"><h2>Our Clients</h2></div>
+			<div class="headline"><h2>Our Partners</h2></div>
 			<div class="owl-clients-v1">
 				<div class="item">
-					<img src="img/clients4/1.png" alt="">
+					<img src="http://drive.google.com/uc?export=view&id=0B-YQl1gBpDIJV25FUFFfSGFMYXM" alt="">
 				</div>
 				<div class="item">
-					<img src="img/clients4/2.png" alt="">
+					<img src="http://drive.google.com/uc?export=view&id=0B-YQl1gBpDIJSHl1V21oSWNUZDA" alt="">
 				</div>
 				<div class="item">
-					<img src="img/clients4/3.png" alt="">
+					<img src="http://drive.google.com/uc?export=view&id=0B-YQl1gBpDIJX0pEQlRtNVdfV1U" alt="">
 				</div>
 				<div class="item">
-					<img src="img/clients4/4.png" alt="">
+					<img src="http://drive.google.com/uc?export=view&id=0B-YQl1gBpDIJZkJiTXFGd0ctb28" alt="">
 				</div>
 				<div class="item">
-					<img src="img/clients4/5.png" alt="">
+					<img src="http://drive.google.com/uc?export=view&id=0B-YQl1gBpDIJQVdpc3VNUHlBbGs" alt="">
 				</div>
 				<div class="item">
-					<img src="img/clients4/6.png" alt="">
+					<img src="http://drive.google.com/uc?export=view&id=0B-YQl1gBpDIJR3M1MlllVXFCNkk" alt="">
 				</div>
 				<div class="item">
-					<img src="img/clients4/7.png" alt="">
+					<img src="http://drive.google.com/uc?export=view&id=0B-YQl1gBpDIJbGpFUE9BN1hScHM" alt="">
 				</div>
 				<div class="item">
-					<img src="img/clients4/8.png" alt="">
+					<img src="http://drive.google.com/uc?export=view&id=0B-YQl1gBpDIJTlZNVkI3SFJkLVU" alt="">
 				</div>
 				<div class="item">
-					<img src="img/clients4/9.png" alt="">
+					<img src="http://drive.google.com/uc?export=view&id=0B-YQl1gBpDIJVjZRUjdJQzgxVEk" alt="">
+				</div>
+				
+				<div class="item">
+					<img src="http://drive.google.com/uc?export=view&id=0B-YQl1gBpDIJZnY2bm90NHdVRnc" alt="">
+				</div>
+				<div class="item">
+					<img src="http://drive.google.com/uc?export=view&id=0B-YQl1gBpDIJcUlqYUZnMmlYek0" alt="">
 				</div>
 			</div>
 			<!-- End Owl Clients v1 -->

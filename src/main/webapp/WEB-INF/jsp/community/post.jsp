@@ -69,7 +69,7 @@
 				<div class="news-v3 bg-color-white margin-bottom-30">
 					<div class="news-v3-in">
 						<ul class="list-inline posted-info">
-							<li>By <a href="#">${post.userId}</a></li>
+							<li>By <a href="#">${post.username}</a></li>
 							<li>${post.sector}</li>
 							<li>${post.writeDate}</li>
 						</ul>

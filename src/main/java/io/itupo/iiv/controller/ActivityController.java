@@ -72,7 +72,7 @@ public class ActivityController {
     @RequestMapping(value = "write/submit", method = RequestMethod.POST)
     public String writePost(ActivityBean bean) {
     	activityService.writePost(bean);
-        return "redirect:/activity/board";
+        return "redirect:/activity/list";
     }
 
     @RequestMapping(value = "update/{id}", method = RequestMethod.GET)

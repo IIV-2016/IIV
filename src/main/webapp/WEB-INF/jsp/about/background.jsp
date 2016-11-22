@@ -19,9 +19,9 @@
 					<li><i class="fa fa-angle-right"></i>National Volunteer Programmes</li>
 				</ul>
 				<ul class="col-xs-6 list-unstyled lists-v1">
-					<li><i class="fa fa-angle-right"></i>Cambodia ICT Volunteers</li>
-					<li><i class="fa fa-angle-right"></i>NBTC-ITU Volunteers (NIV)</li>
-					<li><i class="fa fa-angle-right"></i>Malaysia ICT Volunteers</li>
+					<li><i class="fa fa-angle-right"></i><a href="https://www.facebook.com/CambodianICTVolunteer/">Cambodia ICT Volunteers</a></li>
+					<li><i class="fa fa-angle-right"></i><a href="https://www.facebook.com/NIV2014/?fref=ts">NBTC-ITU Volunteers (NIV)</a></li>
+					<li><i class="fa fa-angle-right"></i><a href="http://www.miv.mcmc.gov.my/en/home/">Malaysia ICT Volunteers</a></li>
 				</ul>
 			</div>
 		</div>
@@ -91,34 +91,36 @@
 			<h2>How does IIVs work last 6 years? </h2>
 			<p>During last 6 years, IIVs did various works including ICT Training and Cultural exchanges. <br>
 		</div>
-
-		<div class="row">
-			<div class="col-md-6 md-margin-bottom-50">
-				<p>Over 500+ IIVs were dispatched during last 6 years and decreased the digital divide all over the world 
+		<div class="md-margin-bottom-50">
+			<p>Over 500+ IIVs were dispatched during last 6 years and decreased the digital divide all over the world 
 				through their qualified ICT training and projects. They also attributed a promotion of Korean culture 
 				with their talents. </p><br>
-			</div>
-
-			<!-- Smallest Progress Bar -->
-			<div class="col-md-6 progress-box">
-				<h3 class="heading-xs">IIVs <span class="pull-right">520</span></h3>
-				<div class="progress progress-u progress-xxs">
-					<div class="progress-bar progress-bar-u" role="progressbar" data-width="100">
+		</div>
+		<div class="parallax-counter-v4 parallaxBg">
+			<div class="container content-sm">
+				<div class="row">
+					<div class="col-md-3 col-xs-6 md-margin-bottom-50">
+						<i class="icon-cup"></i>
+						<span class="counter">520</span>
+						<h4>IIVs</h4>
 					</div>
-				</div>
-
-				<h3 class="heading-xs">Dispatched Countries <span class="pull-right">10</span></h3>
-				<div class="progress progress-u progress-xxs">
-					<div class="progress-bar progress-bar-u" role="progressbar" data-width="100">
+					<div class="col-md-3 col-xs-6 md-margin-bottom-50">
+						<i class="icon-clock"></i>
+						<span class="counter">10</span>
+						<h4>Dispatched Countries</h4>
 					</div>
-				</div>
-
-				<h3 class="heading-xs">Host Organizations <span class="pull-right">18</span></h3>
-				<div class="progress progress-u progress-xxs">
-					<div class="progress-bar progress-bar-u" role="progressbar" data-width="100">
+					<div class="col-md-3 col-xs-6">
+						<i class="icon-emoticon-smile"></i>
+						<span class="counter">18</span>
+						<h4>Host Organizations</h4>
 					</div>
-				</div>			</div>
-			<!-- End Smallest Progress Bar -->
+					<div class="col-md-3 col-xs-6">
+						<i class="icon-bulb"></i>
+						<span class="counter">576</span>
+						<h4>New Ideas</h4>
+					</div>
+				</div><!--/end row-->
+			</div><!--/end container-->
 		</div><!--/end row-->
 	</div><!--/end container-->
 </div>

@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,9 +23,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import io.itupo.iiv.dto.PhotoVo;
+import io.itupo.iiv.service.ActivityService;
 
 @Controller
 public class HelloController {
+	@Autowired
+	private ActivityService activityService;
+	
 	@RequestMapping(value = "/")
 	public String index(Model model) {
 		return "home";
@@ -34,6 +37,7 @@ public class HelloController {
 	
 	@RequestMapping(value = "/home")
 	public String hello(Model model) {
+		model.addAttribute("postList", activityService.readPostList());
 		return "home";
 	}
 	

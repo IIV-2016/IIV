@@ -32,8 +32,8 @@ public class CommunityController {
 	private UserService userService;
 
 	@RequestMapping(value = "notice", method = RequestMethod.GET)
-	public String item(Model model) {
-		return "community/notices";
+	public String notice(Model model) {
+		return "community/notice";
 	}
 
 	@RequestMapping(value = "board", method = RequestMethod.GET)

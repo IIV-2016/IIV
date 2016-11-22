@@ -18,4 +18,5 @@ public class CommunityBean {
 	private Date writeDate;
 	private int views;
 	private int likes;
+	private String username;
 }

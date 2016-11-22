@@ -53,10 +53,10 @@
 		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs">
 			<div class="container">
-				<h1 class="pull-left">Community</h1>
+				<h1 class="pull-left">IIV Activities</h1>
 				<ul class="pull-right breadcrumb">
-					<li><a href="index.html">List</a></li>
-					<li class="active">Post</li>
+					<li><a href="<%=request.getContextPath()%>/activity/list">Activities List</a></li>
+					<li class="active">IIV Activities</li>
 				</ul>
 			</div>
 		</div><!--/breadcrumbs-->
@@ -69,7 +69,7 @@
 				<div class="news-v3 bg-color-white margin-bottom-30">
 					<div class="news-v3-in">
 						<ul class="list-inline posted-info">
-							<li>By <a href="#">${post.userId}</a></li>
+							<li>By <a href="#">${post.username}</a></li>
 							<li>${post.sector}</li>
 							<li>${post.writeDate}</li>
 						</ul>

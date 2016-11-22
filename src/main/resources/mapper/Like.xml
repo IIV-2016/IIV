@@ -22,7 +22,7 @@
     		community_likes_history 
     	</if>
     	<if test="table == 'activity_likes_history'">
-    		activity_likes_history 
+    		activity_likes_history
     	</if>
     	WHERE post_id = #{postId} AND username = #{username}
     </select>

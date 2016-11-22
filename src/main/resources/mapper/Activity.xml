@@ -13,28 +13,31 @@
 		<result property="writeDate" column="write_date" />
 		<result property="views" column="views" />
 		<result property="likes" column="likes" />
+		<result property="username" column="username" />
 	</resultMap>
 	
 	<select id="readPostList" resultMap="ActivityResultMap">
-    	SELECT id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
-    	FROM activity
+    	SELECT activity.id AS id, sector, title, LEFT(content, 50) AS content, file_id AS fileId, user_id AS userId, write_date AS writeDate, views, likes, username
+    	FROM activity, user
+    	WHERE activity.user_id = user.id
     	ORDER BY id DESC
     </select>
     
     <select id="readPostById" resultType="io.itupo.iiv.domain.ActivityBean">
-    	SELECT id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
-    	FROM activity
-    	WHERE id = #{id}
+    	SELECT activity.id AS id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes, username
+    	FROM activity, user
+    	WHERE activity.user_id = user.id
+    	AND activity.id = #{id}
     </select>
         
 	<insert id="writePost" parameterType="io.itupo.iiv.domain.ActivityBean">
 		INSERT INTO activity (sector, title, content, file_id, user_id, write_date, views, likes) 
-		VALUE (#{sector}, #{title}, #{content}, 0, #{userId}, NOW(), 0, 0)
+		VALUE (#{sector}, #{title}, #{content}, #{fileId}, #{userId}, NOW(), 0, 0)
 	</insert>
 	
 	<update id="updatePost" parameterType="io.itupo.iiv.domain.ActivityBean">
 		UPDATE activity
-		SET title = #{title}, content = #{content}
+		SET title = #{title}, content = #{content}, file_id = #{fileId}
 		WHERE id = #{id}
 	</update>
 	
@@ -62,16 +65,16 @@
 	</update>
 	
 	<select id="sortingByLikes" resultMap="ActivityResultMap">
-    	SELECT id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
-    	FROM activity
+    	SELECT activity.id, sector, title, LEFT(content, 50) AS content, file_id AS fileId, user_id AS userId, write_date AS writeDate, views, likes, username
+    	FROM activity, user
+    	WHERE activity.user_id = user.id
     	ORDER BY likes DESC
-    	LIMIT 0, 3
     </select>
     
     <select id="sortingByViews" resultMap="ActivityResultMap">
-    	SELECT id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes
-    	FROM activity
+    	SELECT activity.id, sector, title, LEFT(content, 50) AS content, file_id AS fileId, user_id AS userId, write_date AS writeDate, views, likes, username
+    	FROM activity, user
+    	WHERE activity.user_id = user.id
     	ORDER BY views DESC
-    	LIMIT 0, 3
     </select>
 </mapper>

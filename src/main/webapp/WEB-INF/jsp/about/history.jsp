@@ -1,6 +1,6 @@
 <div class="content-sm">
 	<div class="headline-center margin-bottom-60">
-		<h2>Our Objective Footages</h2>
+		<h2>IIV's Footages</h2>
 	</div>
 	<!-- Begin Content -->
 		<ul class="timeline-v2">

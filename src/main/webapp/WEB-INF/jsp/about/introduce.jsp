@@ -108,9 +108,11 @@
 	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/fancy-box.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/progress-bar.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/owl-carousel.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/owl-recent-works.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/jquery.parallax.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/counter/waypoints.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/counter/jquery.counterup.min.js"></script>
 	
 	<script type="text/javascript">
 	jQuery(document).ready(function() {
@@ -118,7 +120,8 @@
 		FancyBox.initFancybox();
 		OwlCarousel.initOwlCarousel();
 		StyleSwitcher.initStyleSwitcher();
-		ProgressBar.initProgressBarHorizontal();
+		App.initCounter();
+		App.initParallaxBg();
 		OwlRecentWorks.initOwlRecentWorksV2();
 	});
 	</script>
