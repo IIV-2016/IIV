@@ -24,7 +24,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.authorizeRequests()
 			.antMatchers("/**/write").authenticated()
 			.antMatchers("/**/activity/write/*").authenticated()
-			.antMatchers("/**/alumni/**").hasRole("ALUMNI")
+			.antMatchers("/**/community/**").hasRole("ALUMNI")
 			.antMatchers("/**").permitAll()
 		.and()
 			.formLogin()

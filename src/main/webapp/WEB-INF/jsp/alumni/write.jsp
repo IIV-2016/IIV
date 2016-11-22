@@ -64,7 +64,7 @@
 		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs">
 			<div class="container">
-				<h1 class="pull-left">Community</h1>
+				<h1 class="pull-left">Alumni</h1>
 				<ul class="pull-right breadcrumb">
 					<li><a href="index.html">Home</a></li>
 					<li class="active">Write</li>
@@ -75,7 +75,7 @@
 		<div class="container content-sm">
 			<div class="panel margin-bottom-40">
 				<div class="panel-body">
-					<form action="<%=request.getContextPath()%>/activity/write/submit" method="post" class="margin-bottom-40" role="form">
+					<form action="<%=request.getContextPath()%>/alumni/write/submit" method="post" class="margin-bottom-40" role="form">
 						<div class="col-md-2">
 							<select name="sector" class="form-control input-lg">
 								<option value="weekly">Weekly</option>
@@ -89,13 +89,12 @@
 							<input type="text" class="form-control input-lg"" id="title" name="title" placeholder="title">
 						</div>
 						</div>
-						<div class="col-md-12 margin-bottom-40">
+						<div class="col-md-12">
 							<div class="form-group">
 								<textarea class="form-control" rows="7" id="summernote" name="content"></textarea>
 							</div>
-							<input type="text" class="form-control input-lg" id="fileId" name="fileId" placeholder="file" value="">
 						</div>
-						<center><button type="submit" class="btn-u">Submit</button></center>
+						<button type="submit" class="btn-u">Submit</button>
 						<input type="hidden" name="_csrf" value="${_csrf.token}">
 						<input type="hidden" name="userId" value=<sec:authentication property="principal.id"/>>
 					</form>

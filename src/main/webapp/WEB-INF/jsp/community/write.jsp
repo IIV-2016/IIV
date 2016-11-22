@@ -35,7 +35,7 @@
 	<!-- CSS Theme -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-colors/dark-blue.css" id="style_color">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-skins/dark.css">
-	<link rel="stylesheet" href="/webjars/datatables/1.10.12/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/webjars/datatables/1.10.12/css/dataTables.bootstrap.min.css">
 	<link href="<%=request.getContextPath()%>/dist/summernote.css" rel="stylesheet">
 
 	<!-- CSS Customization -->
@@ -123,9 +123,9 @@
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/style-switcher.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/forms/login.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/forms/contact.js"></script>
-	<script type="text/javascript" src="/webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/table.js"></script>
-	<script type="text/javascript" src="/webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/dist/summernote.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {

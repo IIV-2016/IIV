@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -63,46 +64,76 @@
 		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs">
 			<div class="container">
-				<h1 class="pull-left">Community</h1>
+				<h1 class="pull-left">Alumni</h1>
 				<ul class="pull-right breadcrumb">
 					<li><a href="index.html">Home</a></li>
 					<li class="active">Board</li>
 				</ul>
 			</div>
 		</div><!--/breadcrumbs-->
+		<!--=== Blog Posts ===-->
+		<div class="container content-md">
+			<div class="row">
+				<!-- Blog All Posts -->
+				<div class="col-md-9">
+					<a href="<%=request.getContextPath()%>/alumni/write" class="btn-u btn-u-sm" id="write">Write</a>
+					<table id="example" class="table" cellspacing="0" width="100%">
+				        <thead>
+				            <tr>
+				                <th>No</th>
+				                <th>Title</th>
+				                <th>Name</th>
+				                <th>Date</th>
+				                <th>Views</th>
+				                <th>Likes</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				        	<c:forEach var="post" items="${postList}">
+				            <tr>
+				                <td>${post.id}</td>
+				                <td><a href="<%=request.getContextPath()%>/alumni/post/${post.id}">${post.title}</a></td>
+				                <td>${post.username}</td>
+				                <td>${post.writeDate}</td>
+				                <td>${post.views}</td>
+				                <td>${post.likes}</td>
+				            </tr>
+				            </c:forEach>
+				        </tbody>
+				    </table>
+				</div>
+				<!-- End Blog All Posts -->
+
+				<!-- Blog Sidebar -->
+				<div class="col-md-3">
+					<div class="headline-v2 bg-color-light"><h2>Likes</h2></div>
+					<!-- Trending -->
+					<ul class="list-unstyled blog-latest-posts margin-bottom-50">
+						<c:forEach var="post" begin="0" end="3" varStatus="status" items="${likesList}">
+							<li>
+								<h3><a href="<%=request.getContextPath()%>/alumni/post/${post.id}">${post.title}</a></h3>
+								<small>${post.userId} / ${post.writeDate} / ${post.likes}</small>
+							</li>
+			            </c:forEach>
+					</ul>
+					<!-- End Trending -->
+
+					<div class="headline-v2 bg-color-light"><h2>Views</h2></div>
+					<!-- Latest Links -->
+					<ul class="list-unstyled blog-latest-posts margin-bottom-50">
+						<c:forEach var="post" begin="0" end="3" varStatus="status" items="${viewsList}">
+							<li>
+								<h3><a href="<%=request.getContextPath()%>/alumni/post/${post.id}">${post.title}</a></h3>
+								<small>${post.userId} / ${post.writeDate} / ${post.views}</small>
+							</li>
+			            </c:forEach>
+					</ul>
+					<!-- End Latest Links -->
+				</div>
+				<!-- End Blog Sidebar -->
+			</div>
+		</div>		
 		<!--=== End Breadcrumbs ===-->
-		<div class="container content-sm">
-			<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-		        <thead>
-		            <tr>
-		                <th>No</th>
-		                <th>Title</th>
-		                <th>Name</th>
-		                <th>Date</th>
-		                <th>Views</th>
-		                <th>Likes</th>
-		            </tr>
-		        </thead>
-		        <tbody>
-		            <tr>
-		                <td>1</td>
-		                <td>System Architect</td>
-		                <td>Edinburgh</td>
-		                <td>2011/04/25</td>
-		                <td>12</td>
-		                <td>0</td>
-		            </tr>
-		           	<tr>
-		                <td>2</td>
-		                <td>aaa</td>
-		                <td>aa</td>
-		                <td>2011/04/25</td>
-		                <td>12</td>
-		                <td>0</td>
-		            </tr>
-		        </tbody>
-		    </table>
-	    </div>
 		<!--=== End Footer Version 1 ===-->
 		<%@include file="/WEB-INF/jsp/footer.jsp"%>
 		<!--=== End Header v6 ===-->

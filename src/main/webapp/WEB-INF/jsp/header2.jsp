@@ -31,7 +31,7 @@
 							<div class="shopping-cart-open">
 								<span class="shc-title"><sec:authentication property="principal.username"/></span>
 								<a href="<%=request.getContextPath()%>/mypage"><span class="shc-total">My page</span></a>
-								<form action="/user/logout" method="post">
+								<form action="<%=request.getContextPath()%>/user/logout" method="post">
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 									<input type="submit" value="Logout" class="btn-u">
 								</form>

@@ -35,7 +35,7 @@
 	<!-- CSS Theme -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-colors/dark-blue.css" id="style_color">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-skins/dark.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/webjars/datatables/1.10.12/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" href="/webjars/datatables/1.10.12/css/dataTables.bootstrap.min.css">
 	<link href="<%=request.getContextPath()%>/dist/summernote.css" rel="stylesheet">
 
 	<!-- CSS Customization -->
@@ -64,7 +64,7 @@
 		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs">
 			<div class="container">
-				<h1 class="pull-left">Community</h1>
+				<h1 class="pull-left">Alumni</h1>
 				<ul class="pull-right breadcrumb">
 					<li><a href="index.html">Home</a></li>
 					<li class="active">Write</li>
@@ -75,27 +75,16 @@
 		<div class="container content-sm">
 			<div class="panel margin-bottom-40">
 				<div class="panel-body">
-					<form action="<%=request.getContextPath()%>/activity/write/submit" method="post" class="margin-bottom-40" role="form">
-						<div class="col-md-2">
-							<select name="sector" class="form-control input-lg">
-								<option value="weekly">Weekly</option>
-								<option value="experience">Experience</option>
-								<option value="skill">Skill</option>
-								<option value="knowledge">Knowledge</option>
-							</select>
-						</div>
-						<div class="col-md-10">
+					<form action="<%=request.getContextPath()%>/alumni/update/${post.id}" method="post" class="margin-bottom-40" role="form">
 						<div class="form-group">
-							<input type="text" class="form-control input-lg"" id="title" name="title" placeholder="title">
+							<label for="exampleInputEmail1">Title</label>
+							<input type="text" class="form-control" id="title" name="title" value="${post.title}">
 						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">Content</label>
+							<textarea class="form-control" rows="7" id="summernote" name="content">${post.content}</textarea>
 						</div>
-						<div class="col-md-12 margin-bottom-40">
-							<div class="form-group">
-								<textarea class="form-control" rows="7" id="summernote" name="content"></textarea>
-							</div>
-							<input type="text" class="form-control input-lg" id="fileId" name="fileId" placeholder="file" value="">
-						</div>
-						<center><button type="submit" class="btn-u">Submit</button></center>
+						<button type="submit" class="btn-u">Update</button>
 						<input type="hidden" name="_csrf" value="${_csrf.token}">
 						<input type="hidden" name="userId" value=<sec:authentication property="principal.id"/>>
 					</form>
@@ -124,9 +113,9 @@
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/style-switcher.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/forms/login.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/forms/contact.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/table.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="/webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/dist/summernote.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
