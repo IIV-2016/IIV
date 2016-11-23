@@ -8,28 +8,28 @@
 		<if test="table == 'community_likes_history'">
     		community_likes_history 
     	</if>
-		<if test="table == 'activity_likes_history'">
+    	<if test="table == 'activity_likes_history'">
     		activity_likes_history 
     	</if>
 		<if test="table == 'alumni_likes_history'">
     		alumni_likes_history 
-    	</if>
+    	</if>    	
     	(post_id, username, state) 
 		VALUE (#{postId}, #{username}, TRUE)
 	</insert>
 
 	<select id="checkLikesHistoryById" resultType="int">
-    	SELECT COUNT(*)
+    	SELECT COUNT(state)
     	FROM 
     	<if test="table == 'community_likes_history'">
     		community_likes_history 
     	</if>
     	<if test="table == 'activity_likes_history'">
-    		activity_likes_history
+    		activity_likes_history 
     	</if>
-    	<if test="table == 'alumni_likes_history'">
+		<if test="table == 'alumni_likes_history'">
     		alumni_likes_history 
-    	</if>
+    	</if>    	
     	WHERE post_id = #{postId} AND username = #{username}
     </select>
     
@@ -42,9 +42,9 @@
     	<if test="table == 'activity_likes_history'">
     		activity_likes_history 
     	</if>
-   		<if test="table == 'alumni_likes_history'">
+		<if test="table == 'alumni_likes_history'">
     		alumni_likes_history 
-    	</if> 	
+    	</if>
 		WHERE post_id = #{postId} AND username = #{username}
 	</delete>
 </mapper>
