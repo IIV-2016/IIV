@@ -1,6 +1,5 @@
 package io.itupo.iiv.controller;
 
-import java.sql.Date;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.itupo.iiv.domain.CommentBean;
 import io.itupo.iiv.dto.CommentDto;
@@ -27,7 +25,7 @@ public class CommentController {
     	String table = param.get("table");
     	int postId = Integer.parseInt(param.get("postId"));
     	model.addAttribute("commentList", commentService.readPostList(new CommentDto(table, postId)));
-        return "community/comment";
+        return "comment";
     }
 	
     @RequestMapping(value = "write/submit", method = RequestMethod.POST)
