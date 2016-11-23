@@ -15,4 +15,11 @@ public class CommentBean {
 	private Date writeDate;
 	private int postId;
 	private String table;
+	
+	public CommentBean(String content, String username, int postId, String table) {
+		this.content = content;
+		this.username = username;
+		this.postId = postId;
+		this.table = table;
+	}
 }

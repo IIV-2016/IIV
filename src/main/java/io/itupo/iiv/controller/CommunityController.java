@@ -24,10 +24,7 @@ import io.itupo.iiv.service.UserService;
 public class CommunityController {
 	@Autowired
 	private CommunityService communityService;
-	
-	@Autowired
-	private CommentService commentService;
-	
+
 	@Autowired
 	private UserService userService;
 
@@ -53,7 +50,6 @@ public class CommunityController {
 		}else{
 			model.addAttribute("likeHistory", 0);
 		}
-		model.addAttribute("commentList", commentService.readPostList(new CommentDto("community_comment", id)));
 		model.addAttribute("user", userService.readUserById(bean.getUserId()));
 		return "community/post";
 	}

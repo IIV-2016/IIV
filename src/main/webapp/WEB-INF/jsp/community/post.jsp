@@ -150,22 +150,8 @@
 
 				<h2 class="margin-bottom-20">Comments</h2>
 				<!-- Blog Comments -->
-				<c:forEach var="comment" items="${commentList}">
-				<div class="row blog-comments margin-bottom-30">
-					<div class="col-sm-2 sm-margin-bottom-40">
-						<img src="<%=request.getContextPath()%>/img/team/img1-sm.jpg" alt="">
-					</div>
-					<div class="col-sm-10">
-						<div class="comments-itself">
-							<h4>
-								${comment.username}
-								<span>${comment.writeDate}</span>
-							</h4>
-							<p>${comment.content}</p>
-						</div>
-					</div>
+				<div id="commentList">
 				</div>
-	            </c:forEach>
 				<!-- End Blog Comments -->
 
 				<hr>
@@ -173,7 +159,7 @@
 				<h2 class="margin-bottom-20">Post a Comment</h2>
 				<!-- Form -->
 				<sec:authorize access="isAuthenticated()">
-				<form action="<%=request.getContextPath()%>/comment/write/submit" method="post" id="sky-form3" class="sky-form comment-style">
+				<form action="<%=request.getContextPath()%>/comment/write/submit" name="comment" method="post" id="sky-form3" class="sky-form comment-style">
 					<input type="hidden" name="username" id="username" value="<sec:authentication property='principal.username'/>" placeholder="name" class="form-control">
 					<input type="hidden" name="postId" id="postId" value="${post.id}" class="form-control">
 					<input type="hidden" name="table" id="table" value="community_comment" class="form-control">
@@ -184,7 +170,7 @@
 							</div>
 						</div>
 
-						<p><button type="submit" class="btn-u">Submit</button></p>
+						<p><button type="button" class="btn-u" onclick="addComment()">Submit</button></p>
 					</fieldset>
 
 					<div class="message">
@@ -228,6 +214,41 @@
 			ContactForm.initContactForm();
 			StyleSwitcher.initStyleSwitcher();
 		});
+		
+		$(document).ready(function(){
+			commentList();
+		});
+		
+		function commentList(){
+			var postId = ${post.id};
+			var allData = { "postId": postId, "table": "community_comment"};
+		    $.ajax({
+		        url:'<%=request.getContextPath()%>/comment/list',
+		        type:"POST",
+		        data: allData,
+		        success:function(data){
+		        	$("#commentList").html(data);
+		        }
+		    });
+		}
+				
+		function addComment(){
+			var username = $("#username").val();
+			var postId = $("#postId").val();
+			var table = $("#table").val();
+			var content = $("#content").val();
+			var allData = { "username": username, "postId": postId, "table": table, "content" : content};
+		    $.ajax({
+		        url:'<%=request.getContextPath()%>/comment/write/submit',
+		        type:"POST",
+		        data: allData,
+		        success:function(data){
+		        	commentList();
+		        	$("#content").val("");
+		        }
+		    });
+		}
+
 	</script>
 	<!--[if lt IE 9]>
     <script src="<%=request.getContextPath()%>/plugins/respond.js"></script>
