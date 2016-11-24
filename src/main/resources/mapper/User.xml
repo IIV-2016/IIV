@@ -30,4 +30,7 @@
      <select id="readUserById" parameterType="int" resultType="io.itupo.iiv.domain.UserBean">
           SELECT * FROM user WHERE id = #{id}
      </select> 
+	<select id="readUserByUsername" parameterType="String" resultType="io.itupo.iiv.domain.UserBean">
+          SELECT * FROM user WHERE username = #{username}
+     </select> 
 </mapper>

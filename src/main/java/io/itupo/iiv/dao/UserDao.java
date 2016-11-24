@@ -12,4 +12,5 @@ public interface UserDao {
     public String readUsernameById(int id);
     public int checkUsername(String username);
     public UserBean readUserById(int id);
+    public UserBean readUserByUsername(String username);
 }

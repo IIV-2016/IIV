@@ -1,11 +1,11 @@
 package io.itupo.iiv.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,6 +39,13 @@ public class UserController {
     @RequestMapping(value = "registration")
     public String registration() {
         return "user/registration";
+    }
+    
+    @RequestMapping(value = "setting")
+    public String setting(Model model, Principal principal) {
+    	UserBean bean = userService.readUserByUsername(principal.getName());
+    	model.addAttribute("user", bean);
+        return "user/setting";
     }
 	
     @RequestMapping(value = "registerUser", method = RequestMethod.POST)

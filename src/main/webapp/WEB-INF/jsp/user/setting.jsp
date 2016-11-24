@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -31,6 +33,8 @@
 	<!-- CSS Theme -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-colors/dark-blue.css" id="style_color">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-skins/dark.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/sky-forms-pro/skyforms/css/sky-forms.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/pages/profile.css">
 
 	<!-- CSS Customization -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css">
@@ -44,93 +48,116 @@
 		<sec:authorize access="isAuthenticated()">
 			<%@include file="/WEB-INF/jsp/header2.jsp"%>
 		</sec:authorize>
-		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs">
 			<div class="container">
-				<h1 class="pull-left">Registration</h1>
+				<h1 class="pull-left">Setting</h1>
 				<ul class="pull-right breadcrumb">
 					<li><a href="index.html">Home</a></li>
-					<li><a href="">Pages</a></li>
-					<li class="active">Registration</li>
+					<li class="active">Setting</li>
 				</ul>
-			</div><!--/container-->
-		</div><!--/breadcrumbs-->
-		<!--=== End Breadcrumbs ===-->
-
-		<!--=== Content Part ===-->
-		<div class="container content">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-					<form name="register" class="reg-page" action="<%=request.getContextPath()%>/user/registerUser" method="post">
-						<div class="reg-header">
-							<h2>Register a new account</h2>
-							<p>Already Signed Up? Click <a href="page_login.html" class="color-green">Sign In</a> to login your account.</p>
-						</div>
-						<label>ID <span id="checkUsername" class="color-red"></span></label>
-						${user.id}
-						<div class="row">
-							<div class="col-sm-6">
-								<label>First Name <span id="checkFirstname" class="color-red"></span></label>
-								<input type="text" name="firstname" id="firstname" class="form-control margin-bottom-20">
-							</div>
-							<div class="col-sm-6">
-								<label>Last Name <span id="checkLastname" class="color-red"></span></label>
-								<input type="text" name="lastname" id="lastname" class="form-control margin-bottom-20">
-							</div>
-						</div>
-						<label>Email Address <span id="checkEmail" class="color-red"></span></label>
-						<input type="email" name="email" id="email" class="form-control margin-bottom-20">
-
-						<div class="row">
-							<div class="col-sm-6">
-								<label>Password <span id="checkPassword" class="color-red">*</span></label>
-								<input type="password" name="password" id="password" class="form-control margin-bottom-20">
-							</div>
-							<div class="col-sm-6">
-								<label>Confirm Password <span id="checkConfirmPassword" class="color-red">*</span></label>
-								<input type="password" name="confirmPassword" id="confirmPassword" class="form-control margin-bottom-20">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6">
-								<label>Did you IIV?</label> 
-							</div>
-							<div class="col-sm-6">
-								<input type="radio" name="level" value="ALUMNI"> Yes 
-								<input type="radio" name="level" value="USER" checked> No
-							</div>
-						</div>
-						<div id="selectYear" style="display:none">
-							<label>IIV Activity Year</label>
-							<select class="form-control" name="year">
-								<option value="0" checked>none</option>
-								<option value="2016">2016</option>
-								<option value="2015">2015</option>
-								<option value="2014">2014</option>
-								<option value="2013">2013</option>
-							</select>
-						</div>
-
-						<hr>
-
-						<div class="row">
-							<span id="warning"></span>
-							<div class="col-lg-6 checkbox">
-								<label>
-									<input type="checkbox">
-									I read <a href="page_terms.html" class="color-green">Terms and Conditions</a>
-								</label>
-							</div>
-							<div class="col-lg-6 text-right">
-								<button class="btn-u" type="button" onclick="$.checkSubmit()">Register</button>
-							</div>
-						</div>
-						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-					</form>
-				</div>
 			</div>
-		</div><!--/container-->
-		<!--=== End Content Part ===-->
+		</div>
+
+		<div class="container content profile">
+			<div class="row">
+				<!--Left Sidebar-->
+				<div class="col-md-3 md-margin-bottom-40">
+					<img class="img-responsive profile-img margin-bottom-20" src="<%=request.getContextPath()%>/img/team/img32-md.jpg" alt="">
+
+					<ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+						<li class="list-group-item">
+							<a href="page_profile.html"><i class="fa fa-bar-chart-o"></i> Id</a>
+						</li>
+						<li class="list-group-item">
+							<a href="page_profile_me.html"><i class="fa fa-user"></i> First name</a>
+						</li>
+						<li class="list-group-item">
+							<a href="page_profile_users.html"><i class="fa fa-group"></i> Last name</a>
+						</li>
+						<li class="list-group-item">
+							<a href="page_profile_projects.html"><i class="fa fa-cubes"></i> Email Address</a>
+						</li>
+						<li class="list-group-item">
+							<a href="page_profile_comments.html"><i class="fa fa-comments"></i> IIV</a>
+						</li>
+						<li class="list-group-item">
+							<a href="page_profile_history.html"><i class="fa fa-history"></i> Year</a>
+						</li>
+					</ul>
+				</div>
+				<!--End Left Sidebar-->
+
+				<!-- Profile Content -->
+				<div class="col-md-9">
+					<div class="profile-body margin-bottom-20">
+						<div class="tab-v1">
+							<div class="tab-content">
+								<div id="profile" class="profile-edit tab-pane fade in active">
+									<h2 class="heading-md">User Information</h2>
+									<p>you can update information</p>
+									<br>
+									<dl class="dl-horizontal">
+										<dt><strong>Id </strong></dt>
+										<dd>
+										${user.username}
+										</dd>
+										<hr>
+										<dt><strong>First name </strong></dt>
+										<dd>
+											<span id="checkFirstname" class="color-red"></span>
+											<input type="text" name="firstname" id="firstname" class="form-control" value="${user.firstname}">
+										</dd>
+										<hr>
+										<dt><strong>Last name </strong></dt>
+										<dd>
+											<span id="checkLastname" class="color-red"></span>
+											<input type="text" name="lastname" id="lastname" class="form-control" value="${user.lastname}">
+										</dd>
+										<hr>
+										<dt><strong>Email Address </strong></dt>
+										<dd>
+											<span id="checkEmail" class="color-red"></span>
+											<input type="email" name="email" id="email" class="form-control" value="${user.email}">
+										</dd>
+										<hr>
+										<dt><strong>Current Password  </strong></dt>
+										<dd>
+											<span id="checkCurrentPassword" class="color-red"></span>
+											<input type="password" name="currentPassword" id="currentPassword" class="form-control">
+										</dd>
+										<hr>
+										<dt><strong>New Password </strong></dt>
+										<dd>
+											<span id="checkNewPassword" class="color-red"></span>
+											<input type="password" name="newPassword" id="newPassword" class="form-control">
+										</dd>
+										<hr>
+										<dt><strong>Did you IIV? </strong></dt>
+										<dd>
+											<div id="yearValue" style="display:none">${user.year}</div>
+											<input type="radio" name="level" value="ALUMNI"> Yes 
+											<input type="radio" name="level" value="USER"> No							
+										<hr>
+									</dl>
+									<div id="selectYear" style="display:none">
+										<dt><strong>IIV Activity Year </strong></dt>
+										<dd>
+											<input type="text" name="year" id="year" class="form-control" value="${user.year}">
+										</dd>
+										<hr>
+									</div>						
+									<span id="warning"></span>
+									<button type="button" class="btn-u btn-u-default">Cancel</button>
+									<button type="button" class="btn-u">Save Changes</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Profile Content -->
+			</div><!--/end row-->
+		</div>
+
 		<%@include file="/WEB-INF/jsp/footer.jsp"%>
 		<!--=== End Header v6 ===-->
 	</div><!--/wrapper-->
@@ -158,8 +185,9 @@
 			var stateFirstname = false;
 			var stateLastname = false;
 			var stateEmail = false;
-			var statePassword = false;
-			var stateConfirmPassword = false;
+			var stateCurrentPassword = false;
+			var stateNewPassword = false;
+			$.checkLevel();
 			
 			$('#username').blur(function(){
 			    $.ajax({
@@ -216,29 +244,29 @@
             		stateEmail = true;
 				}
 			});
-			$('#password').blur(function(){
-				var password = $('#password').val().length;
+			$('#currentPassword').blur(function(){
+				var password = $('#currentPassword').val().length;
 				if(password == 0){
-            		$('#checkPassword').html('check password');	
+            		$('#checkCurrentPassword').html('check password');	
             		statePassword = false;
 				}else{
-            		$('#checkPassword').html('');	
+            		$('#checkCurrentPassword').html('');	
             		statePassword = true;
 				}
 			});
-			$('#confirmPassword').blur(function(){
-				var password = $('#password').val().length;
-				var confirmPassword = $('#confirmPassword').val().length;
-				if(confirmPassword != password){
-            		$('#checkConfirmPassword').html('check password');	
-            		stateConfirmPassword = false;
+			$('#newPassword').blur(function(){
+				var currentPassword = $('#currentPassword').val().length;
+				var newPassword = $('#newPassword').val().length;
+				if(currentPassword != newPassword){
+            		$('#checkNewPassword').html('check password');	
+            		stateNewPassword = false;
 				}else{
-            		$('#checkConfirmPassword').html('');	
-            		stateConfirmPassword = true;
+            		$('#checkNewPassword').html('');	
+            		stateNewPassword = true;
 				}
 			});
 			$.checkSubmit = function(){
-			    if(stateUsername && stateFirstname && stateLastname && stateEmail && statePassword && stateConfirmPassword){
+			    if(stateFirstname && stateLastname && stateEmail && stateCurrentPassword && stateNewPassword){
 			    	document.register.submit();
 			    }else{
 			    	$('#warning').html('<div class="alert alert-danger fade in"><strong>warning</strong> check your information.</div>');
@@ -253,7 +281,19 @@
 		        }
 		    });
 		});
-	</script>	
+		$.checkLevel = function(){
+			var year = $('#yearValue').html();
+		    if(year == 0){
+		    	$('input[name="level"][value="USER"]').attr('checked', true);
+		    	$('input[name="level"][value="ALUMNI"]').attr('checked', false); 
+		    	$('#selectYear').hide();
+		    }else{
+		    	$('input[name="level"][value="ALUMNI"]').attr('checked', true); 
+		    	$('input[name="level"][value="USER"]').attr('checked', false); 
+		    	$('#selectYear').show();
+		    }
+		}
+	</script>
 	<!--[if lt IE 9]>
     <script src="<%=request.getContextPath()%>/plugins/respond.js"></script>
     <script src="<%=request.getContextPath()%>/plugins/html5shiv.js"></script>

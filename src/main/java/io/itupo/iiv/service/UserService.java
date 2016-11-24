@@ -63,4 +63,7 @@ public class UserService implements UserDetailsService{
     public UserBean readUserById(int id){
     	return userDao.readUserById(id);
     }
+    public UserBean readUserByUsername(String username){
+    	return userDao.readUserByUsername(username);
+    }
 }
