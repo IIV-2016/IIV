@@ -14,6 +14,12 @@
 		VALUE (#{username}, #{password}, #{firstname}, #{lastname}, #{email}, #{year})
 	</insert>
 	
+	<update id="updateUser" parameterType="io.itupo.iiv.domain.UserBean">
+		UPDATE user
+		SET firstname = #{firstname}, lastname = #{lastname}, email = #{email}, year = #{year}
+		WHERE id = #{id}
+	</update>
+	
 	<insert id="registerAuthority" parameterType="io.itupo.iiv.domain.UserBean">
 		INSERT INTO authority (username, authority_name) 
 		VALUE (#{username}, #{level})

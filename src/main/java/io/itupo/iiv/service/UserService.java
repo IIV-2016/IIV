@@ -50,6 +50,10 @@ public class UserService implements UserDetailsService{
 		userDao.registerAuthority(bean);
 	}
 	
+	public void updateUser(UserBean bean){
+		userDao.updateUser(bean);
+	}
+	
     public String readUsernameById(int id){
     	return userDao.readUsernameById(id);
     }

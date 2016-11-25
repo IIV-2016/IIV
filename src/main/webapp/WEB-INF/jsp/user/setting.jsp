@@ -88,74 +88,97 @@
 				<!--End Left Sidebar-->
 
 				<!-- Profile Content -->
-				<div class="col-md-9">
-					<div class="profile-body margin-bottom-20">
-						<div class="tab-v1">
-							<div class="tab-content">
-								<div id="profile" class="profile-edit tab-pane fade in active">
-									<h2 class="heading-md">User Information</h2>
-									<p>you can update information</p>
-									<br>
-									<dl class="dl-horizontal">
-										<dt><strong>Id </strong></dt>
-										<dd>
-										${user.username}
-										</dd>
-										<hr>
-										<dt><strong>First name </strong></dt>
-										<dd>
-											<span id="checkFirstname" class="color-red"></span>
-											<input type="text" name="firstname" id="firstname" class="form-control" value="${user.firstname}">
-										</dd>
-										<hr>
-										<dt><strong>Last name </strong></dt>
-										<dd>
-											<span id="checkLastname" class="color-red"></span>
-											<input type="text" name="lastname" id="lastname" class="form-control" value="${user.lastname}">
-										</dd>
-										<hr>
-										<dt><strong>Email Address </strong></dt>
-										<dd>
-											<span id="checkEmail" class="color-red"></span>
-											<input type="email" name="email" id="email" class="form-control" value="${user.email}">
-										</dd>
-										<hr>
-										<dt><strong>Current Password  </strong></dt>
-										<dd>
-											<span id="checkCurrentPassword" class="color-red"></span>
-											<input type="password" name="currentPassword" id="currentPassword" class="form-control">
-										</dd>
-										<hr>
-										<dt><strong>New Password </strong></dt>
-										<dd>
-											<span id="checkNewPassword" class="color-red"></span>
-											<input type="password" name="newPassword" id="newPassword" class="form-control">
-										</dd>
-										<hr>
-										<dt><strong>Did you IIV? </strong></dt>
-										<dd>
-											<div id="yearValue" style="display:none">${user.year}</div>
-											<input type="radio" name="level" value="ALUMNI"> Yes 
-											<input type="radio" name="level" value="USER"> No							
-										<hr>
-									</dl>
-									<div id="selectYear" style="display:none">
-										<dt><strong>IIV Activity Year </strong></dt>
-										<dd>
-											<input type="text" name="year" id="year" class="form-control" value="${user.year}">
-										</dd>
-										<hr>
-									</div>						
-									<span id="warning"></span>
-									<button type="button" class="btn-u btn-u-default">Cancel</button>
-									<button type="button" class="btn-u">Save Changes</button>
+				<form action="<%=request.getContextPath()%>/user/update" method="post">
+					<div class="col-md-9">
+						<div class="profile-body margin-bottom-20">
+							<div class="tab-v1">
+								<div class="tab-content">
+									<div id="profile" class="profile-edit tab-pane fade in active">
+										<h2 class="heading-md">User Information</h2>
+										<p>you can update information</p>
+										<br>
+										<dl class="dl-horizontal">
+											<dt><strong>Id </strong></dt>
+											<dd>
+											<input type="hidden" name="id" value="${user.id}">
+											${user.username}
+											</dd>
+											<hr>
+											<dt><strong>First name </strong></dt>
+											<dd>
+												<span id="checkFirstname" class="color-red"></span>
+												<input type="text" name="firstname" id="firstname" class="form-control" value="${user.firstname}">
+											</dd>
+											<hr>
+											<dt><strong>Last name </strong></dt>
+											<dd>
+												<span id="checkLastname" class="color-red"></span>
+												<input type="text" name="lastname" id="lastname" class="form-control" value="${user.lastname}">
+											</dd>
+											<hr>
+											<dt><strong>Email Address </strong></dt>
+											<dd>
+												<span id="checkEmail" class="color-red"></span>
+												<input type="email" name="email" id="email" class="form-control" value="${user.email}">
+											</dd>
+											<hr>
+											<dt><strong>Password </strong></dt>
+											<dd>
+												<input type="button" class="btn-u" data-toggle="modal" data-target="#responsive" value="Chage Password">
+											</dd>
+											<hr>
+											<dt><strong>Did you IIV? </strong></dt>
+											<dd>
+												<div id="yearValue" style="display:none">${user.year}</div>
+												<input type="radio" name="level" value="ALUMNI"> Yes 
+												<input type="radio" name="level" value="USER"> No							
+											<hr>
+										</dl>
+										<div id="selectYear" style="display:none">
+											<dt><strong>IIV Activity Year </strong></dt>
+											<dd>
+												<input type="text" name="year" id="year" class="form-control" value="${user.year}">
+											</dd>
+											<hr>
+										</div>
+															
+										<span id="warning"></span>
+										<button type="button" class="btn-u btn-u-default">Cancel</button>
+										<button type="submit" class="btn-u">Save Changes</button>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</form>
 				<!-- End Profile Content -->
 			</div><!--/end row-->
+		</div>
+		<div class="modal fade" id="responsive" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel4">Change Password</h4>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-md-6">
+								<h4>Current Password</h4>
+								<p><input class="form-control" type="text" /></p>
+							</div>
+							<div class="col-md-6">
+								<h4>New Password</h4>
+								<p><input class="form-control" type="text" /></p>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn-u btn-u-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn-u btn-u-primary">Save changes</button>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<%@include file="/WEB-INF/jsp/footer.jsp"%>

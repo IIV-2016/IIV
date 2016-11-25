@@ -48,6 +48,12 @@ public class UserController {
         return "user/setting";
     }
 	
+    @RequestMapping(value = "update")
+    public String update(UserBean bean) {
+    	userService.updateUser(bean);
+        return "redirect:/user/setting";
+    }
+    
     @RequestMapping(value = "registerUser", method = RequestMethod.POST)
     public String registerUser(UserBean bean) {
     	userService.registerUser(bean);

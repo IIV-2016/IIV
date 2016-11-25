@@ -15,6 +15,7 @@ create table user (
      firstname varchar(50) NULL,
      lastname varchar(50) NULL,
      email varchar(50) NULL,
+     year varchar(50) NULL,
      isAccountNonExpired boolean DEFAULT TRUE,
      isAccountNonLocked boolean DEFAULT TRUE,
      isCredentialsNonExpired boolean DEFAULT TRUE,
