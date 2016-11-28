@@ -88,7 +88,7 @@
 				<!--End Left Sidebar-->
 
 				<!-- Profile Content -->
-				<form action="<%=request.getContextPath()%>/user/update" method="post">
+				<form action="<%=request.getContextPath()%>/user/update" method="post" name="update">
 					<div class="col-md-9">
 						<div class="profile-body margin-bottom-20">
 							<div class="tab-v1">
@@ -100,7 +100,7 @@
 										<dl class="dl-horizontal">
 											<dt><strong>Id </strong></dt>
 											<dd>
-											<input type="hidden" name="id" value="${user.id}">
+											<input type="hidden" name="username" id="username" value="${user.username}">
 											${user.username}
 											</dd>
 											<hr>
@@ -137,7 +137,7 @@
 										<div id="selectYear" style="display:none">
 											<dt><strong>IIV Activity Year </strong></dt>
 											<dd>
-												<input type="text" name="year" id="year" class="form-control" value="${user.year}">
+												<input type="text" name="year" id="year" class="form-control">
 											</dd>
 											<hr>
 										</div>
@@ -154,33 +154,31 @@
 				<!-- End Profile Content -->
 			</div><!--/end row-->
 		</div>
-		<div class="modal fade" id="responsive" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel4">Change Password</h4>
-					</div>
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-md-6">
-								<h4>Current Password</h4>
-								<p><input class="form-control" type="text" /></p>
-							</div>
-							<div class="col-md-6">
-								<h4>New Password</h4>
-								<p><input class="form-control" type="text" /></p>
+		<form action="<%=request.getContextPath()%>/user/update/password" method="post">
+			<input type="hidden" name="username" value="${user.username}"/>
+			<div class="modal fade" id="responsive" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel4">Change Password</h4>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-12">
+									<h5>New Password <span id="checkNewPassword" class="color-red"></span></h5>
+									<p><input class="form-control" type="password" name="password" id="password"/></p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn-u btn-u-default" data-dismiss="modal">Close</button>
-						<button type="submit" class="btn-u btn-u-primary">Save changes</button>
+						<div class="modal-footer">
+							<button type="button" class="btn-u btn-u-default" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn-u btn-u-primary">Save changes</button>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-
+		</form>
 		<%@include file="/WEB-INF/jsp/footer.jsp"%>
 		<!--=== End Header v6 ===-->
 	</div><!--/wrapper-->
@@ -211,31 +209,6 @@
 			var stateCurrentPassword = false;
 			var stateNewPassword = false;
 			$.checkLevel();
-			
-			$('#username').blur(function(){
-			    $.ajax({
-			        url:'<%=request.getContextPath()%>/user/check',
-			        type:"POST",
-			        dataType : "json",
-			        data: {
-			        	"username" : $('#username').val()
-			        },
-			        success:function(data){
-			        	var result = data.result;
-			            if(result == 0){
-			            	$('#checkUsername').html('ok');
-			            	stateUsername = true;
-			            }else if(result == 1){
-			            	$('#checkUsername').html('<i class="fa fa-exclamation-circle"></i> already use id');
-			            	stateUsername = false;
-			            }
-			        },
-			        error:function(jqXHR, textStatus, errorThrown){
-			        	$('#checkUsername').html("error");
-			            self.close();
-			        }
-			    });	
-			});
 			
 			$('#firstname').blur(function(){
 				var firstname = $('#firstname').val().length;
@@ -268,20 +241,19 @@
 				}
 			});
 			$('#currentPassword').blur(function(){
-				var password = $('#currentPassword').val().length;
-				if(password == 0){
+				var currentPassword = $('#currentPassword').val().length;
+				if(currentPassword == 0){
             		$('#checkCurrentPassword').html('check password');	
-            		statePassword = false;
+            		stateCurrentPassword = false;
 				}else{
             		$('#checkCurrentPassword').html('');	
-            		statePassword = true;
+            		stateCurrentPassword = true;
 				}
 			});
 			$('#newPassword').blur(function(){
-				var currentPassword = $('#currentPassword').val().length;
 				var newPassword = $('#newPassword').val().length;
-				if(currentPassword != newPassword){
-            		$('#checkNewPassword').html('check password');	
+				if(newPassword == 0){
+            		$('#checkNewPassword').html('check new password');	
             		stateNewPassword = false;
 				}else{
             		$('#checkNewPassword').html('');	
@@ -289,8 +261,15 @@
 				}
 			});
 			$.checkSubmit = function(){
-			    if(stateFirstname && stateLastname && stateEmail && stateCurrentPassword && stateNewPassword){
-			    	document.register.submit();
+			    if(stateFirstname && stateLastname && stateEmail){
+			    	document.update.submit();
+			    }else{
+			    	$('#warning').html('<div class="alert alert-danger fade in"><strong>warning</strong> check your information.</div>');
+			    }
+			}
+			$.updateSubmit = function(){
+			    if(stateCurrentPassword && stateNewPassword){
+			    	document.passwordForm.submit();
 			    }else{
 			    	$('#warning').html('<div class="alert alert-danger fade in"><strong>warning</strong> check your information.</div>');
 			    }
@@ -309,10 +288,12 @@
 		    if(year == 0){
 		    	$('input[name="level"][value="USER"]').attr('checked', true);
 		    	$('input[name="level"][value="ALUMNI"]').attr('checked', false); 
+		    	$('#year').val("0");
 		    	$('#selectYear').hide();
 		    }else{
 		    	$('input[name="level"][value="ALUMNI"]').attr('checked', true); 
-		    	$('input[name="level"][value="USER"]').attr('checked', false); 
+		    	$('input[name="level"][value="USER"]').attr('checked', false);
+		    	$('#year').val(year);
 		    	$('#selectYear').show();
 		    }
 		}

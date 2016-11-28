@@ -20,6 +20,12 @@
 		WHERE id = #{id}
 	</update>
 	
+	<update id="updatePassword" parameterType="io.itupo.iiv.dto.UserDto">
+		UPDATE user
+		SET password = #{password}
+		WHERE username = #{username}
+	</update>
+	
 	<insert id="registerAuthority" parameterType="io.itupo.iiv.domain.UserBean">
 		INSERT INTO authority (username, authority_name) 
 		VALUE (#{username}, #{level})
@@ -32,6 +38,10 @@
      <select id="checkUsername" parameterType="String" resultType="int">
           SELECT count(username) FROM user WHERE username = #{username}
      </select>
+     
+	<select id="checkPassword" parameterType="io.itupo.iiv.dto.UserDto" resultType="int">
+          SELECT count(username) FROM user WHERE username = #{username} AND password = #{password}
+	</select>
      
      <select id="readUserById" parameterType="int" resultType="io.itupo.iiv.domain.UserBean">
           SELECT * FROM user WHERE id = #{id}

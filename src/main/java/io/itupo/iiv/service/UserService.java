@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import io.itupo.iiv.dao.UserDao;
 import io.itupo.iiv.domain.UserBean;
+import io.itupo.iiv.dto.UserDto;
 
 @Service
 public class UserService implements UserDetailsService{
@@ -54,13 +55,30 @@ public class UserService implements UserDetailsService{
 		userDao.updateUser(bean);
 	}
 	
+	public void updatePassword(UserDto bean){
+        String rawPassword = bean.getPassword();
+        String encodedPassword = new BCryptPasswordEncoder().encode(rawPassword);
+        bean.setPassword(encodedPassword);
+		userDao.updatePassword(bean);
+	}
+	
     public String readUsernameById(int id){
     	return userDao.readUsernameById(id);
     }
     public int checkUsername(String username){
     	return userDao.checkUsername(username);
     }
-    
+    public int checkPassword(UserDto bean){
+        String rawPassword = bean.getPassword();
+        String encodedPassword = new BCryptPasswordEncoder().encode(rawPassword);
+        bean.setPassword(encodedPassword);
+        System.out.println(bean);
+    	if((userDao.checkPassword(bean)).equals(encodedPassword)){
+    		return 1;
+    	}else{
+    		return 0;
+    	}
+    }
     public PasswordEncoder passwordEncoder() {
          return this.passwordEncoder;
     }

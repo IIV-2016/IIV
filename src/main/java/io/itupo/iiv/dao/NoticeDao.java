@@ -1,9 +1,7 @@
 package io.itupo.iiv.dao;
 
-import java.util.List;
-
-import io.itupo.iiv.domain.IivBean;
-import io.itupo.iiv.dto.SearchDto;
+import io.itupo.iiv.domain.NoticeBean;
 
 public interface NoticeDao {
+	boolean writePost(NoticeBean bean);
 }

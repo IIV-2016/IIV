@@ -67,7 +67,7 @@
 							<p>Already Signed Up? Click <a href="page_login.html" class="color-green">Sign In</a> to login your account.</p>
 						</div>
 						<label>ID <span id="checkUsername" class="color-red"></span></label>
-						${user.id}
+						<input type="text" name="username" id="username" class="form-control margin-bottom-20">
 						<div class="row">
 							<div class="col-sm-6">
 								<label>First Name <span id="checkFirstname" class="color-red"></span></label>
@@ -167,6 +167,7 @@
 			        type:"POST",
 			        dataType : "json",
 			        data: {
+			        	"key" : "username",
 			        	"username" : $('#username').val()
 			        },
 			        success:function(data){

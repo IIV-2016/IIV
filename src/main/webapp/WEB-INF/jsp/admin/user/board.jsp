@@ -64,7 +64,7 @@
 		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs">
 			<div class="container">
-				<h1 class="pull-left">Community</h1>
+				<h1 class="pull-left">User</h1>
 				<ul class="pull-right breadcrumb">
 					<li><a href="index.html">Home</a></li>
 					<li class="active">Board</li>
@@ -81,11 +81,12 @@
 				        <thead>
 				            <tr>
 				                <th>No</th>
-				                <th>Title</th>
-				                <th>Name</th>
-				                <th>Date</th>
-				                <th>Views</th>
-				                <th>Likes</th>
+				                <th>Id</th>
+				                <th>Email</th>
+				                <th>First name</th>
+				                <th>Last name</th>
+				                <th>Alumni</th>
+				                <th>Year</th>
 				            </tr>
 				        </thead>
 				        <tbody>
@@ -103,34 +104,6 @@
 				    </table>
 				</div>
 				<!-- End Blog All Posts -->
-
-				<!-- Blog Sidebar -->
-				<div class="col-md-3">
-					<div class="headline-v2 bg-color-light"><h2>Likes</h2></div>
-					<!-- Trending -->
-					<ul class="list-unstyled blog-latest-posts margin-bottom-50">
-						<c:forEach var="post" begin="0" end="3" varStatus="status" items="${likesList}">
-							<li>
-								<h3><a href="<%=request.getContextPath()%>/community/post/${post.id}">${post.title}</a></h3>
-								<small>${post.userId} / ${post.writeDate} / ${post.likes}</small>
-							</li>
-			            </c:forEach>
-					</ul>
-					<!-- End Trending -->
-
-					<div class="headline-v2 bg-color-light"><h2>Views</h2></div>
-					<!-- Latest Links -->
-					<ul class="list-unstyled blog-latest-posts margin-bottom-50">
-						<c:forEach var="post" begin="0" end="3" varStatus="status" items="${viewsList}">
-							<li>
-								<h3><a href="<%=request.getContextPath()%>/community/post/${post.id}">${post.title}</a></h3>
-								<small>${post.userId} / ${post.writeDate} / ${post.views}</small>
-							</li>
-			            </c:forEach>
-					</ul>
-					<!-- End Latest Links -->
-				</div>
-				<!-- End Blog Sidebar -->
 			</div>
 		</div>		
 		<!--=== End Breadcrumbs ===-->
@@ -155,9 +128,9 @@
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/style-switcher.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/forms/login.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/forms/contact.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/table.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" src="/webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();

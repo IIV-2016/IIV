@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.itupo.iiv.domain.UserBean;
+import io.itupo.iiv.dto.UserDto;
 import io.itupo.iiv.service.UserService;
 
 @Controller
@@ -58,6 +59,12 @@ public class UserController {
     public String registerUser(UserBean bean) {
     	userService.registerUser(bean);
         return "redirect:/home";
+    }
+    
+    @RequestMapping(value = "update/password", method = RequestMethod.POST)
+    public String updatePassword(UserDto bean) {
+    	userService.updatePassword(bean);
+        return "redirect:/user/setting";
     }
 
     @ResponseBody
