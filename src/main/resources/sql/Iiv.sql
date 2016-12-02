@@ -51,11 +51,9 @@ CREATE TABLE notice (
 	sector VARCHAR(50) NULL,
 	title VARCHAR(100) NULL,
 	content LONGTEXT NULL,
-	file_id VARCHAR(100) NULL,
 	user_id VARCHAR(50) NULL,
 	write_date DATE,
-	views INT(100) DEFAULT 0,
-	likes INT(100) DEFAULT 0
+	views INT(100) DEFAULT 0
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 CREATE TABLE community (

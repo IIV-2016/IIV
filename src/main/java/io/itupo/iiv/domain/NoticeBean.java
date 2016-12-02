@@ -13,7 +13,10 @@ public class NoticeBean {
 	private String sector;
 	private String title;
 	private String content;
+	private int fileId;
 	private int userId;
 	private Date writeDate;
 	private int views;
+	private int likes;
+	private String username;
 }

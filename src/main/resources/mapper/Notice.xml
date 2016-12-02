@@ -3,8 +3,52 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.itupo.iiv.dao.NoticeDao">
+	<resultMap id="NoticeResultMap" type="io.itupo.iiv.domain.NoticeBean">
+		<result property="id" column="id" />
+		<result property="sector" column="sector" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="fileId" column="file_id" />
+		<result property="userId" column="user_id" />
+		<result property="writeDate" column="write_date" />
+		<result property="views" column="views" />
+		<result property="likes" column="likes" />
+	</resultMap>
+
+	<select id="readPostList" resultMap="NoticeResultMap">
+    	SELECT notice.id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes, username
+    	FROM notice, user
+    	WHERE notice.user_id = user.id
+    	ORDER BY id DESC
+    </select>
+    
+    <select id="readPostById" resultType="io.itupo.iiv.domain.NoticeBean">
+    	SELECT notice.id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes, username
+    	FROM notice, user
+    	WHERE notice.user_id = user.id
+    	AND notice.id = #{id}
+    </select>
+    
 	<insert id="writePost" parameterType="io.itupo.iiv.domain.NoticeBean">
-		INSERT INTO notice (sector, title, content, user_id, write_date, views) 
-		VALUE (#{sector}, #{title}, #{content}, 0, #{userId}, NOW(), 0)
+		INSERT INTO notice (sector, title, content, file_id, user_id, write_date, views, likes) 
+		VALUE (#{sector}, #{title}, #{content}, 0, #{userId}, NOW(), 0, 0)
 	</insert>
+	
+	<update id="updatePost" parameterType="io.itupo.iiv.domain.NoticeBean">
+		UPDATE notice
+		SET title = #{title}, content = #{content}, file_id = #{fileId}
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="deletePostById" parameterType="int">
+		DELETE 
+		FROM notice 
+		WHERE id = #{id}
+	</delete>
+	
+    <update id="addPostViews" parameterType="int">
+		UPDATE notice
+		SET views = views + 1
+		WHERE id = #{id}
+	</update>
 </mapper>
