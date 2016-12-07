@@ -37,6 +37,11 @@ public class UserController {
 		return "logout";
 	}
 	
+	@RequestMapping(value = "/loginfail")
+	public String loginfail() {
+		return "user/loginfail";
+	}
+	
     @RequestMapping(value = "registration")
     public String registration() {
         return "user/registration";
