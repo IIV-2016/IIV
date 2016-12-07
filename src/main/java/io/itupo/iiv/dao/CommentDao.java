@@ -10,4 +10,5 @@ public interface CommentDao {
 	boolean writePost(CommentBean bean);
 	boolean updatePost(CommentBean bean);
 	boolean deletePostById(CommentDto dto);
+	boolean deletePostAll(CommentDto dto);
 }

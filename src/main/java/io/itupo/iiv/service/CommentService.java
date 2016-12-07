@@ -29,4 +29,7 @@ public class CommentService {
 	public boolean deletePostById(CommentDto dto){
 		return commentDao.deletePostById(dto);
 	}
+	public boolean deletePostAll(CommentDto dto){
+		return commentDao.deletePostAll(dto);
+	}
 }

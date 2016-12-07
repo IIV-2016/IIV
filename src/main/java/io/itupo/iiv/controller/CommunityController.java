@@ -80,7 +80,7 @@ public class CommunityController {
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable(value="id") int id, Model model) {
     	communityService.deletePostById(id);
-    	return "redirect:/community/list";
+    	return "redirect:/community/board";
     }
     
     @RequestMapping(value = "likes/{id}/{userId}", method = RequestMethod.GET)

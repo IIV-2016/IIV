@@ -15,4 +15,9 @@ public class LikeBean {
 	private String table;
 	private int postId;
 	private String username;
+	
+	public LikeBean(String table, int postId) {
+		this.table = table;
+		this.postId = postId;
+	}
 }

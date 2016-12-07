@@ -249,6 +249,20 @@
 		        }
 		    });
 		}
+		
+		function deleteComment(id){
+			var table = $("#table").val();
+			var allData = {"id": id, "table": table};
+		    $.ajax({
+		        url:'<%=request.getContextPath()%>/comment/delete',
+		        type:"POST",
+		        data: allData,
+		        success:function(data){
+		        	commentList();
+		        	$("#content").val("");
+		        }
+		    });
+		}
 
 	</script>
 	<!--[if lt IE 9]>

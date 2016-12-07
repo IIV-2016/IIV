@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import io.itupo.iiv.dao.CommentDao;
 import io.itupo.iiv.dao.CommunityDao;
 import io.itupo.iiv.dao.LikeDao;
 import io.itupo.iiv.dao.UserDao;
 import io.itupo.iiv.domain.CommunityBean;
 import io.itupo.iiv.domain.LikeBean;
+import io.itupo.iiv.dto.CommentDto;
 import io.itupo.iiv.dto.LikeDto;
 
 @Service
@@ -19,6 +21,9 @@ public class CommunityService {
 
 	@Autowired
 	private CommunityDao communityDao;
+	
+	@Autowired
+	private CommentDao commentDao;
 	
 	@Autowired
 	private UserDao userDao;
@@ -46,6 +51,8 @@ public class CommunityService {
 	}
 
 	public boolean deletePostById(int id){
+		commentDao.deletePostAll(new CommentDto("community_comment", id));
+		removeLikesHistoryAll(new LikeBean("community_likes_history", id));
 		return communityDao.deletePostById(id);
 	}
 	public boolean addPostViews(int id){
@@ -77,5 +84,8 @@ public class CommunityService {
 	public List<CommunityBean> sortingByViews(){
 		List<CommunityBean> postList = communityDao.sortingByViews();
 		return postList;
+	}
+	public boolean removeLikesHistoryAll(LikeBean bean){
+		return likeDao.removeLikesHistoryAll(bean);
 	}
 }
