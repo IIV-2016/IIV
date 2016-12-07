@@ -37,6 +37,13 @@
 
 	<!-- CSS Customization -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css">
+	<style>
+	.img-size{
+		height : 200px;
+		width: 100%;
+		border: 1px solid rgba(128, 128, 128, 0.1);
+	}
+	</style>
 </head>
 
 <body class="header-fixed header-fixed-space index-page">
@@ -62,7 +69,7 @@
 			<div class="container content grid-boxes">
 				<c:forEach var="post" items="${likesList}">
 				<div class="grid-boxes-in">
-					<img class="img-responsive" src="${post.fileId}" alt="">
+					<img class="img-responsive img-size" src="${post.fileId}" alt="">
 					<div class="grid-boxes-caption">
 						<h3><a href="<%=request.getContextPath()%>/activity/post/${post.id}">${post.title}</a></h3>
 						<ul class="list-inline grid-boxes-news">

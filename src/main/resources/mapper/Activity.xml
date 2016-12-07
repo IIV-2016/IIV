@@ -17,7 +17,7 @@
 	</resultMap>
 	
 	<select id="readPostList" resultMap="ActivityResultMap">
-    	SELECT activity.id AS id, sector, title, LEFT(content, 50) AS content, file_id AS fileId, user_id AS userId, write_date AS writeDate, views, likes, username
+    	SELECT activity.id AS id, sector, title, content, file_id AS fileId, user_id AS userId, write_date AS writeDate, views, likes, username
     	FROM activity, user
     	WHERE activity.user_id = user.id
     	ORDER BY id DESC
@@ -65,7 +65,7 @@
 	</update>
 	
 	<select id="sortingByLikes" resultMap="ActivityResultMap">
-    	SELECT activity.id, sector, title, LEFT(content, 50) AS content, file_id AS fileId, user_id AS userId, write_date AS writeDate, views, likes, username
+    	SELECT activity.id, sector, title, content, file_id AS fileId, user_id AS userId, write_date AS writeDate, views, likes, username
     	FROM activity, user
     	WHERE activity.user_id = user.id
     	ORDER BY likes DESC

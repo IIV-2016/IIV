@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -63,32 +65,34 @@
       <!--=== Content Part ===-->
       <div class="container content">
          <div class="row">
-         	<div class="col-md-9">
+         	<div class="col-md-12">
                <!-- Other Questions -->
                <div class="headline"><h2>Notice</h2></div>
                <div class="panel-group acc-v1" id="accordion-1">
-				<div class="col-md-9">
+				<div class="">
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<a href="<%=request.getContextPath()%>/admin/notice/write" class="btn-u btn-u-sm" id="write">Write</a>
+						<a href="<%=request.getContextPath()%>/notice/write" class="btn-u btn-u-sm" id="write">Write</a>
 					</sec:authorize>
 					<table id="example" class="table" cellspacing="0" width="100%">
 				        <thead>
 				            <tr>
 				                <th>No</th>
-				                <th>Sector</th>
 				                <th>Title</th>
 				                <th>Name</th>
 				                <th>Date</th>
+				                <th>Views</th>
 				            </tr>
 				        </thead>
 				        <tbody>
+				        	<c:forEach var="post" items="${postList}">
 				            <tr>
-				                <td></td>
-				                <td></td>
-				                <td></td>
-				                <td></td>
-				                <td></td>
+				                <td>${post.id}</td>
+				                <td><a href="<%=request.getContextPath()%>/notice/post/${post.id}">${post.title}</a></td>
+				                <td>${post.username}</td>
+				                <td>${post.writeDate}</td>
+				                <td>${post.views}</td>
 				            </tr>
+				            </c:forEach>
 				        </tbody>
 				    </table>
 				</div>

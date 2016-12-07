@@ -38,9 +38,11 @@ public class CommentController {
         return "";
     }
 
-    @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable(value="id") int id, Model model) {
-    	commentService.deletePostById(id);
-    	return "activity/list";
+    @RequestMapping(value = "delete", method = RequestMethod.POST)
+    public String delete(Model model, @RequestParam HashMap<String, String> param) {
+    	int id = Integer.parseInt(param.get("id"));
+    	String table = param.get("table");
+    	commentService.deletePostById(new CommentDto(id, table));
+        return "";
     }
 }

@@ -136,11 +136,6 @@
 					<div class="blog-author-desc">
 						<div class="overflow-h">
 							<h4>${user.username}</h4>
-							<ul class="list-inline">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							</ul>
 						</div>
 						<p>${user.email}</p>
 					</div>
@@ -249,7 +244,20 @@
 		        }
 		    });
 		}
-
+		
+		function deleteComment(id){
+			var table = $("#table").val();
+			var allData = {"id": id, "table": table};
+		    $.ajax({
+		        url:'<%=request.getContextPath()%>/comment/delete',
+		        type:"POST",
+		        data: allData,
+		        success:function(data){
+		        	commentList();
+		        	$("#content").val("");
+		        }
+		    });
+		}
 	</script>
 	<!--[if lt IE 9]>
     <script src="<%=request.getContextPath()%>/plugins/respond.js"></script>

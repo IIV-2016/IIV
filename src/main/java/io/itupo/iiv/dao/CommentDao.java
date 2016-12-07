@@ -9,5 +9,5 @@ public interface CommentDao {
 	List<CommentBean> readPostList(CommentDto dto);
 	boolean writePost(CommentBean bean);
 	boolean updatePost(CommentBean bean);
-	boolean deletePostById(int id);
+	boolean deletePostById(CommentDto dto);
 }

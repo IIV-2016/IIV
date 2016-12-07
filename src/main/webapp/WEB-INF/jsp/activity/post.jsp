@@ -249,7 +249,6 @@
 		        }
 		    });
 		}
-
 	</script>
 	<!--[if lt IE 9]>
     <script src="<%=request.getContextPath()%>/plugins/respond.js"></script>

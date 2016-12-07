@@ -75,7 +75,7 @@
 		<div class="container content-sm">
 			<div class="panel margin-bottom-40">
 				<div class="panel-body">
-					<form action="<%=request.getContextPath()%>/admin/notice/write/submit" method="post" class="margin-bottom-40" role="form">
+					<form action="<%=request.getContextPath()%>/notice/write/submit" method="post" class="margin-bottom-40" role="form">
 						<div class="col-md-2">
 							<select name="sector" class="form-control input-lg">
 								<option value="notice">Notice</option>

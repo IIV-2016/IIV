@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import io.itupo.iiv.domain.LikeBean;
 import io.itupo.iiv.domain.NoticeBean;
-import io.itupo.iiv.dto.LikeDto;
 import io.itupo.iiv.service.NoticeService;
 import io.itupo.iiv.service.UserService;
 
@@ -25,11 +23,6 @@ public class NoticeController {
 
 	@Autowired
 	private UserService userService;
-
-	@RequestMapping(value = "notice", method = RequestMethod.GET)
-	public String notice(Model model) {
-		return "notice/notice";
-	}
 
 	@RequestMapping(value = "board", method = RequestMethod.GET)
 	public String readPostList(Model model) {

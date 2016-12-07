@@ -1,6 +1,9 @@
 package io.itupo.iiv.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +31,9 @@ public class ActivityService {
 	
 	public List<ActivityBean> readPostList(){
 		List<ActivityBean> readActivityList = activityDao.readPostList();
+		for(int i=0; i<readActivityList.size(); i++){
+			readActivityList.get(i).setFileId(imgExtract(readActivityList.get(i).getContent()));
+		}
 		return readActivityList;
 	}
 	
@@ -73,10 +79,26 @@ public class ActivityService {
 	}
 	public List<ActivityBean> sortingByLikes(){
 		List<ActivityBean> postList = activityDao.sortingByLikes();
+		for(int i=0; i<postList.size(); i++){
+			postList.get(i).setFileId(imgExtract(postList.get(i).getContent()));
+		}
 		return postList;
 	}
 	public List<ActivityBean> sortingByViews(){
 		List<ActivityBean> postList = activityDao.sortingByViews();
 		return postList;
+	}
+	public String imgExtract(String text) {
+		Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>");
+		List<String> result = new ArrayList<String>();
+		Matcher matcher = pattern.matcher(text);
+		while (matcher.find()) {
+			result.add(matcher.group(1));
+		}
+		if(result.size()==0){
+			return "/iivdemo/img/iivlogo.png";
+		}else{
+			return result.get(0);
+		}
 	}
 }

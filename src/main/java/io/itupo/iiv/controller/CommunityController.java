@@ -28,11 +28,6 @@ public class CommunityController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "notice", method = RequestMethod.GET)
-	public String notice(Model model) {
-		return "community/notice";
-	}
-
 	@RequestMapping(value = "board", method = RequestMethod.GET)
 	public String readPostList(Model model) {
 		model.addAttribute("postList", communityService.readPostList());

@@ -12,6 +12,16 @@
 				<h4>
 					${comment.username}
 					<span>${comment.writeDate}</span>
+					<sec:authorize access="isAuthenticated()">
+						<sec:authentication property="principal.username" var="currentUsername"/>
+						<c:if test="${currentUsername eq comment.username}">
+							<span>
+								<button onclick="deleteComment(${comment.id})">
+									<i class="rounded-x icon-close"></i>
+								</button>
+							</span>
+						</c:if>
+					</sec:authorize>
 				</h4>
 				<p>${comment.content}</p>
 			</div>

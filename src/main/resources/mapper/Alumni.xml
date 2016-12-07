@@ -55,13 +55,13 @@
 	<update id="addPostLikes" parameterType="io.itupo.iiv.dto.LikeDto">
 		UPDATE alumni
 		SET likes = likes + 1
-		WHERE id = #{postId} AND user_id = #{userId}
+		WHERE id = #{postId}
 	</update>
 	
 	<update id="removePostLikes" parameterType="io.itupo.iiv.dto.LikeDto">
 		UPDATE alumni
 		SET likes = likes - 1
-		WHERE id = #{postId} AND user_id = #{userId}
+		WHERE id = #{postId}
 	</update>
 	
 	<select id="sortingByLikes" resultMap="AlumniResultMap">

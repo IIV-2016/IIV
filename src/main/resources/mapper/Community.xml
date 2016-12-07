@@ -55,24 +55,24 @@
 	<update id="addPostLikes" parameterType="io.itupo.iiv.dto.LikeDto">
 		UPDATE community
 		SET likes = likes + 1
-		WHERE id = #{postId} AND user_id = #{userId}
+		WHERE id = #{postId}
 	</update>
 	
 	<update id="removePostLikes" parameterType="io.itupo.iiv.dto.LikeDto">
 		UPDATE community
 		SET likes = likes - 1
-		WHERE id = #{postId} AND user_id = #{userId}
+		WHERE id = #{postId}
 	</update>
 	
 	<select id="sortingByLikes" resultMap="CommunityResultMap">
-    	SELECT community.id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes, username
+    	SELECT community.id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes, username
     	FROM community, user
     	WHERE community.user_id = user.id
     	ORDER BY likes DESC
     </select>
     
     <select id="sortingByViews" resultMap="CommunityResultMap">
-    	SELECT community.id, sector, title, LEFT(content, 50) AS content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes, username
+    	SELECT community.id, sector, title, content, file_id AS filedId, user_id AS userId, write_date AS writeDate, views, likes, username
     	FROM community, user
     	WHERE community.user_id = user.id
     	ORDER BY views DESC

@@ -73,7 +73,7 @@
 								Community
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=request.getContextPath()%>/community/notice">Notice</a></li>
+								<li><a href="<%=request.getContextPath()%>/notice/board">Notice</a></li>
 								<li><a href="<%=request.getContextPath()%>/community/board">Board</a></li>
 							</ul>
 						</li>

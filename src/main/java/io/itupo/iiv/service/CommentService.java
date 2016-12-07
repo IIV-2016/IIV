@@ -26,7 +26,7 @@ public class CommentService {
 	public boolean updatePost(CommentBean bean){
 		return commentDao.updatePost(bean);
 	}
-	public boolean deletePostById(int id){
-		return commentDao.deletePostById(id);
+	public boolean deletePostById(CommentDto dto){
+		return commentDao.deletePostById(dto);
 	}
 }
