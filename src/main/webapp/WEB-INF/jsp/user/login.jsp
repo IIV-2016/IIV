@@ -56,7 +56,7 @@
 		<div class="container content">
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-					<c:url value="/user/login" var="loginUrl"/>
+					<c:url value="<%=request.getContextPath()%>/user/login/" var="loginUrl"/>
 					<form class="reg-page" action="${loginUrl}" method="post">
 						<div class="reg-header">
 							<h2>Login to your account</h2>

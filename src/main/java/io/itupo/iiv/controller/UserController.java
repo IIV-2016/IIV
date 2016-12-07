@@ -37,7 +37,7 @@ public class UserController {
 		return "logout";
 	}
 	
-	@RequestMapping(value = "/loginfail")
+	@RequestMapping(value = "/login/fail")
 	public String loginfail() {
 		return "user/loginfail";
 	}
