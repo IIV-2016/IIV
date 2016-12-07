@@ -10,10 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.itupo.iiv.dao.ActivityDao;
+import io.itupo.iiv.dao.CommentDao;
 import io.itupo.iiv.dao.LikeDao;
 import io.itupo.iiv.dao.UserDao;
 import io.itupo.iiv.domain.ActivityBean;
 import io.itupo.iiv.domain.LikeBean;
+import io.itupo.iiv.dto.CommentDto;
 import io.itupo.iiv.dto.LikeDto;
 
 @Service
@@ -22,6 +24,9 @@ public class ActivityService {
 	
 	@Autowired
 	private ActivityDao activityDao;
+	
+	@Autowired
+	private CommentDao commentDao;
 	
 	@Autowired
 	private UserDao userDao;
@@ -52,6 +57,8 @@ public class ActivityService {
 	}
 
 	public boolean deletePostById(int id){
+		commentDao.deletePostAll(new CommentDto("activity_comment", id));
+		removeLikesHistoryAll(new LikeBean("activity_likes_history", id));
 		return activityDao.deletePostById(id);
 	}
 
@@ -100,5 +107,8 @@ public class ActivityService {
 		}else{
 			return result.get(0);
 		}
+	}
+	public boolean removeLikesHistoryAll(LikeBean bean){
+		return likeDao.removeLikesHistoryAll(bean);
 	}
 }

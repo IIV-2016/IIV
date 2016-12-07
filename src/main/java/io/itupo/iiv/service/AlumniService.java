@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.itupo.iiv.dao.AlumniDao;
+import io.itupo.iiv.dao.CommentDao;
 import io.itupo.iiv.dao.LikeDao;
 import io.itupo.iiv.dao.UserDao;
 import io.itupo.iiv.domain.AlumniBean;
 import io.itupo.iiv.domain.LikeBean;
+import io.itupo.iiv.dto.CommentDto;
 import io.itupo.iiv.dto.LikeDto;
 
 @Service
@@ -19,6 +21,9 @@ public class AlumniService {
 
 	@Autowired
 	private AlumniDao alumniDao;
+	
+	@Autowired
+	private CommentDao commentDao;
 	
 	@Autowired
 	private UserDao userDao;
@@ -46,6 +51,8 @@ public class AlumniService {
 	}
 
 	public boolean deletePostById(int id){
+		commentDao.deletePostAll(new CommentDto("alumni_comment", id));
+		removeLikesHistoryAll(new LikeBean("alumni_likes_history", id));
 		return alumniDao.deletePostById(id);
 	}
 	public boolean addPostViews(int id){
@@ -77,5 +84,8 @@ public class AlumniService {
 	public List<AlumniBean> sortingByViews(){
 		List<AlumniBean> postList = alumniDao.sortingByViews();
 		return postList;
+	}
+	public boolean removeLikesHistoryAll(LikeBean bean){
+		return likeDao.removeLikesHistoryAll(bean);
 	}
 }
