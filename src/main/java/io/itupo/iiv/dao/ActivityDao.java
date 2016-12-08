@@ -16,4 +16,5 @@ public interface ActivityDao {
 	boolean removePostLikes(LikeDto dto);
 	List<ActivityBean> sortingByLikes();
 	List<ActivityBean> sortingByViews();
+	int readPostCountByUsername(int userId);
 }

@@ -88,4 +88,7 @@ public class AlumniService {
 	public boolean removeLikesHistoryAll(LikeBean bean){
 		return likeDao.removeLikesHistoryAll(bean);
 	}
+	public int readPostCountByUsername(int userId){
+		return alumniDao.readPostCountByUsername(userId);
+	}
 }

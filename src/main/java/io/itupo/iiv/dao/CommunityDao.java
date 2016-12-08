@@ -16,5 +16,6 @@ public interface CommunityDao {
 	boolean removePostLikes(LikeDto dto);
 	List<CommunityBean> sortingByLikes();
 	List<CommunityBean> sortingByViews();
+	int readPostCountByUsername(int userId);
 }
 

@@ -77,4 +77,10 @@
     	WHERE community.user_id = user.id
     	ORDER BY views DESC
     </select>
+
+	<select id="readPostCountByUsername" parameterType="int" resultType="int">
+    	SELECT COUNT(community.id)
+    	FROM community, user
+    	WHERE community.user_id = user.id AND community.user_id = #{userId}
+    </select>
 </mapper>

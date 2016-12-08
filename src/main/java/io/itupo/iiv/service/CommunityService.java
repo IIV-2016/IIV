@@ -88,4 +88,7 @@ public class CommunityService {
 	public boolean removeLikesHistoryAll(LikeBean bean){
 		return likeDao.removeLikesHistoryAll(bean);
 	}
+	public int readPostCountByUsername(int userId){
+		return communityDao.readPostCountByUsername(userId);
+	}
 }

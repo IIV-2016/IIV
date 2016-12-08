@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.itupo.iiv.domain.UserBean;
 import io.itupo.iiv.dto.UserDto;
+import io.itupo.iiv.service.ActivityService;
+import io.itupo.iiv.service.CommunityService;
 import io.itupo.iiv.service.UserService;
 
 @Controller
@@ -20,6 +22,15 @@ import io.itupo.iiv.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private CommunityService communityService;
+	
+	@Autowired
+	private ActivityService activityService;
+	
+	@Autowired
+	private ActivityService alumniService;
 	
 	@RequestMapping(value = "/")
 	public String index() {
@@ -50,7 +61,13 @@ public class UserController {
     @RequestMapping(value = "setting")
     public String setting(Model model, Principal principal) {
     	UserBean bean = userService.readUserByUsername(principal.getName());
+    	int activityPostCount= activityService.readPostCountByUsername(bean.getId());
+    	int alumniPostCount= alumniService.readPostCountByUsername(bean.getId());
+    	int communityPostCount= communityService.readPostCountByUsername(bean.getId());
     	model.addAttribute("user", bean);
+    	model.addAttribute("activityPostCount", activityPostCount);
+    	model.addAttribute("communityPostCount", communityPostCount);
+    	model.addAttribute("alumniPostCount", alumniPostCount);
         return "user/setting";
     }
 	

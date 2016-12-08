@@ -64,24 +64,16 @@
 				<div class="col-md-3 md-margin-bottom-40">
 					<img id="userimg" class="img-responsive profile-img margin-bottom-20" src="${user.img}" alt="user_photo">
 					<input id="inp" type='file'>
+					<br>
 					<ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
 						<li class="list-group-item">
-							<a href="page_profile.html"><i class="fa fa-bar-chart-o"></i> Id</a>
+							<a href=""><i class="fa fa-check" aria-hidden="true"></i> Activity (${activityPostCount})</a>
 						</li>
 						<li class="list-group-item">
-							<a href="page_profile_me.html"><i class="fa fa-user"></i> First name</a>
+							<a href=""><i class="fa fa-check" aria-hidden="true"></i> Community (${communityPostCount})</a>
 						</li>
 						<li class="list-group-item">
-							<a href="page_profile_users.html"><i class="fa fa-group"></i> Last name</a>
-						</li>
-						<li class="list-group-item">
-							<a href="page_profile_projects.html"><i class="fa fa-cubes"></i> Email Address</a>
-						</li>
-						<li class="list-group-item">
-							<a href="page_profile_comments.html"><i class="fa fa-comments"></i> IIV</a>
-						</li>
-						<li class="list-group-item">
-							<a href="page_profile_history.html"><i class="fa fa-history"></i> Year</a>
+							<a href=""><i class="fa fa-check" aria-hidden="true"></i> Alumni (${alumniPostCount})</a>
 						</li>
 					</ul>
 				</div>

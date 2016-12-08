@@ -16,5 +16,6 @@ public interface AlumniDao {
 	boolean removePostLikes(LikeDto dto);
 	List<AlumniBean> sortingByLikes();
 	List<AlumniBean> sortingByViews();
+	int readPostCountByUsername(int userId);
 }
 
