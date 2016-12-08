@@ -54,8 +54,9 @@ public class UserController {
         return "user/setting";
     }
 	
-    @RequestMapping(value = "update")
+    @RequestMapping(value = "update", method = RequestMethod.POST)
     public String update(UserBean bean) {
+    	System.out.println(bean);
     	userService.updateUser(bean);
         return "redirect:/user/setting";
     }

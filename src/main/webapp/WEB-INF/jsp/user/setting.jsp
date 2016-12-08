@@ -62,8 +62,8 @@
 			<div class="row">
 				<!--Left Sidebar-->
 				<div class="col-md-3 md-margin-bottom-40">
-					<img class="img-responsive profile-img margin-bottom-20" src="<%=request.getContextPath()%>/img/team/img32-md.jpg" alt="">
-
+					<img id="userimg" class="img-responsive profile-img margin-bottom-20" src="${user.img}" alt="user_photo">
+					<input id="inp" type='file'>
 					<ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
 						<li class="list-group-item">
 							<a href="page_profile.html"><i class="fa fa-bar-chart-o"></i> Id</a>
@@ -89,6 +89,7 @@
 
 				<!-- Profile Content -->
 				<form action="<%=request.getContextPath()%>/user/update" method="post" name="update">
+					<input type="hidden" id="img" name="img" value="">
 					<div class="col-md-9">
 						<div class="profile-body margin-bottom-20">
 							<div class="tab-v1">
@@ -297,6 +298,17 @@
 		    	$('#selectYear').show();
 		    }
 		}
+		function readFile() {
+			  if (this.files && this.files[0]) {
+			    var FR= new FileReader();
+			    FR.onload = function(e) {
+			      document.getElementById("userimg").src       = e.target.result;
+			      document.getElementById("img").value = e.target.result;
+			    };       
+			    FR.readAsDataURL( this.files[0] );
+			  }
+			}
+			document.getElementById("inp").addEventListener("change", readFile, false);
 	</script>
 	<!--[if lt IE 9]>
     <script src="<%=request.getContextPath()%>/plugins/respond.js"></script>

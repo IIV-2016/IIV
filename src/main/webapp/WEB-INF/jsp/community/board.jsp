@@ -36,7 +36,7 @@
 	<!-- CSS Theme -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-colors/dark-blue.css" id="style_color">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-skins/dark.css">
-	<link rel="stylesheet" href="/webjars/datatables/1.10.12/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/webjars/datatables/1.10.12/css/dataTables.bootstrap.min.css">
 
 	<!-- CSS Customization -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css">
