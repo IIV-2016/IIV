@@ -81,7 +81,7 @@
 
 				<!-- Profile Content -->
 				<form action="<%=request.getContextPath()%>/user/update" method="post" name="update">
-					<input type="hidden" id="img" name="img" value="">
+					<input type="hidden" id="img" name="img" value="${user.img}">
 					<div class="col-md-9">
 						<div class="profile-body margin-bottom-20">
 							<div class="tab-v1">
@@ -281,7 +281,6 @@
 		    if(year == 0){
 		    	$('input[name="level"][value="USER"]').attr('checked', true);
 		    	$('input[name="level"][value="ALUMNI"]').attr('checked', false); 
-		    	$('#year').val("0");
 		    	$('#selectYear').hide();
 		    }else{
 		    	$('input[name="level"][value="ALUMNI"]').attr('checked', true); 

@@ -17,4 +17,5 @@ public interface UserDao {
     public String checkPassword(UserDto bean);
     public UserBean readUserById(int id);
     public UserBean readUserByUsername(String username);
+    public void updateUserLevel(UserBean bean);
 }

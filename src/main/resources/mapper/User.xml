@@ -49,4 +49,9 @@
 	<select id="readUserByUsername" parameterType="String" resultType="io.itupo.iiv.domain.UserBean">
           SELECT * FROM user WHERE username = #{username}
      </select> 
+	<update id="updateUserLevel" parameterType="io.itupo.iiv.domain.UserBean">
+		UPDATE authority
+		SET authority_name = #{level}
+		WHERE username = #{username}
+	</update>
 </mapper>

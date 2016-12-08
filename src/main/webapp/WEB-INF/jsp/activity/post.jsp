@@ -132,7 +132,7 @@
 
 				<!-- Blog Post Author -->
 				<div class="blog-author margin-bottom-30">
-					<img src="<%=request.getContextPath()%>/img/team/img1-md.jpg" alt="">
+					<img src="${user.img}" alt="user_photo">
 					<div class="blog-author-desc">
 						<div class="overflow-h">
 							<h4>${user.username}</h4>

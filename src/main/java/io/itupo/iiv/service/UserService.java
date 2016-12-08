@@ -52,6 +52,10 @@ public class UserService implements UserDetailsService{
 	}
 	
 	public void updateUser(UserBean bean){
+		if(bean.getLevel().equals("USER")){
+			bean.setYear("0");
+		}
+		userDao.updateUserLevel(bean);
 		userDao.updateUser(bean);
 	}
 	
@@ -87,5 +91,8 @@ public class UserService implements UserDetailsService{
     }
     public UserBean readUserByUsername(String username){
     	return userDao.readUserByUsername(username);
+    }
+    public void updateUserLevel(UserBean bean){
+    	userDao.updateUserLevel(bean);
     }
 }
