@@ -38,10 +38,13 @@ public class ActivityController {
 	}
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String readPostList(Model model) {
+	public String readPostList(Model model, Principal principal) {
 		model.addAttribute("postList", activityService.readPostList());
 		model.addAttribute("likesList", activityService.sortingByLikes());
 		model.addAttribute("viewsList", activityService.sortingByViews());
+		if(principal != null && principal.getName().equals("admin")){
+			return "activity/admin";
+		}
 		return "activity/list";
 	}
 	

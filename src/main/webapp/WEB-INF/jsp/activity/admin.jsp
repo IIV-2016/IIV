@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -28,15 +29,12 @@
 	<!-- CSS Implementing Plugins -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/line-icons/line-icons.css">
-
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/sky-forms-pro/skyforms/css/sky-forms.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/plugins/fancybox/source/jquery.fancybox.css">
 	
 	<!-- CSS Theme -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-colors/dark-blue.css" id="style_color">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/theme-skins/dark.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/webjars/datatables/1.10.12/css/dataTables.bootstrap.min.css">
-	<link href="<%=request.getContextPath()%>/dist/summernote.css" rel="stylesheet">
 
 	<!-- CSS Customization -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css">
@@ -49,6 +47,9 @@
 	}
 	table.dataTable thead .sorting_desc:after {
     content: none;
+	}
+	.img-size{
+	height : 130px;
 	}
 	</style>
 </head>
@@ -64,44 +65,120 @@
 		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs">
 			<div class="container">
-				<h1 class="pull-left">Community</h1>
+				<h1 class="pull-left">IIV Activities</h1>
 				<ul class="pull-right breadcrumb">
 					<li><a href="index.html">Home</a></li>
-					<li class="active">Write</li>
+					<li class="active">IIV Activities</li>
 				</ul>
 			</div>
 		</div><!--/breadcrumbs-->
 		<!--=== End Breadcrumbs ===-->
-		<div class="container content-sm">
-			<div class="panel margin-bottom-40">
-				<div class="panel-body">
-					<form action="<%=request.getContextPath()%>/activity/write/submit" method="post" class="margin-bottom-40" role="form">
-						<div class="col-md-2">
-							<select name="sector" class="form-control input-lg">
-								<option value="weekly">Weekly</option>
-								<option value="experience">Experience</option>
-								<option value="skill">Skill</option>
-								<option value="knowledge">Knowledge</option>
-							</select>
+
+		<!--=== Blog Posts ===-->
+		<div class="container content-md">
+			<div class="row">
+				<!-- Blog All Posts -->
+				<div class="col-md-9">
+					<a href="<%=request.getContextPath()%>/activity/write" class="btn-u btn-u-sm" id="write">Write</a>
+					<table id="example" cellspacing="0" width="100%">
+					<thead>
+					<th></th>
+		        	</thead>
+					<tbody>
+					<!-- News v3 -->
+					<c:forEach var="post" items="${postList}">
+					<tr>
+					<td>
+					<div class="row margin-bottom-20">
+						<div class="col-sm-4 sm-margin-bottom-20">
+							<img class="img-responsive img-size" src="${post.fileId}">
 						</div>
-						<div class="col-md-10">
-						<div class="form-group">
-							<input type="text" class="form-control input-lg"" id="title" name="title" placeholder="title">
-						</div>
-						</div>
-						<div class="col-md-12 margin-bottom-40">
-							<div class="form-group">
-								<textarea class="form-control" rows="7" id="summernote" name="content"></textarea>
+						<div class="col-sm-7 news-v3">
+							<div class="news-v3-in-sm no-padding">
+								<ul class="list-inline posted-info">
+									<li>${post.sector}</li>
+									<li>By ${post.username}</li>
+									<li>${post.writeDate}</li>
+								</ul>
+								<h4><a href="<%=request.getContextPath()%>/activity/post/${post.id}">${post.title}</a></h4>
+								<ul class="post-shares">
+									<li>
+										<a href="#">
+											<i class="rounded-x fa fa-eye"></i>
+											<span>${post.views}</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="rounded-x icon-heart"></i>
+											<span>${post.likes}</span>
+										</a>
+									</li>
+									<li>
+										<a href="<%=request.getContextPath()%>/activity/delete/${post.id}">
+											<i class="rounded-x icon-close"></i>
+										</a>
+									</li>
+								</ul>
 							</div>
 						</div>
-						<center><button type="submit" class="btn-u">Submit</button></center>
-						<input type="hidden" name="_csrf" value="${_csrf.token}">
-						<input type="hidden" name="userId" value=<sec:authentication property="principal.id"/>>
-					</form>
+					</div><!--/end row-->
+					<!-- End News v3 -->
+					<hr>
+					</td>
+					</tr>
+					</c:forEach>
+					</tbody>
+					</table>
+
+					<!-- Pager v3 -->
+					<!--
+					<div class="text-center">
+						<ul class="pagination">
+							<li><a href="#">«</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li class="active"><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">6</a></li>
+							<li><a href="#">7</a></li>
+							<li><a href="#">8</a></li>
+							<li><a href="#">»</a></li>
+						</ul>
+					</div>	
+					-->				
+					<!-- End Pager v3 -->
 				</div>
+				<!-- End Blog All Posts -->
+
+				<!-- Blog Sidebar -->
+				<div class="col-md-3">
+					<div class="headline-v2 bg-color-light"><h2>Likes</h2></div>
+					<ul class="list-unstyled blog-latest-posts margin-bottom-50">
+						<c:forEach var="post" begin="0" end="3" varStatus="status" items="${likesList}">
+							<li>
+								<h3><a href="<%=request.getContextPath()%>/activity/post/${post.id}">${post.title}</a></h3>
+								<small>${post.userId} / ${post.writeDate} / ${post.likes}</small>
+							</li>
+			            </c:forEach>
+					</ul>
+					<!-- End Trending -->
+
+					<div class="headline-v2 bg-color-light"><h2>Views</h2></div>
+					<!-- Latest Links -->
+					<ul class="list-unstyled blog-latest-posts margin-bottom-50">
+						<c:forEach var="post" begin="0" end="3" varStatus="status" items="${viewsList}">
+							<li>
+								<h3><a href="<%=request.getContextPath()%>/activity/post/${post.id}">${post.title}</a></h3>
+								<small>${post.userId} / ${post.writeDate} / ${post.views}</small>
+							</li>
+			            </c:forEach>
+					</ul>
+				</div>
+				<!-- End Blog Sidebar -->
 			</div>
-			<!-- End Basic Form -->
-	    </div>
+		</div>
 		<!--=== End Footer Version 1 ===-->
 		<%@include file="/WEB-INF/jsp/footer.jsp"%>
 		<!--=== End Header v6 ===-->
@@ -113,32 +190,20 @@
 	<!-- JS Implementing Plugins -->
 	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/back-to-top.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/smoothScroll.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
-
+	<script type="text/javascript" src="<%=request.getContextPath()%>/plugins/jquery.parallax.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/fancy-box.js"></script>
 	<!-- JS Customization -->
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/custom.js"></script>
 	<!-- JS Page Level -->
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/app.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/style-switcher.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/js/forms/login.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/js/forms/contact.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/js/table.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/table1.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/dist/summernote.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			App.init();
-			LoginForm.initLoginForm();
-			ContactForm.initContactForm();
 			StyleSwitcher.initStyleSwitcher();
-			$('#summernote').summernote({
-			   height: 300,
-			   minHeight: null,
-			   maxHeight: null,
-			   focus: true,
-			 });
 		});
 	</script>
 	<!--[if lt IE 9]>

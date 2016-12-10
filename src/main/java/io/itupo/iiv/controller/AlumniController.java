@@ -32,10 +32,13 @@ public class AlumniController {
 	private UserService userService;
 
 	@RequestMapping(value = "board", method = RequestMethod.GET)
-	public String readPostList(Model model) {
+	public String readPostList(Model model, Principal principal) {
 		model.addAttribute("postList", alumniService.readPostList());
 		model.addAttribute("likesList", alumniService.sortingByLikes());
 		model.addAttribute("viewsList", alumniService.sortingByViews());
+		if(principal != null && principal.getName().equals("admin")){
+			return "alumni/admin";
+		}
 		return "alumni/board";
 	}
 	

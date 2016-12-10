@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import io.itupo.iiv.domain.CommunityBean;
 import io.itupo.iiv.domain.LikeBean;
-import io.itupo.iiv.dto.CommentDto;
 import io.itupo.iiv.dto.LikeDto;
-import io.itupo.iiv.service.CommentService;
 import io.itupo.iiv.service.CommunityService;
 import io.itupo.iiv.service.UserService;
 
@@ -29,10 +27,13 @@ public class CommunityController {
 	private UserService userService;
 
 	@RequestMapping(value = "board", method = RequestMethod.GET)
-	public String readPostList(Model model) {
+	public String readPostList(Model model, Principal principal) {
 		model.addAttribute("postList", communityService.readPostList());
 		model.addAttribute("likesList", communityService.sortingByLikes());
 		model.addAttribute("viewsList", communityService.sortingByViews());
+		if(principal != null && principal.getName().equals("admin")){
+			return "community/admin";
+		}
 		return "community/board";
 	}
 	
@@ -51,11 +52,6 @@ public class CommunityController {
 
 	@RequestMapping(value = "write", method = RequestMethod.GET)
 	public String write(@AuthenticationPrincipal UserDetails userDetail) {
-		/*
-		if(userDetail == null){
-			throw new CustomAuthException("login");
-		}
-		*/
 		return "community/write";
 	}
     

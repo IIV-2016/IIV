@@ -123,8 +123,8 @@
 											<dt><strong>Did you IIV? </strong></dt>
 											<dd>
 												<div id="yearValue" style="display:none">${user.year}</div>
-												<input type="radio" name="level" value="ALUMNI"> Yes 
-												<input type="radio" name="level" value="USER"> No							
+												<input type="radio" name="level" value="ROLE_ALUMNI"> Yes 
+												<input type="radio" name="level" value="ROLE_USER"> No							
 											<hr>
 										</dl>
 										<div id="selectYear" style="display:none">
@@ -269,9 +269,9 @@
 			}
 
 		    $('input[name="level"]').change(function(){
-		     	if($(':radio[name="level"]:checked').val() == "ALUMNI"){
+		     	if($(':radio[name="level"]:checked').val() == "ROLE_ALUMNI"){
 		        	$('#selectYear').show();
-		        }else if($(':radio[name="level"]:checked').val() == "USER"){
+		        }else if($(':radio[name="level"]:checked').val() == "ROLE_USER"){
 		        	$('#selectYear').hide();
 		        }
 		    });
@@ -279,12 +279,12 @@
 		$.checkLevel = function(){
 			var year = $('#yearValue').html();
 		    if(year == 0){
-		    	$('input[name="level"][value="USER"]').attr('checked', true);
-		    	$('input[name="level"][value="ALUMNI"]').attr('checked', false); 
+		    	$('input[name="level"][value="ROLE_USER"]').attr('checked', true);
+		    	$('input[name="level"][value="ROLE_ALUMNI"]').attr('checked', false); 
 		    	$('#selectYear').hide();
 		    }else{
-		    	$('input[name="level"][value="ALUMNI"]').attr('checked', true); 
-		    	$('input[name="level"][value="USER"]').attr('checked', false);
+		    	$('input[name="level"][value="ROLE_ALUMNI"]').attr('checked', true); 
+		    	$('input[name="level"][value="ROLE_USER"]').attr('checked', false);
 		    	$('#year').val(year);
 		    	$('#selectYear').show();
 		    }
