@@ -37,7 +37,7 @@ public class ActivityController {
 		return "activity/home";
 	}
 
-	@RequestMapping(value = "list", method = RequestMethod.GET)
+	@RequestMapping(value = "board", method = RequestMethod.GET)
 	public String readPostList(Model model, Principal principal) {
 		model.addAttribute("postList", activityService.readPostList());
 		model.addAttribute("likesList", activityService.sortingByLikes());
@@ -45,7 +45,7 @@ public class ActivityController {
 		if(principal != null && principal.getName().equals("admin")){
 			return "activity/admin";
 		}
-		return "activity/list";
+		return "activity/board";
 	}
 	
 	@RequestMapping(value = "post/{id}", method = RequestMethod.GET)
@@ -75,7 +75,7 @@ public class ActivityController {
     @RequestMapping(value = "write/submit", method = RequestMethod.POST)
     public String writePost(ActivityBean bean) {
     	activityService.writePost(bean);
-        return "redirect:/activity/list";
+        return "redirect:/activity/board";
     }
 
     @RequestMapping(value = "update/{id}", method = RequestMethod.GET)
@@ -93,7 +93,7 @@ public class ActivityController {
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable(value="id") int id, Model model) {
     	activityService.deletePostById(id);
-    	return "redirect:/activity/list";
+    	return "redirect:/activity/board";
     }
     
     @RequestMapping(value = "likes/{id}/{userId}", method = RequestMethod.GET)

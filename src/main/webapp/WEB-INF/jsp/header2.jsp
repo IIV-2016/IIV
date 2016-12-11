@@ -65,8 +65,8 @@
 								Activity
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=request.getContextPath()%>/activity/home">IIV News & Notices</a></li>
-								<li><a href="<%=request.getContextPath()%>/activity/list">Activities</a></li>
+								<li><a href="<%=request.getContextPath()%>/activity/home">Home</a></li>
+								<li><a href="<%=request.getContextPath()%>/activity/board">Board</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">

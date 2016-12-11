@@ -2,7 +2,6 @@ package io.itupo.iiv.dao;
 
 import java.util.List;
 
-import io.itupo.iiv.domain.CommunityBean;
 import io.itupo.iiv.domain.UserBean;
 import io.itupo.iiv.dto.UserDto;
 
