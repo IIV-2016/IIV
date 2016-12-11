@@ -65,7 +65,7 @@
 						<input type="hidden" id="img" name="img" value="<%=request.getContextPath()%>/img/default.jpg">
 						<div class="reg-header">
 							<h2>Register a new account</h2>
-							<p>Already Signed Up? Click <a href="page_login.html" class="color-green">Sign In</a> to login your account.</p>
+							<p>Already Signed Up? Click <a href="<%=request.getContextPath()%>/user/login" class="color-green">Sign In</a> to login your account.</p>
 						</div>
 						<label>ID <span id="checkUsername" class="color-red"></span></label>
 						<input type="text" name="username" id="username" class="form-control margin-bottom-20">
@@ -97,8 +97,8 @@
 								<label>Did you IIV?</label> 
 							</div>
 							<div class="col-sm-6">
-								<input type="radio" name="level" value="ALUMNI"> Yes 
-								<input type="radio" name="level" value="USER" checked> No
+								<input type="radio" name="level" value="ROLE_ALUMNI"> Yes 
+								<input type="radio" name="level" value="ROLE_USER" checked> No
 							</div>
 						</div>
 						<div id="selectYear" style="display:none">
@@ -120,10 +120,6 @@
 						<div class="row">
 							<span id="warning"></span>
 							<div class="col-lg-6 checkbox">
-								<label>
-									<input type="checkbox">
-									I read <a href="page_terms.html" class="color-green">Terms and Conditions</a>
-								</label>
 							</div>
 							<div class="col-lg-6 text-right">
 								<button class="btn-u" type="button" onclick="$.checkSubmit()">Register</button>
@@ -251,9 +247,9 @@
 			}
 
 		    $('input[name="level"]').change(function(){
-		     	if($(':radio[name="level"]:checked').val() == "ALUMNI"){
+		     	if($(':radio[name="level"]:checked').val() == "ROLE_ALUMNI"){
 		        	$('#selectYear').show();
-		        }else if($(':radio[name="level"]:checked').val() == "USER"){
+		        }else if($(':radio[name="level"]:checked').val() == "ROLE_USER"){
 		        	$('#selectYear').hide();
 		        }
 		    });

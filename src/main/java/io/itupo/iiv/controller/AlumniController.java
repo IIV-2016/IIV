@@ -32,7 +32,8 @@ public class AlumniController {
 	private UserService userService;
 
 	@RequestMapping(value = "home")
-	public String home() {
+	public String home(Model model) {
+		model.addAttribute("readAlumniUserList", userService.readAlumniUserList());
 		return "alumni/home";
 	}
 	

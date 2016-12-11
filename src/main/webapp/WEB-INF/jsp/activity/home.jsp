@@ -67,7 +67,7 @@
 		<!--=== End Breadcrumbs ===-->
 		<div class="blog_masonry_3col">
 			<div class="container content grid-boxes">
-				<c:forEach var="post" items="${likesList}">
+				<c:forEach var="post" begin="0" end="8" items="${likesList}" varStatus="status">
 				<div class="grid-boxes-in">
 					<img class="img-responsive img-size" src="${post.fileId}" alt="">
 					<div class="grid-boxes-caption">

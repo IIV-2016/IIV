@@ -72,18 +72,15 @@
 						</div>
 
 						<div class="row">
-							<div class="col-md-6 checkbox">
-								<label><input type="checkbox"> Stay signed in</label>
-							</div>
-							<div class="col-md-6">
-								<button class="btn-u pull-right" type="submit">Login</button>
+							<div class="col-md-12">
+								<button class="btn-u col-md-12" type="submit">Login</button>
 							</div>
 						</div>
 
 						<hr>
 
-						<h4>Forget your Password ?</h4>
-						<p>no worries, <a class="color-green" href="#">click here</a> to reset your password.</p>
+						<h4>Register a new account</h4>
+						<p><a class="color-green" href="<%=request.getContextPath()%>/user/registration">click here</a></p>
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 					</form>
 				</div>

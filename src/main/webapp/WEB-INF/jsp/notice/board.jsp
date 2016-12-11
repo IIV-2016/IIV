@@ -68,11 +68,10 @@
          	<div class="col-md-12">
                <!-- Other Questions -->
                <div class="headline"><h2>Notice</h2></div>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<a href="<%=request.getContextPath()%>/notice/write" class="btn-u btn-u-sm margin-bottom-10" id="write">Write</a>
+				</sec:authorize>
                <div class="panel-group acc-v1" id="accordion-1">
-				<div class="">
-					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<a href="<%=request.getContextPath()%>/notice/write" class="btn-u btn-u-sm" id="write">Write</a>
-					</sec:authorize>
 					<table id="example" class="table" cellspacing="0" width="100%">
 				        <thead>
 				            <tr>
@@ -95,7 +94,6 @@
 				            </c:forEach>
 				        </tbody>
 				    </table>
-				</div>
                </div>
 			</div>
             <div class="col-md-9">
@@ -229,7 +227,7 @@
    <script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/owl-carousel.js"></script>
    <script type="text/javascript" src="<%=request.getContextPath()%>/js/plugins/owl-recent-works.js"></script>
    <script type="text/javascript" src="<%=request.getContextPath()%>/webjars/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/js/table.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/js/table2.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/webjars/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
    
    <script type="text/javascript">

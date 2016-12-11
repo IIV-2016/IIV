@@ -122,7 +122,7 @@
 											<hr>
 											<dt><strong>Introduce </strong></dt>
 											<dd>
-												<input type="text" name="introduction" id="introduction" class="form-control" value="">
+												<input type="text" name="introduction" id="introduction" class="form-control" value="${user.introduction}">
 											</dd>
 											<hr>
 											<dt><strong>Did you IIV? </strong></dt>
@@ -140,7 +140,7 @@
 											<hr>
 											<dt><strong>Country </strong></dt>
 											<dd>
-												<input type="text" name="country" id="country" class="form-control" value="">
+												<input type="text" name="country" id="country" class="form-control" value="${user.country}">
 											</dd>
 											<hr>
 										</div>

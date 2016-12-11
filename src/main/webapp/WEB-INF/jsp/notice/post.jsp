@@ -92,12 +92,12 @@
 								<sec:authentication property="principal.id" var="currentUserId"/>
 								<c:if test="${currentUserId eq post.userId}">
 									<li>
-										<a href="<%=request.getContextPath()%>/community/delete/${post.id}">
+										<a href="<%=request.getContextPath()%>/notice/delete/${post.id}">
 											<i class="rounded-x icon-close"></i>
 										</a>
 									</li>
 									<li>
-										<a href="<%=request.getContextPath()%>/community/update/${post.id}">
+										<a href="<%=request.getContextPath()%>/notice/update/${post.id}">
 											<i class="rounded-x icon-settings"></i>
 										</a>
 									</li>

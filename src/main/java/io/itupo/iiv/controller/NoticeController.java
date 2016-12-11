@@ -64,6 +64,6 @@ public class NoticeController {
     @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable(value="id") int id, Model model) {
     	noticeService.deletePostById(id);
-    	return "redirect:/notice/list";
+    	return "redirect:/notice/board";
     }
 }

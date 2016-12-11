@@ -70,27 +70,29 @@
 			<div class="col-md-12">
 				<div class="margin-bottom-40">
 					<div id="testimonials-1" class="carousel slide testimonials testimonials-v1">
-						<div class="carousel-inner">
+						<div class="carousel-inner">	
 							<div class="item active">
-								<p>Crasjusto ducimus qui cupiditate non provident, similique sunt in culpaid est anditiis praesentium praesentium blanditiis praesentium non provident, similique sunt in culpaid est anditiis praesentium praesentium..</p>
+								<p>${readAlumniUserList.get(0).introduction}</p>
 								<div class="testimonial-info">
-									<img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
+									<img class="rounded-x" src="${readAlumniUserList.get(0).img}" alt="">
 									<span class="testimonial-author">
-										Jeremy Asigner
-										<em>Web Developer, Unify Theme.</em>
+										${readAlumniUserList.get(0).username}
+										<em>${readAlumniUserList.get(0).year}</em>
 									</span>
 								</div>
 							</div>
+						<c:forEach var="user" items="${readAlumniUserList}">
 							<div class="item">
-								<p>Crasjusto ducimus qui cupiditate non provident, similique sunt in culpaid est anditiis praesentium praesentium blanditiis praesentium non provident, similique sunt in culpaid est anditiis praesentium praesentium..</p>
+								<p>${user.introduction}</p>
 								<div class="testimonial-info">
-									<img class="rounded-x" src="assets/img/testimonials/user.jpg" alt="">
+									<img class="rounded-x" src="${user.img}" alt="">
 									<span class="testimonial-author">
-										User
-										<em>Java Developer, Htmlstream</em>
+										${user.username}
+										<em>${user.year}</em>
 									</span>
 								</div>
 							</div>
+						</c:forEach>
 						</div>
 		
 						<div class="carousel-arrow">
@@ -105,207 +107,30 @@
 				</div>
 			</div>
 
-				<div class="col-md-12">
-					<div class="profile-body margin-bottom-20">
-						<!--Profile Blog-->
-						<div class="row margin-bottom-20">
+			<div class="col-md-12">
+				<div class="profile-body margin-bottom-20">
+					<!--Profile Blog-->
+					<div class="row margin-bottom-20">		
+					<c:forEach var="user" begin="0" end="5" items="${readAlumniUserList}" varStatus="status">
 							<div class="col-sm-6 sm-margin-bottom-20">
-								<div class="profile-blog">
-									<img class="rounded-x" src="assets/img/testimonials/img1.jpg" alt="">
+								<div class="profile-blog margin-bottom-20">
+									<img class="rounded-x" src="${user.img}" alt="">
 									<div class="name-location">
-										<strong>Mikel Andrews</strong>
-										<span><i class="fa fa-map-marker"></i><a href="#">California,</a> <a href="#">US</a></span>
+										<strong>${user.username}</strong>
+										<span><i class="fa fa-map-marker"></i><a href="#">${user.country}</a></span>
 									</div>
 									<div class="clearfix margin-bottom-20"></div>
-									<p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
 									<hr>
 									<ul class="list-inline share-list">
-										<li><i class="fa fa-bell"></i><a href="#">12 Notifications</a></li>
-										<li><i class="fa fa-group"></i><a href="#">54 Followers</a></li>
-										<li><i class="fa fa-share"></i><a href="#">Share</a></li>
+										<li><i class="fa fa-user" aria-hidden="true"></i><a href="#">${user.firstname} ${user.lastname}</a></li>
+										<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="#">${user.email}</a></li>
 									</ul>
 								</div>
 							</div>
-
-							<div class="col-sm-6">
-								<div class="profile-blog">
-									<img class="rounded-x" src="assets/img/testimonials/user.jpg" alt="">
-									<div class="name-location">
-										<strong>Natasha Kolnikova</strong>
-										<span><i class="fa fa-map-marker"></i><a href="#">Moscow,</a> <a href="#">Russia</a></span>
-									</div>
-									<div class="clearfix margin-bottom-20"></div>
-									<p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-									<hr>
-									<ul class="list-inline share-list">
-										<li><i class="fa fa-bell"></i><a href="#">37 Notifications</a></li>
-										<li><i class="fa fa-group"></i><a href="#">46 Followers</a></li>
-										<li><i class="fa fa-share"></i><a href="#">Share</a></li>
-									</ul>
-								</div>
-							</div>
-						</div><!--/end row-->
-						<!--End Profile Blog-->
-
-						<!--Profile Blog-->
-						<div class="row margin-bottom-20">
-							<div class="col-sm-6 sm-margin-bottom-20">
-								<div class="profile-blog">
-									<img class="rounded-x" src="assets/img/testimonials/img2.jpg" alt="">
-									<div class="name-location">
-										<strong>Sasha Elli</strong>
-										<span><i class="fa fa-map-marker"></i><a href="#">California,</a> <a href="#">US</a></span>
-									</div>
-									<div class="clearfix margin-bottom-20"></div>
-									<p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-									<hr>
-									<ul class="list-inline share-list">
-										<li><i class="fa fa-bell"></i><a href="#">3 Notifications</a></li>
-										<li><i class="fa fa-group"></i><a href="#">25 Followers</a></li>
-										<li><i class="fa fa-share"></i><a href="#">Share</a></li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="col-sm-6">
-								<div class="profile-blog">
-									<img class="rounded-x" src="assets/img/testimonials/img3.jpg" alt="">
-									<div class="name-location">
-										<strong>Frank Heller</strong>
-										<span><i class="fa fa-map-marker"></i><a href="#">Moscow,</a> <a href="#">Russia</a></span>
-									</div>
-									<div class="clearfix margin-bottom-20"></div>
-									<p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-									<hr>
-									<ul class="list-inline share-list">
-										<li><i class="fa fa-bell"></i><a href="#">7 Notifications</a></li>
-										<li><i class="fa fa-group"></i><a href="#">77 Followers</a></li>
-										<li><i class="fa fa-share"></i><a href="#">Share</a></li>
-									</ul>
-								</div>
-							</div>
-						</div><!--/end row-->
-						<!--End Profile Blog-->
-
-						<!--Profile Blog-->
-						<div class="row margin-bottom-20">
-							<div class="col-sm-6 sm-margin-bottom-20">
-								<div class="profile-blog">
-									<img class="rounded-x" src="assets/img/testimonials/user.jpg" alt="">
-									<div class="name-location">
-										<strong>John W.A</strong>
-										<span><i class="fa fa-map-marker"></i><a href="#">California,</a> <a href="#">US</a></span>
-									</div>
-									<div class="clearfix margin-bottom-20"></div>
-									<p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-									<hr>
-									<ul class="list-inline share-list">
-										<li><i class="fa fa-bell"></i><a href="#">0 Notifications</a></li>
-										<li><i class="fa fa-group"></i><a href="#">9 Followers</a></li>
-										<li><i class="fa fa-share"></i><a href="#">Share</a></li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="col-sm-6">
-								<div class="profile-blog">
-									<img class="rounded-x" src="assets/img/testimonials/img5.jpg" alt="">
-									<div class="name-location">
-										<strong>Natalia J.</strong>
-										<span><i class="fa fa-map-marker"></i><a href="#">Moscow,</a> <a href="#">Russia</a></span>
-									</div>
-									<div class="clearfix margin-bottom-20"></div>
-									<p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-									<hr>
-									<ul class="list-inline share-list">
-										<li><i class="fa fa-bell"></i><a href="#">56 Notifications</a></li>
-										<li><i class="fa fa-group"></i><a href="#">125 Followers</a></li>
-										<li><i class="fa fa-share"></i><a href="#">Share</a></li>
-									</ul>
-								</div>
-							</div>
-						</div><!--/end row-->
-
-						<!--Profile Blog-->
-						<div class="row margin-bottom-20">
-							<div class="col-sm-6 sm-margin-bottom-20">
-								<div class="profile-blog">
-									<img class="rounded-x" src="assets/img/testimonials/img4.jpg" alt="">
-									<div class="name-location">
-										<strong>Pavel Kolnikov</strong>
-										<span><i class="fa fa-map-marker"></i><a href="#">Moscow,</a> <a href="#">Russia</a></span>
-									</div>
-									<div class="clearfix margin-bottom-20"></div>
-									<p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-									<hr>
-									<ul class="list-inline share-list">
-										<li><i class="fa fa-bell"></i><a href="#">37 Notifications</a></li>
-										<li><i class="fa fa-group"></i><a href="#">46 Followers</a></li>
-										<li><i class="fa fa-share"></i><a href="#">Share</a></li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="col-sm-6">
-								<div class="profile-blog">
-									<img class="rounded-x" src="assets/img/testimonials/img6.jpg" alt="">
-									<div class="name-location">
-										<strong>Taylor Lee</strong>
-										<span><i class="fa fa-map-marker"></i><a href="#">California,</a> <a href="#">US</a></span>
-									</div>
-									<div class="clearfix margin-bottom-20"></div>
-									<p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-									<hr>
-									<ul class="list-inline share-list">
-										<li><i class="fa fa-bell"></i><a href="#">0 Notifications</a></li>
-										<li><i class="fa fa-group"></i><a href="#">9 Followers</a></li>
-										<li><i class="fa fa-share"></i><a href="#">Share</a></li>
-									</ul>
-								</div>
-							</div>
-						</div><!--/end row-->
-						<!--End Profile Blog-->
-
-						<!--Profile Blog-->
-						<div class="row margin-bottom-20">
-							<div class="col-sm-6 sm-margin-bottom-20">
-								<div class="profile-blog">
-									<img class="rounded-x" src="assets/img/testimonials/img3.jpg" alt="">
-									<div class="name-location">
-										<strong>Frank Heller</strong>
-										<span><i class="fa fa-map-marker"></i><a href="#">Moscow,</a> <a href="#">Russia</a></span>
-									</div>
-									<div class="clearfix margin-bottom-20"></div>
-									<p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-									<hr>
-									<ul class="list-inline share-list">
-										<li><i class="fa fa-bell"></i><a href="#">7 Notifications</a></li>
-										<li><i class="fa fa-group"></i><a href="#">77 Followers</a></li>
-										<li><i class="fa fa-share"></i><a href="#">Share</a></li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="col-sm-6">
-								<div class="profile-blog">
-									<img class="rounded-x" src="assets/img/testimonials/img2.jpg" alt="">
-									<div class="name-location">
-										<strong>Sasha Elli</strong>
-										<span><i class="fa fa-map-marker"></i><a href="#">California,</a> <a href="#">US</a></span>
-									</div>
-									<div class="clearfix margin-bottom-20"></div>
-									<p>Donec non dignissim eros. Mauris faucibus turpis volutpat sagittis rhoncus. Pellentesque et rhoncus sapien, sed ullamcorper justo.</p>
-									<hr>
-									<ul class="list-inline share-list">
-										<li><i class="fa fa-bell"></i><a href="#">3 Notifications</a></li>
-										<li><i class="fa fa-group"></i><a href="#">25 Followers</a></li>
-										<li><i class="fa fa-share"></i><a href="#">Share</a></li>
-									</ul>
-								</div>
-							</div>
-						</div><!--/end row-->
+					</c:forEach>											
 					</div>
 				</div>
+			</div>
 			
 		</div>
 		<!--=== End Footer Version 1 ===-->

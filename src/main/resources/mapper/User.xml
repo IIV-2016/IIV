@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.itupo.iiv.dao.UserDao">
+	<resultMap id="UserResultMap" type="io.itupo.iiv.domain.UserBean">
+		<result property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="firstname" column="firstname" />
+		<result property="lastname" column="lastname" />
+		<result property="email" column="email" />
+		<result property="year" column="year" />
+		<result property="img" column="img" />
+		<result property="introduction" column="introduction" />
+		<result property="country" column="country" />
+	</resultMap>
+
      <select id="readUser" parameterType="String" resultType="io.itupo.iiv.domain.UserBean">
           SELECT * FROM user WHERE username = #{username}
      </select>
@@ -54,4 +66,11 @@
 		SET authority_name = #{level}
 		WHERE username = #{username}
 	</update>
+	
+	<select id="readAlumniUserList" resultMap="UserResultMap">
+    	SELECT user.id, user.username, firstname, lastname, email, year, img, introduction, country
+    	FROM user, authority
+    	WHERE user.username = authority.username AND authority.authority_name = "ROLE_ALUMNI"
+    	ORDER BY id DESC
+    </select>	
 </mapper>

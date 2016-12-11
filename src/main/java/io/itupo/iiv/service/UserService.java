@@ -95,4 +95,7 @@ public class UserService implements UserDetailsService{
     public void updateUserLevel(UserBean bean){
     	userDao.updateUserLevel(bean);
     }
+    public List<UserBean> readAlumniUserList(){
+    	return userDao.readAlumniUserList();
+    }
 }
