@@ -31,6 +31,11 @@ public class AlumniController {
 	@Autowired
 	private UserService userService;
 
+	@RequestMapping(value = "home")
+	public String home() {
+		return "alumni/home";
+	}
+	
 	@RequestMapping(value = "board", method = RequestMethod.GET)
 	public String readPostList(Model model, Principal principal) {
 		model.addAttribute("postList", alumniService.readPostList());

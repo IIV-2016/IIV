@@ -120,6 +120,11 @@
 												<input type="button" class="btn-u" data-toggle="modal" data-target="#responsive" value="Chage Password">
 											</dd>
 											<hr>
+											<dt><strong>Introduce </strong></dt>
+											<dd>
+												<input type="text" name="introduction" id="introduction" class="form-control" value="">
+											</dd>
+											<hr>
 											<dt><strong>Did you IIV? </strong></dt>
 											<dd>
 												<div id="yearValue" style="display:none">${user.year}</div>
@@ -131,6 +136,11 @@
 											<dt><strong>IIV Activity Year </strong></dt>
 											<dd>
 												<input type="text" name="year" id="year" class="form-control">
+											</dd>
+											<hr>
+											<dt><strong>Country </strong></dt>
+											<dd>
+												<input type="text" name="country" id="country" class="form-control" value="">
 											</dd>
 											<hr>
 										</div>

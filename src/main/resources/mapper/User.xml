@@ -10,13 +10,13 @@
      </select>
      
      <insert id="registerUser" parameterType="io.itupo.iiv.domain.UserBean">
-		INSERT INTO user (username, password, firstname, lastname, email, year, img) 
-		VALUE (#{username}, #{password}, #{firstname}, #{lastname}, #{email}, #{year}, #{img})
+		INSERT INTO user (username, password, firstname, lastname, email, year, img, introduction, country) 
+		VALUE (#{username}, #{password}, #{firstname}, #{lastname}, #{email}, #{year}, #{img}, #{introduction}, #{country})
 	</insert>
 	
 	<update id="updateUser" parameterType="io.itupo.iiv.domain.UserBean">
 		UPDATE user
-		SET firstname = #{firstname}, lastname = #{lastname}, email = #{email}, year = #{year}, img = #{img}
+		SET firstname = #{firstname}, lastname = #{lastname}, email = #{email}, year = #{year}, img = #{img}, introduction = #{introduction}, country = #{country}
 		WHERE username = #{username}
 	</update>
 	

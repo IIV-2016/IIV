@@ -26,6 +26,8 @@ public class UserBean implements UserDetails {
 	private String level;
 	private String year;
 	private String img;
+	private String introduction;
+	private String country;
 	private boolean isAccountNonExpired;
 	private boolean isAccountNonLocked;
 	private boolean isCredentialsNonExpired;

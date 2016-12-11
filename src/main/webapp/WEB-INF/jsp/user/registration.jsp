@@ -110,6 +110,9 @@
 								<option value="2014">2014</option>
 								<option value="2013">2013</option>
 							</select>
+							<br>
+							<label>Country</label>
+							<input type="text" name="country" id="country" class="form-control margin-bottom-20">
 						</div>
 
 						<hr>
