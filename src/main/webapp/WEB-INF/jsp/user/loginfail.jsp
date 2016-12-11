@@ -48,7 +48,6 @@
 			<div class="container">
 				<h1 class="pull-left">Login</h1>
 				<ul class="pull-right breadcrumb">
-					<li><a href="index.html">Home</a></li>
 					<li class="active">Login</li>
 				</ul>
 			</div>

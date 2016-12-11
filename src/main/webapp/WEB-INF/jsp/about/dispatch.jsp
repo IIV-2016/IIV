@@ -88,8 +88,8 @@ small {
          <div class="container">
             <h1 class="pull-left">Dispatch</h1>
             <ul class="pull-right breadcrumb">
-               <li><a href="index.html">Home</a></li>
-               <li class="active">dispatch</li>
+               <li>About IIV</li>
+               <li class="active">Dispatch</li>
             </ul>
          </div>
       </div>

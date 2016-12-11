@@ -58,10 +58,10 @@
 		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs">
 			<div class="container">
-				<h1 class="pull-left">IIV News & Notice</h1>
+				<h1 class="pull-left">Alumni Home</h1>
 				<ul class="pull-right breadcrumb">
-					<li><a href="<%=request.getContextPath()%>/home">Home</a></li>
-					<li class="active">IIV News & Notice</li>
+					<li>Alumni</li>
+					<li class="active">Home</li>
 				</ul>
 			</div>
 		</div><!--/breadcrumbs-->

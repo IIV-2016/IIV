@@ -51,8 +51,8 @@
 			<div class="container">
 				<h1 class="pull-left">Introduction</h1>
 				<ul class="pull-right breadcrumb">
-					<li><a href="index.html">Home</a></li>
-					<li class="active">introduce</li>
+					<li>About IIV</li>
+					<li class="active">Introduction</li>
 				</ul>
 			</div>
 		</div>

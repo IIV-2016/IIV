@@ -64,9 +64,9 @@
 		<!--=== Breadcrumbs ===-->
 		<div class="breadcrumbs">
 			<div class="container">
-				<h1 class="pull-left">Admin</h1>
+				<h1 class="pull-left">Notice Write</h1>
 				<ul class="pull-right breadcrumb">
-					<li><a href="index.html">Home</a></li>
+					<li>Notice</li>
 					<li class="active">Write</li>
 				</ul>
 			</div>
