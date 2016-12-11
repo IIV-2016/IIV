@@ -1,22 +1,14 @@
-DROP TABLE user;
-DROP TABLE activity;
-DROP TABLE gallery;
-DROP TABLE notice;
-DROP TABLE community;
-DROP TABLE alumni;
-DROP TABLE comment;
-DROP TABLE authority;
-DROP TABLE community_likes_history;
-
 create table user (
 	 id INT(100) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-     username varchar(50) NULL UNIQUE,
-     password varchar(500) NULL,
+     username varchar(50) NOT NULL UNIQUE,
+     password varchar(1000) NULL,
      firstname varchar(50) NULL,
      lastname varchar(50) NULL,
      email varchar(50) NULL,
      year varchar(50) NULL,
-     img text NULL,
+     img LONGTEXT NULL,
+     introduction varchar(1000) NULL,
+     country varchar(100) NULL,
      isAccountNonExpired boolean DEFAULT TRUE,
      isAccountNonLocked boolean DEFAULT TRUE,
      isCredentialsNonExpired boolean DEFAULT TRUE,
@@ -25,7 +17,7 @@ create table user (
 
 create table authority (
 	 id INT(100) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-     username varchar(50) NULL UNIQUE,
+     username varchar(50) NOT NULL UNIQUE,
      authority_name varchar(50) NULL
 );
 
@@ -35,16 +27,10 @@ CREATE TABLE activity (
 	title VARCHAR(100) NULL,
 	content LONGTEXT NULL,
 	file_id VARCHAR(100) NULL,
-	user_id VARCHAR(50) NULL,
+	user_id INT(100) UNSIGNED NOT NULL,
 	write_date DATE,
 	views INT(100) DEFAULT 0,
 	likes INT(100) DEFAULT 0
-)ENGINE=InnoDB DEFAULT CHARSET=UTF8;
-
-CREATE TABLE gallery (
-	id INT(100) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	link VARCHAR(100) NULL,
-	year VARCHAR(50) NULL
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 CREATE TABLE notice (
@@ -53,7 +39,7 @@ CREATE TABLE notice (
 	title VARCHAR(100) NULL,
 	content LONGTEXT NULL,
 	file_id VARCHAR(100) NULL,
-	user_id VARCHAR(50) NULL,
+	user_id INT(100) UNSIGNED NOT NULL,
 	write_date DATE,
 	views INT(100) DEFAULT 0,
 	likes INT(100) DEFAULT 0
@@ -65,7 +51,7 @@ CREATE TABLE community (
 	title VARCHAR(100) NULL,
 	content LONGTEXT NULL,
 	file_id VARCHAR(100) NULL,
-	user_id VARCHAR(50) NULL,
+	user_id INT(100) UNSIGNED NOT NULL,
 	write_date DATE,
 	views INT(100) DEFAULT 0,
 	likes INT(100) DEFAULT 0
@@ -77,7 +63,7 @@ CREATE TABLE alumni (
 	title VARCHAR(100) NULL,
 	content LONGTEXT NULL,
 	file_id VARCHAR(100) NULL,
-	user_id VARCHAR(50) NULL,
+	user_id INT(100) UNSIGNED NOT NULL,
 	write_date DATE,
 	views INT(100) DEFAULT 0,
 	likes INT(100) DEFAULT 0
@@ -86,7 +72,7 @@ CREATE TABLE alumni (
 CREATE TABLE community_comment (
 	id INT(100) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	content VARCHAR(1000) NULL,
-	username VARCHAR(50) NULL,
+	username VARCHAR(50) NOT NULL,
 	write_date DATE,
 	post_id INT(100) UNSIGNED NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
@@ -94,7 +80,7 @@ CREATE TABLE community_comment (
 CREATE TABLE activity_comment (
 	id INT(100) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	content VARCHAR(1000) NULL,
-	username VARCHAR(50) NULL,
+	username VARCHAR(50) NOT NULL,
 	write_date DATE,
 	post_id INT(100) UNSIGNED NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
@@ -102,30 +88,47 @@ CREATE TABLE activity_comment (
 CREATE TABLE alumni_comment (
 	id INT(100) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	content VARCHAR(1000) NULL,
-	username VARCHAR(50) NULL,
+	username VARCHAR(50) NOT NULL,
 	write_date DATE,
 	post_id INT(100) UNSIGNED NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 CREATE TABLE community_likes_history (
 	id INT(100) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	post_id int(100) NULL,
-	username varchar(50) NULL,
+	post_id INT(100) UNSIGNED NOT NULL,
+	username varchar(50) NOT NULL,
 	state BOOLEAN DEFAULT FALSE
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 CREATE TABLE activity_likes_history (
 	id INT(100) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	post_id int(100) NULL,
-	username varchar(50) NULL,
+	post_id INT(100) UNSIGNED NOT NULL,
+	username varchar(50) NOT NULL,
 	state BOOLEAN DEFAULT FALSE
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 CREATE TABLE alumni_likes_history (
 	id INT(100) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	post_id int(100) NULL,
-	username varchar(50) NULL,
+	post_id INT(100) UNSIGNED NOT NULL,
+	username varchar(50) NOT NULL,
 	state BOOLEAN DEFAULT FALSE
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 COMMIT;
+
+
+ALTER TABLE community_comment ADD FOREIGN KEY (post_id) REFERENCES community(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE community_likes_history ADD FOREIGN KEY (post_id) REFERENCES community(id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE activity_comment ADD FOREIGN KEY (post_id) REFERENCES activity(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE activity_likes_history ADD FOREIGN KEY (post_id) REFERENCES activity(id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE alumni_comment ADD FOREIGN KEY (post_id) REFERENCES alumni(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE alumni_likes_history ADD FOREIGN KEY (post_id) REFERENCES alumni(id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE authority ADD FOREIGN KEY (username) REFERENCES user(username) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE community ADD FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE activity ADD FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE alumni ADD FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE notice ADD FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE;
